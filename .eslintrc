@@ -1,0 +1,9 @@
+{
+  "extends": ["react-app", "react-app/jest"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "@babel/eslint-parser"
+}
