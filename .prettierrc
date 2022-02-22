@@ -1,3 +1,5 @@
 {
-  "singleQuote": true
+  "singleQuote": true,
+  "camelCase": true,
+  "printWidth": 150
 }

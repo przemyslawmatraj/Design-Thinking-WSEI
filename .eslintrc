@@ -1,9 +1,25 @@
 {
-  "extends": ["react-app", "react-app/jest"],
+  "extends": [
+    "plugin:react/recommended",
+    "react-app",
+    "react-app/jest",
+    "plugin:css-modules/recommended"
+  ],
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es2021": true
   },
-  "parser": "@babel/eslint-parser"
+  "settings": {
+    "import/ignore": [".css$", ".scss$", "node_modules/*"]
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["css-modules", "react"]
 }
