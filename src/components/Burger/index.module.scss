@@ -1,0 +1,15 @@
+.container {
+  width: 35px;
+  display: grid;
+  row-gap: 5px;
+  margin-left: auto;
+  .line {
+    height: 5px;
+    width: 100%;
+    background-color: var(--clr-gray);
+  }
+}
+
+:global .displayNone {
+  display: none;
+}

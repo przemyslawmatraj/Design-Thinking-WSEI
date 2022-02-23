@@ -1,0 +1,7 @@
+.navigation {
+  .list {
+    display: flex;
+    column-gap: #{'clamp(1em, 5vw, 75px)'};
+    list-style: none;
+  }
+}

@@ -1,10 +1,5 @@
 {
-  "extends": [
-    "plugin:react/recommended",
-    "react-app",
-    "react-app/jest",
-    "plugin:css-modules/recommended"
-  ],
+  "extends": ["plugin:react/recommended", "react-app", "react-app/jest", "plugin:css-modules/recommended"],
   "env": {
     "browser": true,
     "node": true,
@@ -21,5 +16,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["css-modules", "react"]
+  "plugins": ["css-modules", "react"],
+  "rules": { "jsx-a11y/anchor-is-valid": "off", "jsx-a11y/anchor-has-content": "off", "css-modules/no-undef-class": "off" }
 }

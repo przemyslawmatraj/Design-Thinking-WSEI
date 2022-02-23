@@ -1,0 +1,21 @@
+.container {
+  max-width: 100%;
+  min-height: calc(100vh - 200px);
+
+  .subTitle {
+    max-width: 9ch;
+    font-weight: 600;
+    color: var(--clr-primary);
+    text-transform: uppercase;
+  }
+  .title {
+    margin-top: 100px;
+    max-width: 12ch;
+    text-transform: uppercase;
+  }
+  .description {
+    margin-top: 35px;
+    margin-bottom: 120px;
+    width: 100%;
+  }
+}
