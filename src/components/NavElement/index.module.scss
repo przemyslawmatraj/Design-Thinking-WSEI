@@ -1,6 +1,17 @@
+@mixin transition {
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      transition: opacity 0.75s cubic-bezier(0.29, 0, 0.14, 0.98) #{$i * 0.1}s;
+    }
+  }
+}
+
 .element {
   display: flex;
   align-items: center;
+  opacity: 0;
+  @include transition;
+
   .link {
     font-size: var(--step--1);
     font-weight: 300;
@@ -30,8 +41,9 @@
   &:last-of-type {
     padding: 10px;
     background-color: var(--clr-secondary);
+    width: min-content;
     &:hover {
-      animation: move 3s ease-in-out alternate infinite;
+      animation: move 1s ease-in-out alternate infinite;
     }
     .link {
       color: #fff;
@@ -40,17 +52,23 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .element {
+    opacity: 1;
+  }
+}
+
 @keyframes move {
   25% {
-    transform: translate(1px, 1px);
+    transform: translateY(-2px);
   }
   50% {
-    transform: translate(-1px, 1px);
+    transform: translateY(0px);
   }
   75% {
-    transform: translate(-1px, -1px);
+    transform: translateY(-3px);
   }
   100% {
-    transform: translate(1px, -1px);
+    transform: translateY(0px);
   }
 }

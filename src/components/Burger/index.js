@@ -4,11 +4,15 @@ import clsx from 'clsx';
 
 const Burger = () => (
   <>
-    <div id="burger" className={clsx(css.container, 'displayNone')}>
-      <span className={css.line}></span>
-      <span className={css.line}></span>
-      <span className={css.line}></span>
-    </div>
+    <input id="burger" type="checkbox" />
+
+    <label htmlFor="burger" className={css.container}>
+      <span className={css.spans}>
+        <span className={clsx(css.iconBar, css.topBar)}></span>
+        <span className={clsx(css.iconBar, css.middleBar)}></span>
+        <span className={clsx(css.iconBar, css.bottomBar)}></span>
+      </span>
+    </label>
   </>
 );
 

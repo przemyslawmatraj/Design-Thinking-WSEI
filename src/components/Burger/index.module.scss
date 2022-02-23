@@ -1,15 +1,54 @@
+:global #burger {
+  display: none;
+}
+
 .container {
-  width: 35px;
-  display: grid;
-  row-gap: 5px;
-  margin-left: auto;
-  .line {
+  display: flex;
+  z-index: 51;
+  justify-content: space-between;
+}
+
+.spans {
+  align-self: flex-end;
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type='checkbox'] + label {
+  .iconBar {
+    display: block;
+    width: 35px;
     height: 5px;
-    width: 100%;
     background-color: var(--clr-gray);
+    margin: 4px;
+    transition: all 0.2s;
+  }
+  .topBar {
+    transform: rotate(0);
+  }
+  .middleBar {
+    opacity: 1;
   }
 }
 
-:global .displayNone {
-  display: none;
+input[type='checkbox']:checked + label {
+  .topBar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+  .middleBar {
+    opacity: 0;
+  }
+  .bottomBar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: none;
+  }
 }

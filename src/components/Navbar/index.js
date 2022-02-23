@@ -2,12 +2,10 @@ import React from 'react';
 import css from './index.module.scss';
 
 import NavElement from '../NavElement';
-import Burger from '../Burger';
 
 const Navbar = () => (
   <>
     <nav className={css.navigation}>
-      <Burger />
       <ul className={css.list}>
         <NavElement elementName="O nas" path="#about" />
         <NavElement elementName="Aktualności" path="#news" />

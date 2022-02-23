@@ -4,7 +4,7 @@ import css from './index.module.scss';
 
 const Button = ({ children, path }) => (
   <>
-    <a href={path} className={css.button}>
+    <a href={path ? path : '#'} className={css.button}>
       {children}
     </a>
   </>
