@@ -6,13 +6,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   .logo {
     aspect-ratio: 1 / 4.19;
+    z-index: 51;
     width: #{'clamp(175px, 20vw, 250px)'};
     max-height: var(--height);
   }
+
+  //Transition on menu and its element
   input[type='checkbox']:checked ~ nav {
     left: 0;
+
     & > ul > li {
       opacity: 1;
     }

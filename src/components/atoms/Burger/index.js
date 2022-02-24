@@ -5,7 +5,6 @@ import clsx from 'clsx';
 const Burger = () => (
   <>
     <input id="burger" type="checkbox" />
-
     <label htmlFor="burger" className={css.container}>
       <span className={css.spans}>
         <span className={clsx(css.iconBar, css.topBar)}></span>

@@ -1,9 +1,9 @@
 import React from 'react';
 import css from './index.module.scss';
-import logo from '../../assets/logo/bigLogo.svg';
+import logo from '../../../assets/logo/bigLogo.svg';
 
-import Burger from '../Burger';
-import Navbar from '../Navbar';
+import Burger from '../../atoms/Burger';
+import Navbar from '../../molecules/Navbar';
 
 const Header = () => (
   <>

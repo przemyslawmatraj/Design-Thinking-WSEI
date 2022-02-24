@@ -25,9 +25,11 @@ input[type='checkbox'] + label {
     margin: 4px;
     transition: all 0.2s;
   }
+
   .topBar {
     transform: rotate(0);
   }
+
   .middleBar {
     opacity: 1;
   }
@@ -38,9 +40,11 @@ input[type='checkbox']:checked + label {
     transform: rotate(45deg);
     transform-origin: 10% 10%;
   }
+
   .middleBar {
     opacity: 0;
   }
+
   .bottomBar {
     transform: rotate(-45deg);
     transform-origin: 10% 90%;

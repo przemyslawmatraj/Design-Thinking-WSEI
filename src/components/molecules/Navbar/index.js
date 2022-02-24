@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './index.module.scss';
 
-import NavElement from '../NavElement';
+import NavElement from '../../atoms/NavElement';
 
 const Navbar = () => (
   <>
