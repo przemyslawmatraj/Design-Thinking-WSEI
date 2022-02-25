@@ -1,6 +1,6 @@
 .container {
   --height: 100px;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-secondary);
   width: 100%;
   height: var(--height);
   display: flex;

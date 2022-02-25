@@ -1,0 +1,60 @@
+.container {
+  position: relative;
+  & > span {
+    position: absolute;
+    // transform: translate(50%, -50%);
+  }
+}
+
+.section {
+  &-1 {
+    .position {
+      &Orange {
+        top: 0;
+        right: 10px;
+        z-index: -1;
+      }
+      &Green {
+        top: 82%;
+        right: 38px;
+        z-index: -1;
+      }
+      &Gray {
+        top: 70%;
+        left: -80px;
+        z-index: -1;
+      }
+    }
+  }
+  // &-2 {
+  //   .position {
+  //     &Orange {
+  //     }
+  //     &Green {
+  //     }
+  //     &Gray {
+  //     }
+  //   }
+  // }
+}
+
+span.circleMobile {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  span.circleMobile {
+    display: none;
+  }
+  .section {
+    &-1 {
+      .position {
+        &Green {
+          top: 40%;
+          right: 15px;
+          z-index: -1;
+        }
+      }
+    }
+  }
+}

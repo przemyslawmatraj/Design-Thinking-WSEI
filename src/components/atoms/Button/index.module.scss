@@ -1,13 +1,13 @@
 .button {
   text-decoration: none;
   font-weight: 700;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-secondary);
   font-size: var(--step-0);
   color: black;
   position: relative;
   display: block;
   width: min-content;
-  margin-left: auto;
+  margin-inline: auto;
   text-transform: uppercase;
 
   &::after {
@@ -31,5 +31,11 @@
       left: -5px;
       right: -5px;
     }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    margin-inline: auto 0;
   }
 }

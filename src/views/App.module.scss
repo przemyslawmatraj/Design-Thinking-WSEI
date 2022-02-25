@@ -1,4 +1,14 @@
 .container {
-  padding-inline: 20px;
+  max-width: 1500px;
+  min-height: 100%;
+  margin-inline: auto;
+  padding-inline: 30px;
   position: relative;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-inline: 50px;
+  }
 }

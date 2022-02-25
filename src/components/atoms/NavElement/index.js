@@ -4,7 +4,6 @@ import css from './index.module.scss';
 
 const NavElement = ({ elementName, path }) => (
   <>
-    {console.log(elementName, path)}
     <li className={css.element}>
       <a href={path} className={css.link}>
         {elementName}
