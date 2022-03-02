@@ -1,3 +1,12 @@
+@mixin size($min, $mid, $max) {
+  width: #{'clamp(' $min ', ' $mid ', ' $max ')'};
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  transition: all 1s ease-out;
+  pointer-events: none;
+}
+
 .variant {
   // Colors
   &-green {
@@ -14,28 +23,16 @@
   }
   // Sizes
   &-xs {
-    border-radius: 50%;
-    width: #{'clamp(30px, 7vw, 80px)'};
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
+    @include size(30px, 7vw, 80px);
   }
   &-sm {
-    border-radius: 50%;
-    width: #{'clamp(85px, 15vw, 160px)'};
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
+    @include size(85px, 15vw, 160px);
   }
   &-md {
-    border-radius: 50%;
-    width: #{'clamp(135px, 25vw, 400px)'};
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
+    @include size(135px, 25vw, 400px);
   }
   &-lg {
-    border-radius: 50%;
-    width: #{'clamp(170px, 40vw, 550px)'};
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
+    @include size(170px, 40vw, 550px);
   }
 }
 

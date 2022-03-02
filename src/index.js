@@ -5,9 +5,7 @@ import App from './views/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div style={{ overflowX: 'hidden' }}>
-      <App />
-    </div>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

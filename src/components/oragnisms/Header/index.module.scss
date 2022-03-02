@@ -6,7 +6,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   .logo {
     aspect-ratio: 1 / 4.19;
     z-index: 51;
@@ -14,12 +13,14 @@
     max-height: var(--height);
   }
 
-  //Transition on menu and its element
-  input[type='checkbox']:checked ~ nav {
-    left: 0;
+  //Transition on menu and its elements
+  input[type='checkbox']:checked {
+    & ~ nav {
+      left: 0;
 
-    & > ul > li {
-      opacity: 1;
+      & > ul > li {
+        opacity: 1;
+      }
     }
   }
 }

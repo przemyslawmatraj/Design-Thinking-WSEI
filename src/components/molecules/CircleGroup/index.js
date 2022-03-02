@@ -20,7 +20,7 @@ const CircleGroup = ({ section, top, className }) => {
         </>
       ) : (
         <>
-          <Circle color="green" size="xs" className={css.positionGreen} />
+          <Circle color="green" size="md" className={css.positionGreen} />
           <img src={circleGrid} alt="grafika kółka" className={css.positionGrid} />
           <Circle image={img2} alt={'Ludzie nic nie robiący'} size="lg" className={css.positionImage} />
           <Circle color="gray" size="sm" className={css.positionGray} />

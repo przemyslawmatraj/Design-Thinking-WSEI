@@ -1,14 +1,49 @@
-.container {
-  max-width: 1500px;
-  min-height: 100%;
-  margin-inline: auto;
-  padding-inline: 30px;
-  position: relative;
-  overflow: hidden;
+.baner {
+  margin-bottom: #{'min(200px, 25vh)'};
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    padding-inline: 50px;
+.overlaySection {
+  position: relative;
+  contain: cover;
+}
+
+.overlay {
+  position: sticky;
+  width: calc(100vw + 4px);
+  height: calc(100vh + 4px);
+  top: -2px;
+  left: -2px;
+  z-index: 20;
+  overflow: hidden;
+  contain: cover;
+  pointer-events: none;
+  margin-top: -1px;
+  max-width: 100vw;
+}
+.overlay div {
+  transform-origin: center;
+}
+@media screen and (max-width: 414px) {
+  .overlay {
+    width: 100vw;
   }
+}
+.overlay svg {
+  contain: cover;
+  min-height: 101%;
+  min-width: 101%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 414px) {
+  .overlay svg.plus {
+    min-height: 150%;
+    min-width: 150%;
+  }
+}
+.overlay svg path {
+  transform-origin: center !important;
 }
