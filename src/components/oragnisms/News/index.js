@@ -2,9 +2,10 @@ import React from 'react';
 import css from './index.module.scss';
 
 import Button from '../../atoms/Button';
-
+import ReadMore from '../../atoms/ReadMore';
 import undraw from '../../../assets/graphics/undraw.svg';
 import img1 from '../../../assets/photos/thirdPhoto.png';
+
 const News = () => (
   <>
     <div className={css.container}>
@@ -22,15 +23,14 @@ const News = () => (
         <img src={img1} alt="zespół szukający rozwiązania" className={css.image} />
         <div className={css.content}>
           <h3 className={css.articleTitle}>Nawiązanie współpracy z VENEO</h3>
-          <p className={css.articleDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
-            fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat
-            lectus.
-          </p>
-          <Button color="white">CZYTAJ WIĘCEJ</Button>
+          <ReadMore className={css.articleDescription} btnColor="white">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, vitae accusamus. Id qui, non ipsum unde odio eius esse itaque maxime
+            maiores recusandae, aliquam iusto? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, vitae accusamus. Id qui, non ipsum
+            unde odio eius esse itaque maxime maiores recusandae, aliquam iusto?
+          </ReadMore>
         </div>
       </div>
-      <Button>Więcej artykułów</Button>
+      <Button className={css.button}>Więcej artykułów</Button>
     </div>
   </>
 );

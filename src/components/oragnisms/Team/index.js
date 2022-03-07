@@ -28,7 +28,6 @@ const Team = () => (
           </div>
         </>
       ))}
-      {/* <div className={css.teamLogo} id="teamLogo"></div> */}
     </div>
     <ConnectElements
       color="#00000025"

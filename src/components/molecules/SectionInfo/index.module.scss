@@ -11,15 +11,12 @@
   row-gap: 35px;
   .subTitle {
     display: none;
-    // max-width: 9ch;
     font-weight: 600;
     color: var(--clr-primary);
     text-transform: uppercase;
   }
 
   .title {
-    // max-width: 12ch;
-    text-transform: uppercase;
   }
 
   h2.title {
@@ -27,8 +24,10 @@
   }
 
   .description {
-    // margin-block: 35px;
     width: 100%;
+    p {
+      margin-bottom: 50px;
+    }
   }
 }
 

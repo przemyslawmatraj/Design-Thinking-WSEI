@@ -9,7 +9,7 @@ import SectionInfo from '../../molecules/SectionInfo';
 const Baner = ({ className }) => (
   <>
     <div className={clsx(css.container, className)}>
-      <SectionInfo subTitle="Ready for future" title="Design Thinking Hub" header={1} button="Sprawdź">
+      <SectionInfo subTitle="Ready for future" title="Design Thinking Hub" header={1} button="Sprawdź" btnColor="black" btnPath="#about">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore earum repudiandae cumque doloremque, consequatur autem!
       </SectionInfo>
       <CircleGroup section={1} className={css.circleGroup} />
