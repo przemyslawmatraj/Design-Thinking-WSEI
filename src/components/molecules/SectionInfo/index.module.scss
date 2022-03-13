@@ -1,0 +1,46 @@
+.mainSection {
+  max-width: 550px;
+  min-height: 360px;
+  order: 2;
+  padding-top: 5px;
+  padding-bottom: 50px;
+  display: flex;
+  margin-inline: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 35px;
+  .subTitle {
+    display: none;
+    font-weight: 600;
+    color: var(--clr-primary);
+    text-transform: uppercase;
+  }
+
+  .title {
+  }
+
+  h2.title {
+    padding-bottom: 40px;
+  }
+
+  .description {
+    width: 100%;
+    p {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mainSection {
+    padding-top: 40px;
+    order: 1;
+    margin-inline: 0;
+    .subTitle {
+      display: block;
+    }
+    h2.title {
+      padding-bottom: 70px;
+    }
+  }
+}

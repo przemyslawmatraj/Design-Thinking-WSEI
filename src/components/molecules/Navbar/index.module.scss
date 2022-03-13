@@ -1,0 +1,38 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+  transition: all 0.75s cubic-bezier(0.29, 0, 0.14, 0.98);
+
+  .list {
+    display: flex;
+    z-index: 50;
+    column-gap: #{'clamp(1em, 5vw, 75px)'};
+    row-gap: 50px;
+    list-style: none;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    padding-left: 0;
+    background-color: transparent;
+    .list {
+      flex-direction: row;
+      opacity: 1;
+    }
+  }
+}

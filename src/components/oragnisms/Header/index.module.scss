@@ -1,0 +1,26 @@
+.container {
+  --height: 100px;
+  font-family: var(--font-secondary);
+  width: 100%;
+  height: var(--height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .logo {
+    aspect-ratio: 1 / 4.19;
+    z-index: 51;
+    width: #{'clamp(175px, 20vw, 250px)'};
+    max-height: var(--height);
+  }
+
+  //Transition on menu and its elements
+  input[type='checkbox']:checked {
+    & ~ nav {
+      left: 0;
+
+      & > ul > li {
+        opacity: 1;
+      }
+    }
+  }
+}

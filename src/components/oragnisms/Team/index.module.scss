@@ -1,0 +1,158 @@
+.container {
+  width: 100%;
+  min-height: 700px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  place-items: center;
+  margin-bottom: 200px;
+  .person {
+    width: 100%;
+    border-radius: 30px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 2px dotted var(--clr-gray);
+
+    &:nth-child(2n) {
+      border: 2px dotted var(--clr-primary);
+    }
+
+    img {
+      border-radius: 50%;
+      width: 100px;
+      aspect-ratio: 1 /1;
+      object-fit: cover;
+    }
+
+    h5 {
+      font-family: var(--font-secondary);
+      text-align: center;
+      text-transform: uppercase;
+      color: #000;
+      span {
+        color: var(--clr-primary);
+      }
+    }
+  }
+
+  .teamLogo {
+    grid-column: 1/ -1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+    img {
+      width: 100px;
+    }
+    h3 {
+      text-align: center;
+      text-transform: uppercase;
+      display: block;
+      color: var(--clr-primary);
+      span {
+        color: #000;
+      }
+    }
+  }
+}
+
+:global #react-connect-elements-container {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  :global #react-connect-elements-container {
+    display: block;
+  }
+
+  .container {
+    display: block;
+    .person {
+      width: auto;
+      padding: 3px;
+      position: absolute;
+      transform: translate(-50%, 50%);
+      border-radius: 50%;
+      &:nth-child(4) {
+        h5 {
+          width: max-content;
+        }
+      }
+      h5 {
+        width: 15ch;
+        position: absolute;
+        top: 110%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .teamLogo {
+      aspect-ratio: 1/1;
+      position: absolute;
+      display: block;
+      margin-bottom: 0;
+      transform: translate(-50%, 50%);
+      left: 50%;
+      bottom: 60%;
+      h3 {
+        position: absolute;
+        width: max-content;
+        top: 100%;
+        left: 50%;
+        color: var(--clr-secondary);
+
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  // I used calculator from https://www.desmos.com/calculator to set position for each person
+
+  :global #person {
+    &1 {
+      left: 17%;
+      bottom: 70%;
+    }
+    &2 {
+      left: 33%;
+      bottom: 65%;
+    }
+    &3 {
+      left: 50%;
+      bottom: 90%;
+    }
+    &4 {
+      left: 66%;
+      bottom: 65%;
+    }
+    &5 {
+      left: 83%;
+      bottom: 70%;
+    }
+    &6 {
+      left: 17%;
+      bottom: 32%;
+    }
+    &7 {
+      left: 33%;
+      bottom: 27%;
+    }
+    &8 {
+      left: 50%;
+      bottom: 26%;
+    }
+    &9 {
+      left: 66%;
+      bottom: 27%;
+    }
+    &10 {
+      left: 83%;
+      bottom: 32%;
+    }
+  }
+}

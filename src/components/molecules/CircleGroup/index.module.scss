@@ -1,0 +1,84 @@
+.container {
+  position: relative;
+  pointer-events: none;
+  & > span {
+    position: absolute;
+    // transform: translate(50%, -50%);
+  }
+}
+
+.section {
+  &-1 {
+    .position {
+      &Orange {
+        top: 0;
+        right: 10px;
+        z-index: -1;
+      }
+      &Green {
+        top: 82%;
+        right: 38px;
+        z-index: -1;
+      }
+      &Gray {
+        top: 70%;
+        left: -80px;
+        z-index: -1;
+      }
+    }
+  }
+  &-2 {
+    .position {
+      &Green {
+        top: 0%;
+        left: -60%;
+        z-index: -1;
+      }
+      &Gray {
+        bottom: -20%;
+        right: 8%;
+        z-index: -1;
+      }
+      &Grid {
+        position: absolute;
+        width: #{'max(30%, 140px)'};
+        top: -15%;
+        right: -15%;
+      }
+    }
+  }
+}
+
+span.circleMobile {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  span.circleMobile {
+    display: none;
+  }
+  .section {
+    &-1 {
+      .position {
+        &Green {
+          top: 40%;
+          right: 15px;
+          z-index: -1;
+        }
+      }
+    }
+    &-2 {
+      .position {
+        &Green {
+          top: -5%;
+          left: -60%;
+          z-index: 1;
+        }
+        &Grid {
+          top: -10%;
+          right: 0;
+        }
+      }
+    }
+  }
+}
