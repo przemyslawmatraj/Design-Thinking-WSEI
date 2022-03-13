@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import css from './index.module.scss';
 import clsx from 'clsx';
 
-const Button = ({ children, path, color, className, tag, ...props }) =>
+const Button = ({ children, path, color, className, tag, v, ...props }) =>
   tag === 'span' ? (
     <span
       {...props}
@@ -12,6 +12,7 @@ const Button = ({ children, path, color, className, tag, ...props }) =>
         css.button,
         {
           [css[color || 'black']]: true,
+          [css[v || 'variant1']]: true,
         },
         className
       )}
@@ -26,6 +27,7 @@ const Button = ({ children, path, color, className, tag, ...props }) =>
         css.button,
         {
           [css[color || 'black']]: true,
+          [css[v || 'variant1']]: true,
         },
         className
       )}
@@ -40,6 +42,7 @@ Button.propTypes = {
   color: PropTypes.string,
   className: PropTypes.string,
   tag: PropTypes.string,
+  v: PropTypes.string,
 };
 
 export default Button;

@@ -3,12 +3,13 @@
   flex-wrap: wrap;
   gap: 60px;
   justify-content: center;
-  margin-bottom: 50px;
-
+  margin-block: 100px;
+  position: relative;
   .top {
     display: flex;
     max-width: 1200px;
     gap: 90px;
+    align-items: center;
     .newsInfo {
       display: flex;
       flex-direction: column;
@@ -54,7 +55,6 @@
 @media screen and (min-width: 1000px) {
   .container {
     gap: 90px;
-    padding-inline: 50px;
     .top {
       .newsInfo {
         flex: 1 0 50%;
@@ -65,6 +65,7 @@
       .undraw {
         flex: 0 0 30%;
         display: block;
+        max-height: 150px;
       }
     }
     .grid {

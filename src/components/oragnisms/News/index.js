@@ -1,16 +1,17 @@
 import React from 'react';
+// eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss';
 
-import Button from '../../atoms/Button';
+// import Button from '../../atoms/Button';
 import ReadMore from '../../atoms/ReadMore';
 import undraw from '../../../assets/graphics/undraw.svg';
 import img1 from '../../../assets/photos/thirdPhoto.png';
 
 const News = () => (
   <>
-    <div className={css.container}>
+    <div className={css.container} id="news">
       <div className={css.top}>
-        <img src={undraw} alt="Osoba czytająca artykuły" className={css.undraw} />
+        <img loading="lazy" src={undraw} alt="Osoba czytająca artykuły" className={css.undraw} />
         <div className={css.newsInfo}>
           <h1 className={css.title}>Aktualne wydarzenia</h1>
           <p className={css.description}>
@@ -20,7 +21,7 @@ const News = () => (
         </div>
       </div>
       <div className={css.grid}>
-        <img src={img1} alt="zespół szukający rozwiązania" className={css.image} />
+        <img loading="lazy" src={img1} alt="zespół szukający rozwiązania" className={css.image} />
         <div className={css.content}>
           <h3 className={css.articleTitle}>Nawiązanie współpracy z VENEO</h3>
           <ReadMore className={css.articleDescription} btnColor="white">
@@ -30,7 +31,7 @@ const News = () => (
           </ReadMore>
         </div>
       </div>
-      <Button className={css.button}>Więcej artykułów</Button>
+      {/* <Button className={css.button}>Więcej artykułów</Button> */}
     </div>
   </>
 );

@@ -1,11 +1,11 @@
 const persons = [
   {
     name: 'Szymon Świderek',
-    role: 'Lider Zespołu',
+    role: 'Lider',
   },
   {
     name: 'Mateusz Daszyk',
-    role: 'Wice Lider Zespołu',
+    role: 'Wice Lider',
   },
   {
     name: 'dr Ryszard Ćwiertniak',
@@ -20,12 +20,12 @@ const persons = [
     role: 'Marketing',
   },
   {
-    name: 'Anna Nowak6',
-    role: 'Marketing',
+    name: 'Przemysław Matraj',
+    role: 'Frontend',
   },
   {
-    name: 'Anna Nowak7',
-    role: 'Marketing',
+    name: 'Julia Kućmierczyk',
+    role: 'Frtontend',
   },
   {
     name: 'Anna Nowak8',

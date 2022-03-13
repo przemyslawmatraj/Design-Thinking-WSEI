@@ -9,7 +9,7 @@ const Team = () => (
   <>
     <div id="team" className={css.container}>
       <div className={css.teamLogo} id="teamLogo">
-        <img src={teamLogo} alt="Logo zespołu Design Thinking Hub" />
+        <img loading="lazy" src={teamLogo} alt="Logo zespołu Design Thinking Hub" />
         <h3>
           <span>ZESPÓŁ</span>
           <br />
@@ -19,7 +19,7 @@ const Team = () => (
       {persons.map((person, index) => (
         <>
           <div className={css.person} id={`person${index + 1}`}>
-            <img className={css.personImage} src="https://i.pravatar.cc/200" alt="zdjęcie członka zespołu" />
+            <img loading="lazy" className={css.personImage} src="https://i.pravatar.cc/200" alt="zdjęcie członka zespołu" />
             <h5>
               <span>{person.role}</span>
               <br />

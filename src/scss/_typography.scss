@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;700&display=swap');
 
 :root {
   --step--2: #{'clamp(0.72rem, calc(0.80rem + -0.08vw), 0.78rem)'};
@@ -18,7 +18,7 @@
 body {
   font-family: var(--font-primary);
   font-size: 18px;
-  line-height: 1.35;
+  line-height: 1.5;
 }
 
 h1,

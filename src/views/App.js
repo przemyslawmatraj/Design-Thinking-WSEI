@@ -6,8 +6,13 @@ import Baner from '../components/oragnisms/Baner';
 import Team from '../components/oragnisms/Team';
 import About from '../components/oragnisms/About';
 import News from '../components/oragnisms/News';
-import Container from '../components/atoms/Container';
+import ElevatorPitch from '../components/oragnisms/ElevatorPitch';
+import Partners from '../components/oragnisms/Partners';
+import Contact from '../components/oragnisms/Contact';
 import Cover from '../components/atoms/Cover';
+import Container from '../components/atoms/Container';
+import Footer from '../components/oragnisms/Footer';
+import FullWidthContainer from '../components/atoms/FullWidthContainer';
 
 function App() {
   return (
@@ -15,19 +20,24 @@ function App() {
       <Container>
         <Header />
         <Baner className={css.baner} />
-        <About />
       </Container>
-      <Container overflow={false}>
-        <News />
-      </Container>
-      <Cover delay={150}>
+      <Cover delay={300}>
         <Container overflow={false}>
-          <Team />
+          <ElevatorPitch />
         </Container>
       </Cover>
-      <Container>
+      <Container overflow={false}>
+        <About className={css.about} />
+        <Team />
         <News />
+        <Partners />
       </Container>
+      <FullWidthContainer bgColor="gray">
+        <Contact />
+      </FullWidthContainer>
+      <FullWidthContainer bgColor="darkgray">
+        <Footer />
+      </FullWidthContainer>
     </>
   );
 }

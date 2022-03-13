@@ -1,6 +1,7 @@
 .overlaySection {
   position: relative;
-  contain: cover;
+  background-color: var(--clr-darkgray);
+  color: #fff;
 }
 
 .overlay {

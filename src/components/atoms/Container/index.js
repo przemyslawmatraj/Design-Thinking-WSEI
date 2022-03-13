@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 const Container = ({ children, overflow }) => (
   <div
-    className={clsx(css.container, {
+    className={clsx(css.wrapper, {
       [css.overflow]: overflow === false ? false : true,
     })}
   >

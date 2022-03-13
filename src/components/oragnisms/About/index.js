@@ -19,8 +19,8 @@ const About = ({ className }) => (
         </ReadMore>
       </SectionInfo>
       <CircleGroup section={2} className={css.circleGroup} />
-      <img src={circleGrid} alt="" className={css.circlesBottom} />
-      <img src={circleGrid} alt="" className={css.circlesBottom} />
+      <img loading="lazy" src={circleGrid} alt="" className={css.circlesBottom} />
+      <img loading="lazy" src={circleGrid} alt="" className={css.circlesBottom} />
     </div>
   </>
 );

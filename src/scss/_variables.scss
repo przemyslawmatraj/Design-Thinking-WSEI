@@ -3,6 +3,20 @@
   --clr-primary: #85bd4b;
   --clr-secondary: #f19106;
   --clr-gray: #474f5a;
+  --clr-darkgray: #393f48;
   //Border radious
   --border-rad: 30px;
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, calc(0.13rem + 0.59vw), 0.69rem);
+  --space-2xs-xs: clamp(0.5rem, calc(0.36rem + 0.68vw), 1rem);
+  --space-xs-s: clamp(0.75rem, calc(0.6rem + 0.76vw), 1.31rem);
+  --space-s-m: clamp(1rem, calc(0.73rem + 1.36vw), 2rem);
+  --space-m-l: clamp(1.5rem, calc(1.19rem + 1.53vw), 2.63rem);
+  --space-l-xl: clamp(2rem, calc(1.47rem + 2.63vw), 3.94rem);
+  --space-xl-2xl: clamp(3rem, calc(2.39rem + 3.05vw), 5.25rem);
+  --space-2xl-3xl: clamp(4rem, calc(2.95rem + 5.25vw), 7.88rem);
+
+  /* Custom pairs */
+  --space-xs-m: clamp(0.75rem, calc(0.41rem + 1.69vw), 2rem);
 }

@@ -12,6 +12,7 @@ const Circle = ({ size, color, image, alt, className, id }) => {
     <>
       {image ? (
         <img
+          loading="lazy"
           src={image}
           alt={alt}
           className={clsx(css[`variant-${size}`], className)}
