@@ -5,7 +5,6 @@ import clsx from 'clsx';
 
 const Burger = ({ isOpen, toggle }) => {
   const checkbox = useRef(null);
-  console.log(isOpen);
   useEffect(() => {
     checkbox.current.checked = isOpen;
   }, [isOpen]);

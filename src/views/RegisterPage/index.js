@@ -55,7 +55,7 @@ const RegisterPage = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    console.log(validEmail, validName, validPwd, validMatch, validMembers);
+    console.log('Email Valid', validEmail, 'Name Valid', validName, 'Pwd Valid', validPwd, 'Match Valid', validMatch, 'Members Valis', validMembers);
   }, [validEmail, validName, validPwd, validMatch, validMembers]);
 
   useEffect(() => {
@@ -120,8 +120,8 @@ const RegisterPage = () => {
 
     console.log('błedy powyzej nie istotne');
     console.log(JSON.stringify(readyToSend));
-    try {
-      const response = await axios.post('/register', readyToSend, {
+    const response = await axios
+      .post('/register', readyToSend, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': true,
@@ -129,14 +129,21 @@ const RegisterPage = () => {
           'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         withCredentials: true,
+      })
+      .then((res) => {
+        setSuccess(true);
+        return res.json();
+      })
+      .catch((err) => {
+        console.log('Error po wysłaniu zapytania:', err);
+        setErrMsg(err.response.data.message);
       });
-
-      console.log('DANE PRZYCHODZĄCE: ', response);
-      setSuccess(true);
-    } catch (err) {
-      console.log('Error po wysłaniu zapytania', err);
-      setErrMsg(err.response.data.message);
-    }
+    console.log(response);
+    setMembers([]);
+    setEmail('');
+    setUser('');
+    setPwd('');
+    setMatchPwd('');
   };
 
   return (

@@ -6,7 +6,6 @@ import Navbar from '../../molecules/Navbar';
 import clsx from 'clsx';
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
-  console.log(isOpen);
 
   const toggleBurger = () => {
     setOpen(!isOpen);
