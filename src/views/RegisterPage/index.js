@@ -110,29 +110,28 @@ const RegisterPage = () => {
     members.forEach((member) => {
       delete member.errors;
     });
-    console.log('błedy powyzejj nie istotne');
-    console.log(JSON.stringify({ username: user, password: pwd, email, members }));
-    try {
-      const response = await axios.post(
-        '/register',
-        {
-          username: user,
-          password: pwd,
-          email,
-          members,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Credentials': true,
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-          },
-          withCredentials: true,
-        }
-      );
 
-      console.log(JSON.stringify(response));
+    const readyToSend = {
+      username: user,
+      password: pwd,
+      email,
+      members,
+    };
+
+    console.log('błedy powyzej nie istotne');
+    console.log(JSON.stringify(readyToSend));
+    try {
+      const response = await axios.post('/register', readyToSend, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
+          'Access-Control-Allow-Origin': 'http://localhost:8080',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        },
+        withCredentials: true,
+      });
+
+      console.log('DANE PRZYCHODZĄCE: ', response);
       setSuccess(true);
     } catch (err) {
       console.log('Error po wysłaniu zapytania', err);
