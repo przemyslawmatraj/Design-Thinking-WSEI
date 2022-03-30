@@ -49,9 +49,14 @@ const RegisterPage = () => {
   /* Members State */
   const [members, setMembers] = useState([]);
   const [validMembers, setValidMembers] = useState(true);
+
   /* Submit State */
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    console.log(validEmail, validName, validPwd, validMatch, validMembers);
+  }, [validEmail, validName, validPwd, validMatch, validMembers]);
 
   useEffect(() => {
     if (userRef.current) {
@@ -105,6 +110,7 @@ const RegisterPage = () => {
     members.forEach((member) => {
       delete member.errors;
     });
+    console.log('błedy powyzejj nie istotne');
     console.log(JSON.stringify({ username: user, password: pwd, email, members }));
     try {
       const response = await axios.post(
@@ -118,14 +124,18 @@ const RegisterPage = () => {
         {
           headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Credentials': true,
           },
           withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response));
-    } catch (err) {}
 
-    setSuccess(true);
+      console.log(JSON.stringify(response));
+      setSuccess(true);
+    } catch (err) {
+      console.log('Error po wysłaniu zapytania', err);
+      setErrMsg(err.response.data.message);
+    }
   };
 
   return (

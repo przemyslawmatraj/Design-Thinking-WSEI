@@ -6,14 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-const NAME_REGEX = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}$/;
+const NAME_REGEX = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s]{2,}$/;
 const PHONE_REGEX = /^[0-9]{8,}$/;
 const STR_NUMBER_REGEX = /^.{1,}$/;
 const POSTAL = /^[0-9]{2}-[0-9]{3}$/;
 
 const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
   const [errMsg, setErrMsg] = useState('');
-  const [viewError, setViewError] = useState(false);
+  const [count, setCount] = useState(0);
   const handleAddMember = (isLeader = false) => {
     const initialMember = {
       name: '',
@@ -42,10 +42,10 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
     };
 
     if (validMembers) {
-      setViewError(false);
+      // setViewError(false);
       setMembers([...members, initialMember]);
     } else {
-      setViewError(true);
+      // setViewError(true);
       setErrMsg('Wszystkie pola muszą zostać poprawnie wypełnione');
     }
   };
@@ -77,15 +77,15 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
       const isValidPostal = POSTAL.test(postal);
       const isValidCity = city.length > 0;
       setMembers((prevMembers) => {
-        prevMembers[index].errors.name = !isValidName ? 'Pole nie może być puste' : null;
-        prevMembers[index].errors.surname = !isValidSurname ? 'Pole nie może być puste' : null;
-        prevMembers[index].errors.email = !isValidEmail ? 'Niepoprawny adres email' : null;
-        prevMembers[index].errors.school = !isValidSchool ? 'Pole nie może być puste' : null;
-        prevMembers[index].errors.phoneNumber = !isValidPhoneNumber ? 'Niepoprawny numer telefonu' : null;
-        prevMembers[index].errors.street = !isValidStreet ? 'Pole nie może być puste' : null;
-        prevMembers[index].errors.number = !isValidNumber ? 'Pole nie może być puste' : null;
-        prevMembers[index].errors.postal = !isValidPostal ? 'Pole powinno zawierać znak "-" (NP. 33-100) oraz nie moe być puste' : null;
-        prevMembers[index].errors.city = !isValidCity ? 'Pole nie może być puste' : null;
+        prevMembers[index].errors.name = !isValidName && name ? 'Pole musi zawierać przynajniej 3 znaki i nie może być puste' : null;
+        prevMembers[index].errors.surname = !isValidSurname && surname ? 'Pole musi zawierać przynajniej 3 znaki i nie może być puste' : null;
+        prevMembers[index].errors.email = !isValidEmail && email ? 'Niepoprawny adres email' : null;
+        prevMembers[index].errors.school = !isValidSchool && school ? 'Pole nie może być puste' : null;
+        prevMembers[index].errors.phoneNumber = !isValidPhoneNumber && phoneNumber ? 'Niepoprawny numer telefonu' : null;
+        prevMembers[index].errors.street = !isValidStreet && street ? 'Pole nie może być puste' : null;
+        prevMembers[index].errors.number = !isValidNumber && number ? 'Pole nie może być puste' : null;
+        prevMembers[index].errors.postal = !isValidPostal && postal ? 'Pole powinno zawierać znak "-" (NP. 33-100) oraz nie moe być puste' : null;
+        prevMembers[index].errors.city = !isValidCity && city ? 'Pole nie może być puste' : null;
         return prevMembers;
       });
 
@@ -102,14 +102,13 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
       return isValid;
     });
     setValidMembers(resutl);
-  }, [members]);
+  }, [members, count]);
 
   const onMemberChange = (e, index) => {
     e.preventDefault();
     const { name, value } = e.target;
     const newMembers = [...members];
     newMembers[index][name] = value;
-    newMembers[index].errors[name] = null;
     setMembers(newMembers);
     setErrMsg(null);
   };
@@ -118,21 +117,11 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
     const { name, value } = e.target;
     const newMembers = [...members];
     newMembers[index].adress[name] = value;
-    newMembers[index].errors[name] = null;
     setMembers(newMembers);
   };
 
   const removeMember = (e, index) => {
     setMembers((prev) => prev.filter((item) => item !== prev[index]));
-  };
-
-  const inputClases = (name, index) => {
-    const member = members[index];
-    const { errors } = member;
-    if (errors[name]) {
-      return clsx(css.input, css.error);
-    }
-    return css.input;
   };
 
   return (
@@ -147,122 +136,238 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
           <div className={css.member__name}>
             <label htmlFor={`member-${index}-name`}>
               Imię
-              {member.errors.name && viewError && <span className={css.error}>{member.errors.name}</span>}
+              {member.errors.name && (
+                <span id={`name-${index}-err`} className={css.error}>
+                  {member.errors.name}
+                </span>
+              )}
             </label>
             <input
-              className={(e) => inputClases(e.target.name, index)}
+              className={clsx({
+                [css.input]: true,
+                [css.errorInput]: !!member.errors.name,
+                [css.validInput]: !!!member.errors.name && member.name.length > 0,
+              })}
               id={`member-${index}-name`}
               type="text"
               value={member.name}
               name="name"
               onChange={(e) => onMemberChange(e, index)}
+              onBlur={() => setCount(count + 1)}
+              aria-invalid={!!member.errors.name}
+              aria-describedby={`name-${index}-err`}
+              required
             />
           </div>
           <div className={css.member__surname}>
             <label htmlFor={`member-${index}-surname`}>
               Nazwisko
-              {member.errors.surname && viewError && <span className={css.error}>{member.errors.surname}</span>}
+              {member.errors.surname && (
+                <span id={`surname-${index}-err`} className={css.error}>
+                  {member.errors.surname}
+                </span>
+              )}
             </label>
             <input
-              className={(e) => inputClases(e.target.name, index)}
+              className={clsx({
+                [css.input]: true,
+                [css.errorInput]: !!member.errors.surname,
+                [css.validInput]: !!!member.errors.surname && member.surname.length > 0,
+              })}
               id={`member-${index}-surname`}
               type="text"
               value={member.surname}
               name="surname"
               onChange={(e) => onMemberChange(e, index)}
+              onBlur={() => setCount(count + 1)}
+              aria-invalid={!!member.errors.surname}
+              aria-describedby={`surname-${index}-err`}
+              required
             />
           </div>
           <div className={css.member__email}>
             <label htmlFor={`member-${index}-email`}>
-              Email{member.errors.email && viewError && <span className={css.error}>{member.errors.email}</span>}
+              Email
+              {member.errors.email && (
+                <span id={`member-email-${index}-err`} className={css.error}>
+                  {member.errors.email}
+                </span>
+              )}
             </label>
             <input
-              className={(e) => inputClases(e.target.name, index)}
+              className={clsx({
+                [css.input]: true,
+                [css.errorInput]: !!member.errors.email,
+                [css.validInput]: !!!member.errors.email && member.email.length > 0,
+              })}
               id={`member-${index}-email`}
               type="text"
               value={member.email}
               name="email"
               onChange={(e) => onMemberChange(e, index)}
+              onBlur={() => setCount(count + 1)}
+              aria-invalid={!!member.errors.email}
+              aria-describedby={`member-email-${index}-err`}
+              required
             />
           </div>
           <div className={css.member__school}>
             <label htmlFor={`member-${index}-school`}>
-              Szkoła{member.errors.school && viewError && <span className={css.error}>{member.errors.school}</span>}
+              Szkoła
+              {member.errors.school && (
+                <span id={`school-${index}-err`} className={css.error}>
+                  {member.errors.school}
+                </span>
+              )}
             </label>
             <input
-              className={(e) => inputClases(e.target.name, index)}
+              className={clsx({
+                [css.input]: true,
+                [css.errorInput]: !!member.errors.school,
+                [css.validInput]: !!!member.errors.school && member.school.length > 0,
+              })}
               id={`member-${index}-school`}
               type="text"
               value={member.school}
               name="school"
               onChange={(e) => onMemberChange(e, index)}
+              onBlur={() => setCount(count + 1)}
+              aria-invalid={!!member.errors.school}
+              aria-describedby={`school-${index}-err`}
+              required
             />
           </div>
           <div className={css.member__phoneNumber}>
             <label htmlFor={`member-${index}-phoneNumber`}>
-              Numer telefonu{member.errors.phoneNumber && viewError && <span className={css.error}>{member.errors.phoneNumber}</span>}
+              Numer telefonu
+              {member.errors.phoneNumber && (
+                <span id={`phoneNumber-${index}-err`} className={css.error}>
+                  {member.errors.phoneNumber}
+                </span>
+              )}
             </label>
             <input
-              className={(e) => inputClases(e.target.name, index)}
+              className={clsx({
+                [css.input]: true,
+                [css.errorInput]: !!member.errors.phoneNumber,
+                [css.validInput]: !!!member.errors.phoneNumber && member.phoneNumber.length > 0,
+              })}
               id={`member-${index}-phoneNumber`}
               type="text"
               value={member.phoneNumber}
               name="phoneNumber"
               onChange={(e) => onMemberChange(e, index)}
+              onBlur={() => setCount(count + 1)}
+              aria-invalid={!!member.errors.phoneNumber}
+              aria-describedby={`phoneNumber-${index}-err`}
+              required
             />
           </div>
           <div className={css.member__adress}>
             <label htmlFor={`member-${index}-adress`}>Adres</label>
             <div className={css.member__adress__street}>
               <label htmlFor={`member-${index}-adress-street`}>
-                Ulica{member.errors.street && viewError && <span className={css.error}>{member.errors.street}</span>}
+                Ulica
+                {member.errors.street && (
+                  <span id={`street-${index}-err`} className={css.error}>
+                    {member.errors.street}
+                  </span>
+                )}
               </label>
               <input
-                className={(e) => inputClases(e.target.name, index)}
+                className={clsx({
+                  [css.input]: true,
+                  [css.errorInput]: !!member.errors.street,
+                  [css.validInput]: !!!member.errors.street && member.adress.street.length > 0,
+                })}
                 id={`member-${index}-adress-street`}
                 type="text"
                 value={member.adress.street}
                 name="street"
                 onChange={(e) => onAdressChange(e, index)}
+                onBlur={() => setCount(count + 1)}
+                aria-invalid={!!member.errors.street}
+                aria-describedby={`street-${index}-err`}
+                required
               />
             </div>
             <div className={css.member__adress__number}>
               <label htmlFor={`member-${index}-adress-number`}>
-                Numer{member.errors.number && viewError && <span className={css.error}>{member.errors.number}</span>}
+                Numer
+                {member.errors.number && (
+                  <span id={`number-${index}-err`} className={css.error}>
+                    {member.errors.number}
+                  </span>
+                )}
               </label>
               <input
-                className={(e) => inputClases(e.target.name, index)}
+                className={clsx({
+                  [css.input]: true,
+                  [css.errorInput]: !!member.errors.number,
+                  [css.validInput]: !!!member.errors.number && member.adress.number.length > 0,
+                })}
                 id={`member-${index}-adress-number`}
                 type="text"
                 value={member.adress.number}
                 name="number"
                 onChange={(e) => onAdressChange(e, index)}
+                onBlur={() => setCount(count + 1)}
+                aria-invalid={!!member.errors.number}
+                aria-describedby={`number-${index}-err`}
+                required
               />
             </div>
             <div className={css.member__adress__postal}>
               <label htmlFor={`member-${index}-adress-postal`}>
-                Kod pocztowy(np. 33-100){member.errors.postal && viewError && <span className={css.error}>{member.errors.postal}</span>}
+                Kod pocztowy(np. 33-100)
+                {member.errors.postal && (
+                  <span id={`postal-${index}-err`} className={css.error}>
+                    {member.errors.postal}
+                  </span>
+                )}
               </label>
               <input
-                className={(e) => inputClases(e.target.name, index)}
+                className={clsx({
+                  [css.input]: true,
+                  [css.errorInput]: !!member.errors.postal,
+                  [css.validInput]: !!!member.errors.postal && member.adress.postal.length > 0,
+                })}
                 id={`member-${index}-adress-postal`}
                 type="text"
                 value={member.adress.postal}
                 name="postal"
                 onChange={(e) => onAdressChange(e, index)}
+                onBlur={() => setCount(count + 1)}
+                aria-invalid={!!member.errors.postal}
+                aria-describedby={`postal-${index}-err`}
+                required
               />
             </div>
             <div className={css.member__adress__city}>
               <label htmlFor={`member-${index}-adress-city`}>
-                Miasto{member.errors.city && viewError && <span className={css.error}>{member.errors.city}</span>}
+                Miasto
+                {member.errors.city && (
+                  <span id={`city-${index}-err`} className={css.error}>
+                    {member.errors.city}
+                  </span>
+                )}
               </label>
               <input
-                className={(e) => inputClases(e.target.name, index)}
+                className={clsx({
+                  [css.input]: true,
+                  [css.errorInput]: !!member.errors.city,
+                  [css.validInput]: !!!member.errors.city && member.adress.city.length > 0,
+                })}
                 id={`member-${index}-adress-city`}
                 type="text"
                 value={member.adress.city}
                 name="city"
                 onChange={(e) => onAdressChange(e, index)}
+                onBlur={() => setCount(count + 1)}
+                // onFocus={() => setViewError(true)}
+                aria-invalid={!!member.errors.city}
+                aria-describedby={`city-${index}-err`}
+                required
               />
             </div>
           </div>
