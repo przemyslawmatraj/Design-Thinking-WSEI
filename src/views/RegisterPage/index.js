@@ -121,7 +121,7 @@ const RegisterPage = () => {
     console.log('błedy powyzej nie istotne');
     console.log(JSON.stringify(readyToSend));
     const response = await axios
-      .post('/register', readyToSend, {
+      .post('/register', JSON.stringify(readyToSend), {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': true,
