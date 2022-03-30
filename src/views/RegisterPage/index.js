@@ -21,12 +21,12 @@ const RegisterPage = () => {
   const errRef = useRef();
 
   /* User State */
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState('Team');
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
   /* Password State */
-  const [pwd, setPwd] = useState('');
+  const [pwd, setPwd] = useState('Ciastko12');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
@@ -37,12 +37,12 @@ const RegisterPage = () => {
   const [pwdDot4, setPwdDot4] = useState(false);
 
   /* Password Match State */
-  const [matchPwd, setMatchPwd] = useState('');
+  const [matchPwd, setMatchPwd] = useState('Ciastko12');
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
   /* Email State */
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('jupila.orange@gmail.com');
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
 

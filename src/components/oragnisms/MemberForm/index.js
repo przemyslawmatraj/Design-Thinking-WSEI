@@ -16,17 +16,17 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
   const [count, setCount] = useState(0);
   const handleAddMember = (isLeader = false) => {
     const initialMember = {
-      name: '',
-      surname: '',
-      email: '',
-      school: '',
-      phoneNumber: '',
+      name: 'Przemo',
+      surname: 'Matraj',
+      email: 'osoba1@gmailk.com',
+      school: 'WSEI',
+      phoneNumber: '334466334',
       isLeader: isLeader,
       adress: {
-        street: '',
-        number: '',
-        postal: '',
-        city: '',
+        street: 'Sezamkowa',
+        number: '12',
+        postal: '33-100',
+        city: 'Tarnów',
       },
       errors: {
         name: null,
@@ -390,7 +390,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers }) => {
 MemberForm.propTypes = {
   members: PropTypes.array,
   setMembers: PropTypes.func,
-  setValidMembers: PropTypes.bool,
+  setValidMembers: PropTypes.func,
   validMembers: PropTypes.bool,
 };
 
