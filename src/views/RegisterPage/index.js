@@ -54,9 +54,8 @@ const RegisterPage = () => {
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    console.log('Email Valid', validEmail, 'Name Valid', validName, 'Pwd Valid', validPwd, 'Match Valid', validMatch, 'Members Valis', validMembers);
-  }, [validEmail, validName, validPwd, validMatch, validMembers]);
+  /* Response State */
+  const [response, setResponse] = useState(null);
 
   useEffect(() => {
     if (userRef.current) {
@@ -120,7 +119,7 @@ const RegisterPage = () => {
 
     console.log('błedy powyzej nie istotne');
     console.log(JSON.stringify(readyToSend));
-    const response = await axios
+    const res = await axios
       .post('/register', JSON.stringify(readyToSend), {
         headers: {
           'Content-Type': 'application/json',
@@ -131,19 +130,14 @@ const RegisterPage = () => {
         withCredentials: true,
       })
       .then((res) => {
-        setSuccess(true);
-        return res.json();
+        return res;
       })
       .catch((err) => {
         console.log('Error po wysłaniu zapytania:', err);
-        setErrMsg(err.response.data.message);
+        setErrMsg('Wystąpił błąd podczas rejestracji');
       });
-    console.log(response);
-    setMembers([]);
-    setEmail('');
-    setUser('');
-    setPwd('');
-    setMatchPwd('');
+    setSuccess(true);
+    setResponse(res);
   };
 
   return (
@@ -151,11 +145,22 @@ const RegisterPage = () => {
       {success ? (
         <div className={css.success}>
           <FontAwesomeIcon icon={faCheck} />
-          <h2>Konto zostało utworzone</h2>
-          <p>
-            Teraz możesz się zalogować na swoje konto. <br />
-            <a href="/login">Zaloguj się</a>
-          </p>
+          {response?.data ? (
+            <p>
+              <h2>Konto zostało utworzone</h2>
+              <p>
+                Teraz powierdź adres email swojego zespołu
+                <br />
+                <a href="/login">Zaloguj się</a>
+                <a href={`/resendEmail?email=${email}`}>Wyśli email Ponownie</a>
+              </p>
+            </p>
+          ) : (
+            <div>
+              <p>Wystąpił błąd podczas rejestracji</p>
+              <a href={`/resendEmail?email=${email}`}>Wyśli email Ponownie</a>
+            </div>
+          )}
         </div>
       ) : (
         <>

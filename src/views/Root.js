@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
-import EmailConfirmation from './EmailConfirmation';
+import EmailConfirmed from './EmailConfirmed';
+import EmailResend from './EmailResend';
 import MainLayout from '../components/Layout/MainLayout';
 
 function Root() {
@@ -13,9 +14,10 @@ function Root() {
         <Route path="/" element={<MainLayout />}>
           {/* public routes */}
           <Route index exact path="/" element={<LandingPage />} />
-          <Route path="confirm/:token" element={<EmailConfirmation />} />
+          <Route path="validate" element={<EmailConfirmed />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="resendEmail" element={<EmailResend />} />
 
           {/* protected routes */}
           <Route path="dashboard" element={<div>Dashboard</div>} />
