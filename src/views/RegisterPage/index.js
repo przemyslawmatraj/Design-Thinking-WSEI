@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import axios from '../../utils/axios';
 
 import { default as StepTwo } from '../../components/oragnisms/MemberForm';
+import Message from '../Message';
 /* Regex */
 const PASSWORD_LOWERCASE = /^(?=.*[a-z]).{0,}$/;
 const PASSWORD_UPPERCASE = /^(?=.*[A-Z]).{0,}$/;
@@ -116,8 +117,6 @@ const RegisterPage = () => {
       email,
       members,
     };
-
-    console.log('błedy powyzej nie istotne');
     console.log(JSON.stringify(readyToSend));
     const res = await axios
       .post('/register', JSON.stringify(readyToSend), {
@@ -145,22 +144,7 @@ const RegisterPage = () => {
       {success ? (
         <div className={css.success}>
           <FontAwesomeIcon icon={faCheck} />
-          {response?.data ? (
-            <p>
-              <h2>Konto zostało utworzone</h2>
-              <p>
-                Teraz powierdź adres email swojego zespołu
-                <br />
-                <a href="/login">Zaloguj się</a>
-                <a href={`/resendEmail?email=${email}`}>Wyśli email Ponownie</a>
-              </p>
-            </p>
-          ) : (
-            <div>
-              <p>Wystąpił błąd podczas rejestracji</p>
-              <a href={`/resendEmail?email=${email}`}>Wyśli email Ponownie</a>
-            </div>
-          )}
+          {response?.data ? <Message type="signup" status={response?.data ? 'success' : 'error'} /> : <Message type="signup" status={'error'} />}
         </div>
       ) : (
         <>
