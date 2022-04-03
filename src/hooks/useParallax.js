@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Parallax = () => {
+const useParallax = () => {
   const [offsetY, setOffsetY] = useState(0);
   const handleScroll = () => {
     setOffsetY(window.pageYOffset);
@@ -13,4 +13,4 @@ const Parallax = () => {
   return offsetY;
 };
 
-export default Parallax;
+export default useParallax;

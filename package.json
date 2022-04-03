@@ -12,6 +12,7 @@
     "axios": "^0.26.1",
     "clsx": "^1.1.1",
     "dotenv": "^16.0.0",
+    "husky": "^4.3.8",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -23,23 +24,40 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "lint-staged": {
-    "src/**/*.{js,json,css,scss}": [
-      "prettier --write"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix",
+    "prettier": "prettier --write src/**/*.js"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|scss|md)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "plugin:prettier/recommended",
+      "plugin:react/recommended"
+    ],
+    "rules": {
+      "react/prop-types": 0,
+      "react/display-name": 0,
+      "react/no-render-return-value": 0,
+      "react-hooks/exhaustive-deps": 0,
+      "prettier/prettier": 0,
+      "react/react-in-jsx-scope": 0
+    }
   },
   "browserslist": {
     "production": [
@@ -54,6 +72,20 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-css-modules": "^2.11.0"
+    "@babel/plugin-proposal-decorators": "^7.17.8",
+    "eslint-plugin-css-modules": "^2.11.0",
+    "lint-staged": "^12.3.7",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.2.3",
+    "prettier": "^2.0.2"
   }
 }

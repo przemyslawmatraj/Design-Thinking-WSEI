@@ -25,7 +25,7 @@ const persons = [
   },
   {
     name: 'Julia Kućmierczyk',
-    role: 'Frtontend',
+    role: 'Frontend',
   },
   {
     name: 'Anna Nowak8',

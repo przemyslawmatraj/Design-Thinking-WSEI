@@ -21,8 +21,10 @@ const About = ({ className }) => (
           webowych, etc.
         </ReadMore>
       </SectionInfo>
+
       <CircleGroup section={2} className={css.circleGroup} />
       <img loading="lazy" src={circleGrid} alt="" className={css.circlesBottom} />
+      {console.log('test')}
       <img loading="lazy" src={circleGrid} alt="" className={css.circlesBottom} />
     </div>
   </>

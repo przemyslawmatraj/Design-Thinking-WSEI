@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import css from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -107,15 +106,28 @@ const RegisterPage = () => {
       setErrMsg('Wszystkie pola muszą być poprawnie wypełnione');
       return;
     }
-    members.forEach((member) => {
-      delete member.errors;
+    const membersFinal = members.map((member) => {
+      return {
+        name: member.name,
+        surname: member.surname,
+        email: member.email,
+        school: member.school,
+        phoneNumber: member.phoneNumber,
+        isLeader: member.isLeader,
+        adress: {
+          street: member.adress.street,
+          number: member.adress.number,
+          postal: member.adress.postal,
+          city: member.adress.city,
+        },
+      };
     });
 
     const readyToSend = {
       username: user,
       password: pwd,
       email,
-      members,
+      members: membersFinal,
     };
     console.log(JSON.stringify(readyToSend));
     const res = await axios
@@ -129,14 +141,15 @@ const RegisterPage = () => {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res);
+        setResponse(res);
+        setSuccess(true);
         return res;
       })
       .catch((err) => {
         console.log('Error po wysłaniu zapytania:', err);
         setErrMsg('Wystąpił błąd podczas rejestracji');
       });
-    setSuccess(true);
-    setResponse(res);
   };
 
   return (
@@ -144,7 +157,11 @@ const RegisterPage = () => {
       {success ? (
         <div className={css.success}>
           <FontAwesomeIcon icon={faCheck} />
-          {response?.data ? <Message type="signup" status={response?.data ? 'success' : 'error'} /> : <Message type="signup" status={'error'} />}
+          {response?.status && success ? (
+            <Message type="signUp" status={response?.status === 200 ? 'success' : 'error'} em={email} />
+          ) : (
+            <Message type="signUp" status={'error'} />
+          )}
         </div>
       ) : (
         <>
@@ -316,7 +333,7 @@ const RegisterPage = () => {
                 )}
               </div>
             </div>
-            <StepTwo members={members} setMembers={setMembers} setValidMembers={setValidMembers} validMembers={validMembers} />
+            <StepTwo members={members} setMembers={setMembers} setValidMembers={setValidMembers} validMembers={validMembers} success={success} />
             <div className={css.stepOne__group}>
               <button type="submit" className={css.stepOne__submit} disabled={!validName || !validPwd || !validMatch || !validEmail || !validMembers}>
                 Zarejestruj zespół
@@ -328,7 +345,5 @@ const RegisterPage = () => {
     </>
   );
 };
-
-RegisterPage.propTypes = {};
 
 export default RegisterPage;

@@ -6,12 +6,12 @@ import img1 from '../../../assets/photos/mainGoals.png';
 import img2 from '../../../assets/photos/studentGoals.png';
 import img3 from '../../../assets/photos/newSkills.png';
 import clsx from 'clsx';
-import Parallax from '../../../hooks/parallax';
+import useParallax from '../../../hooks/useParallax';
 import Button from '../../atoms/Button';
 
 const ElevatorPitch = () => {
   const path = useRef();
-  let offsetY = Parallax();
+  let offsetY = useParallax();
   let [pathLength, setPathLength] = useState();
   let [pathOffset, setPathOffset] = useState();
 
@@ -23,6 +23,8 @@ const ElevatorPitch = () => {
       setPathOffset(path.current.getBoundingClientRect());
       path.current.style.strokeDashoffset = pathLength - drawPath;
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (path.current) {
@@ -37,6 +39,7 @@ const ElevatorPitch = () => {
       setDrawPath(pathLength * -1 * scrollPercentage);
       path.current.style.strokeDashoffset = pathLength - drawPath;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offsetY]);
   return (
     <>
@@ -56,10 +59,10 @@ const ElevatorPitch = () => {
             <div className={css.left}>
               <h2 className={css.title}>1. Cel główny wydarzenia</h2>
               <div className={css.description}>
-                <p>Rozwój i doskonalenie współpracy między wybranymi kołami naukowymi studentów zarządzania projektami w Polsce. </p>
                 <p>
-                  Aktywizacja projektowa studentów WSEI w czasie realizacji rzeczywistego wydarzenia z wykorzystaniem wybranych narzędzi metody Design
-                  Thinking.
+                  Rozwój i doskonalenie współpracy między wybranymi kołami naukowymi studentów zarządzania projektami w Polsce. Aktywizacja projektowa
+                  studentów WSEI w czasie realizacji rzeczywistego wydarzenia z wykorzystaniem wybranych narzędzi metody Design Thinking. Promocja Kół
+                  Naukowych Zarządzania Projektami.
                 </p>
               </div>
             </div>
@@ -72,8 +75,12 @@ const ElevatorPitch = () => {
           </div>
           <div className={css.step}>
             <div className={css.left}>
-              <h2 className={css.title}>2. Cele dotyczące udziału studentów w Ep:</h2>
+              <h2 className={css.title}>2. Cele uczestników:</h2>
               <div className={css.description}>
+                <p>
+                  Studenci potrzebują (międzyuczelnianego) wydarzenia, które pozwoli im zaprezentować (przetestować) swoje pomysły (nowe produkty lub
+                  usługi) na forum publicznym w kontakcie z biznesem. Dlatego uczestnicząc w konkursie Ep w WSEI:
+                </p>
                 <p>
                   − <strong>poprawisz</strong> swoje umiejętności prezentacji;
                 </p>
@@ -140,31 +147,14 @@ const ElevatorPitch = () => {
             <div className={css.left}>
               <h2 className={css.title}>4. Atrakcyjne nagrody</h2>
               <div className={css.description}>
-                <h4>Konkurs Elevator pitch.</h4>
-                <p>
-                  W czasie trwania konkursu zespoły przygotują i przedstawią Elevator pitch, stanowiący model komunikacji w postaci samodzielnej
-                  krótkiej wypowiedzi, bądź głosu wspartego prezentacją multimedialną.
-                </p>
-                <h4>Konkurs Elevator pitch.</h4>
-                <p>
-                  W czasie trwania konkursu zespoły przygotują i przedstawią Elevator pitch, stanowiący model komunikacji w postaci samodzielnej
-                  krótkiej wypowiedzi, bądź głosu wspartego prezentacją multimedialną.
-                </p>
+                <h4>I miejsce, II miejsce, III miejsce</h4>
+                <p>Wartościowe nagrody rzeczowe!</p>
+                <h4>Upominki</h4>
+                <p>dla pozostałych uczestników – zakwalifikowanych do udziału w konkursie. </p>
               </div>
             </div>
-            <div className={clsx(css.left, css.reverseLeft)}>
-              <div className={css.description}>
-                <h4>Konkurs Elevator pitch.</h4>
-                <p>
-                  W czasie trwania konkursu zespoły przygotują i przedstawią Elevator pitch, stanowiący model komunikacji w postaci samodzielnej
-                  krótkiej wypowiedzi, bądź głosu wspartego prezentacją multimedialną.
-                </p>
-                <h4>Konkurs Elevator pitch.</h4>
-                <p>
-                  W czasie trwania konkursu zespoły przygotują i przedstawią Elevator pitch, stanowiący model komunikacji w postaci samodzielnej
-                  krótkiej wypowiedzi, bądź głosu wspartego prezentacją multimedialną.
-                </p>
-              </div>
+            <div className={css.right}>
+              <img loading="lazy" src={img3} alt="Cele studenta" className={css.image_1} />
             </div>
             <Button className={css.button} v="variant2" color="white">
               Zapisz się teraz!

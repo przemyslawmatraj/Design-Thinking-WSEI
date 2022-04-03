@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import css from './index.module.scss';
 
 import logo1 from '../../../assets/partnersLogo/kms.png';
@@ -13,8 +12,8 @@ const Partners = () => (
         <div className={css.left}>
           <h1 className={css.title}>Współpracujemy z najlepszymi partnerami</h1>
           <p className={css.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent
-            taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+            Pracujemy z partnerami, którzy korzystają z wartości Agile na co dzień, tworząc wyjątkowe produkty lub usługi, są otwarci na „wymianę
+            myśli i doświadczenia” z młodymi ludźmi, którzy szukają nowych możliwości.
           </p>
         </div>
         <div className={css.right}>
@@ -27,7 +26,5 @@ const Partners = () => (
     </div>
   </>
 );
-
-// Partners.propTypes= {};
 
 export default Partners;

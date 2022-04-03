@@ -2,7 +2,7 @@
 import React from 'react';
 import css from './index.module.scss';
 import ConnectElements from '../../../helpers/ConnectElements';
-import teamLogo from '../../../assets/logo/logo.svg';
+import teamLogo from '../../../assets/logo/smallLogo.svg';
 import persons from './persons';
 
 const Team = () => (
