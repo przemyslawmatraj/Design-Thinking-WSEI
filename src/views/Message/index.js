@@ -1,44 +1,50 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import css from './index.module.scss';
-import Button from '../../components/atoms/Button';
-import resendEmail from '../../utils/resendEmail';
-import validateEmail from '../../utils/validateEmail';
-import getMessages from './messages';
+import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import css from './index.module.scss'
+import Button from '../../components/atoms/Button'
+import resendEmail from '../../utils/resendEmail'
+import validateEmail from '../../utils/validateEmail'
+import getMessages from './messages'
 
-const Message = ({ type, status, em }) => {
-  const [message, setMessage] = useState(null);
+const Message = ({ type, status, email }) => {
+  const [message, setMessage] = useState(null)
 
-  const queryParams = new URLSearchParams(window.location.search);
-  const email = em || queryParams.get('email') || null;
-  const token = queryParams.get('token') || null;
+  const queryParams = new URLSearchParams(window.location.search)
+  const emailQuery = email || queryParams.get('email') || null
+  const tokenQuery = queryParams.get('token') || null
 
   useEffect(() => {
-    if (type === 'validate' && token) {
-      setMessage(validateEmail(token));
-    } else if (type === 'signUp' || type === 'signIn') {
-      setMessage(getMessages(type)[status]);
-    } else if (type === 'resend') {
-      setMessage(resendEmail(email));
+    const checkType = async () => {
+      if (type === 'validate' && tokenQuery) {
+        setMessage(await validateEmail(tokenQuery))
+      } else if (type === 'signUp' || type === 'signIn') {
+        setMessage(getMessages(type)[status])
+      } else if (type === 'resend') {
+        setMessage(await resendEmail(emailQuery))
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    checkType()
+  })
 
+  const handleResendEmail = async () => {
+    const message = await resendEmail(emailQuery)
+    setMessage(message)
+  }
   return (
     <>
       <div className={css.main}>
         <div className={css.message}>
-          <h1 className={css.title}>{message && message?.title}</h1>
-          <p className={css.description}>{message && message?.description}</p>
+          <h1 className={css.title}>{message && message.title}</h1>
+          <p className={css.description}>{message && message.description}</p>
         </div>
         {message &&
-          message?.buttons.map((button) =>
+          message.buttons?.map((button) =>
             button.type === 'button' ? (
               <Button
                 key={button.name}
                 onClick={() => {
-                  email && setMessage(resendEmail(email));
+                  emailQuery && handleResendEmail()
                 }}
                 tag="span"
                 color="black"
@@ -54,13 +60,13 @@ const Message = ({ type, status, em }) => {
           )}
       </div>
     </>
-  );
-};
+  )
+}
 
 Message.propTypes = {
   type: PropTypes.string,
   status: PropTypes.string,
-  em: PropTypes.string,
-};
+  email: PropTypes.string,
+}
 
-export default Message;
+export default Message

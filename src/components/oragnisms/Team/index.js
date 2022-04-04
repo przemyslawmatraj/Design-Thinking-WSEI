@@ -1,9 +1,9 @@
 /* eslint-disable css-modules/no-unused-class */
-import React from 'react';
-import css from './index.module.scss';
-import ConnectElements from '../../../helpers/ConnectElements';
-import teamLogo from '../../../assets/logo/smallLogo.svg';
-import persons from './persons';
+import React from 'react'
+import css from './index.module.scss'
+import ConnectElements from '../../../helpers/ConnectElements'
+import teamLogo from '../../../assets/logo/smallLogo.svg'
+import persons from './persons'
 
 const Team = () => (
   <>
@@ -17,16 +17,19 @@ const Team = () => (
         </h3>
       </div>
       {persons.map((person, index) => (
-        <>
-          <div className={css.person} id={`person${index + 1}`}>
-            <img loading="lazy" className={css.personImage} src={'https://thiscatdoesnotexist.com/'} alt="zdjęcie członka zespołu" />
-            <h5>
-              <span>{person.role}</span>
-              <br />
-              {person.name}
-            </h5>
-          </div>
-        </>
+        <div key={person.name} className={css.person} id={`person${index + 1}`}>
+          <img
+            loading="lazy"
+            className={css.personImage}
+            src={'https://thiscatdoesnotexist.com/'}
+            alt="zdjęcie członka zespołu"
+          />
+          <h5>
+            <span>{person.role}</span>
+            <br />
+            {person.name}
+          </h5>
+        </div>
       ))}
     </div>
     <ConnectElements
@@ -60,6 +63,6 @@ const Team = () => (
       ]}
     />
   </>
-);
+)
 
-export default Team;
+export default Team

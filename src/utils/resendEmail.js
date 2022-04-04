@@ -1,16 +1,15 @@
-import axios from './axios';
-import getMessages from '../views/Message/messages';
+import axios from './axios'
+import getMessages from '../views/Message/messages'
 
-const resendEmail = async (email) => {
-  try {
-    const response = await axios.get('/resendEmail?email=' + email);
-    //return getMessages('resendEmail')[response.data.succes ? 'success' : 'error'];
-    console.log('wysylam resendEmail');
-    return getMessages('resendEmail')[response.status === 200 ? 'success' : 'error'];
-  } catch (error) {
-    console.log(error);
-    return getMessages('resendEmail')['error'];
-  }
-};
+const resendEmail = (email) => {
+  return axios
+    .get('/resendEmail?email=' + email)
+    .then((res) => {
+      return getMessages('resend')[res.status === 200 ? 'success' : 'error']
+    })
+    .catch((error) => {
+      return getMessages('resend')['error']
+    })
+}
 
-export default resendEmail;
+export default resendEmail

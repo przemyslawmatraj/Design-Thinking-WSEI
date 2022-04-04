@@ -1,110 +1,115 @@
-import React, { useRef, useEffect, useState } from 'react';
-import css from './index.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faCircle } from '@fortawesome/free-solid-svg-icons';
-import clsx from 'clsx';
-import axios from '../../utils/axios';
+import React, { useRef, useEffect, useState } from 'react'
+import css from './index.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faTimes, faCircle } from '@fortawesome/free-solid-svg-icons'
+import clsx from 'clsx'
+import axios from '../../utils/axios'
 
-import { default as StepTwo } from '../../components/oragnisms/MemberForm';
-import Message from '../Message';
+import { default as StepTwo } from '../../components/oragnisms/MemberForm'
+import Message from '../Message'
+
+import doc1 from '../../assets/docs/regulamin_konkursu_WSEI_Ep.docx'
 /* Regex */
-const PASSWORD_LOWERCASE = /^(?=.*[a-z]).{0,}$/;
-const PASSWORD_UPPERCASE = /^(?=.*[A-Z]).{0,}$/;
-const PASSWORD_NUMBER = /^(?=.*[0-9]).{0,}$/;
-const PASSWORD_MIN_CHAR = /^.{8,}$/;
-const PASSWORD_ALL = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
-const USER_REGEX = /^[A-Z].{2,}$/;
-const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+const PASSWORD_LOWERCASE = /^(?=.*[a-z]).{0,}$/
+const PASSWORD_UPPERCASE = /^(?=.*[A-Z]).{0,}$/
+const PASSWORD_NUMBER = /^(?=.*[0-9]).{0,}$/
+const PASSWORD_MIN_CHAR = /^.{8,}$/
+const PASSWORD_ALL = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/
+const USER_REGEX = /^[A-Z].{2,}$/
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 
 const RegisterPage = () => {
-  const userRef = useRef();
-  const errRef = useRef();
+  const userRef = useRef()
+  const errRef = useRef()
 
   /* User State */
-  const [user, setUser] = useState('Team');
-  const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
+  const [user, setUser] = useState('Team')
+  const [validName, setValidName] = useState(false)
+  const [userFocus, setUserFocus] = useState(false)
 
   /* Password State */
-  const [pwd, setPwd] = useState('Ciastko12');
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
+  const [pwd, setPwd] = useState('Ciastko12')
+  const [validPwd, setValidPwd] = useState(false)
+  const [pwdFocus, setPwdFocus] = useState(false)
 
   /* Password Dots State */
-  const [pwdDot1, setPwdDot1] = useState(false);
-  const [pwdDot2, setPwdDot2] = useState(false);
-  const [pwdDot3, setPwdDot3] = useState(false);
-  const [pwdDot4, setPwdDot4] = useState(false);
+  const [pwdDot1, setPwdDot1] = useState(false)
+  const [pwdDot2, setPwdDot2] = useState(false)
+  const [pwdDot3, setPwdDot3] = useState(false)
+  const [pwdDot4, setPwdDot4] = useState(false)
 
   /* Password Match State */
-  const [matchPwd, setMatchPwd] = useState('Ciastko12');
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
+  const [matchPwd, setMatchPwd] = useState('Ciastko12')
+  const [validMatch, setValidMatch] = useState(false)
+  const [matchFocus, setMatchFocus] = useState(false)
 
   /* Email State */
-  const [email, setEmail] = useState('jupila.orange@gmail.com');
-  const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
+  const [email, setEmail] = useState('jupila.orange@gmail.com')
+  const [validEmail, setValidEmail] = useState(false)
+  const [emailFocus, setEmailFocus] = useState(false)
 
   /* Members State */
-  const [members, setMembers] = useState([]);
-  const [validMembers, setValidMembers] = useState(true);
+  const [members, setMembers] = useState([])
+  const [validMembers, setValidMembers] = useState(true)
+
+  /* Checkbox State */
+  const [checked, setChecked] = useState(false)
 
   /* Submit State */
-  const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [errMsg, setErrMsg] = useState('')
+  const [success, setSuccess] = useState(false)
 
   /* Response State */
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState(null)
 
   useEffect(() => {
     if (userRef.current) {
-      userRef.current.focus();
+      userRef.current.focus()
     }
-  }, []);
+  }, [])
 
   /* Form Validation */
   useEffect(() => {
     /* User Validation */
-    const result = USER_REGEX.test(user);
-    setValidName(result);
-  }, [user]);
+    const result = USER_REGEX.test(user)
+    setValidName(result)
+  }, [user])
 
   useEffect(() => {
     /* Pwd Validation */
-    const result = PASSWORD_MIN_CHAR.test(pwd);
-    const result2 = PASSWORD_LOWERCASE.test(pwd);
-    const result3 = PASSWORD_NUMBER.test(pwd);
-    const result4 = PASSWORD_UPPERCASE.test(pwd);
-    setValidPwd(result && result2 && result3 && result4);
+    const result = PASSWORD_MIN_CHAR.test(pwd)
+    const result2 = PASSWORD_LOWERCASE.test(pwd)
+    const result3 = PASSWORD_NUMBER.test(pwd)
+    const result4 = PASSWORD_UPPERCASE.test(pwd)
+    setValidPwd(result && result2 && result3 && result4)
 
     /* Pwd Dots */
-    setPwdDot1(result);
-    setPwdDot2(result2);
-    setPwdDot3(result3);
-    setPwdDot4(result4);
+    setPwdDot1(result)
+    setPwdDot2(result2)
+    setPwdDot3(result3)
+    setPwdDot4(result4)
 
     /* Pwd Match Valiadtion */
-    const result5 = pwd === matchPwd;
-    setValidMatch(result5);
-  }, [pwd, matchPwd]);
+    const result5 = pwd === matchPwd
+    setValidMatch(result5)
+  }, [pwd, matchPwd])
 
   useEffect(() => {
     /* Email Validation */
-    const result = EMAIL_REGEX.test(email);
-    setValidEmail(result);
-  }, [email]);
+    const result = EMAIL_REGEX.test(email)
+    setValidEmail(result)
+  }, [email])
 
   useEffect(() => {
     /* Error Message */
-    setErrMsg('');
-  }, [user, pwd, matchPwd]);
+    setErrMsg('')
+  }, [user, pwd, matchPwd])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!USER_REGEX.test(user) || !PASSWORD_ALL.test(pwd) || matchPwd !== pwd || !EMAIL_REGEX.test(email)) {
-      setErrMsg('Wszystkie pola muszą być poprawnie wypełnione');
-      return;
+    e.preventDefault()
+    if (!USER_REGEX.test(user) || !PASSWORD_ALL.test(pwd) || matchPwd !== pwd || !EMAIL_REGEX.test(email) || !checked) {
+      setErrMsg('Wszystkie pola muszą być poprawnie wypełnione')
+      return
     }
     const membersFinal = members.map((member) => {
       return {
@@ -114,23 +119,22 @@ const RegisterPage = () => {
         school: member.school,
         phoneNumber: member.phoneNumber,
         isLeader: member.isLeader,
-        adress: {
-          street: member.adress.street,
-          number: member.adress.number,
-          postal: member.adress.postal,
-          city: member.adress.city,
+        address: {
+          street: member.address.street,
+          number: member.address.number,
+          postal: member.address.postal,
+          city: member.address.city,
         },
-      };
-    });
+      }
+    })
 
     const readyToSend = {
       username: user,
       password: pwd,
       email,
       members: membersFinal,
-    };
-    console.log(JSON.stringify(readyToSend));
-    const res = await axios
+    }
+    await axios
       .post('/register', JSON.stringify(readyToSend), {
         headers: {
           'Content-Type': 'application/json',
@@ -141,16 +145,17 @@ const RegisterPage = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
-        setResponse(res);
-        setSuccess(true);
-        return res;
+        setResponse(res)
+        setSuccess(true)
+        return res
       })
       .catch((err) => {
-        console.log('Error po wysłaniu zapytania:', err);
-        setErrMsg('Wystąpił błąd podczas rejestracji');
-      });
-  };
+        setValidEmail(false)
+        setErrMsg(
+          'Wystąpił błąd podczas rejestracji, prawdopodobnie podany email juz istnieje lub masz kłopot z połączeniem'
+        )
+      })
+  }
 
   return (
     <>
@@ -158,7 +163,7 @@ const RegisterPage = () => {
         <div className={css.success}>
           <FontAwesomeIcon icon={faCheck} />
           {response?.status && success ? (
-            <Message type="signUp" status={response?.status === 200 ? 'success' : 'error'} em={email} />
+            <Message type="signUp" status={response?.status === 200 ? 'success' : 'error'} email={email} />
           ) : (
             <Message type="signUp" status={'error'} />
           )}
@@ -333,9 +338,23 @@ const RegisterPage = () => {
                 )}
               </div>
             </div>
-            <StepTwo members={members} setMembers={setMembers} setValidMembers={setValidMembers} validMembers={validMembers} success={success} />
+            <StepTwo
+              members={members}
+              setMembers={setMembers}
+              setValidMembers={setValidMembers}
+              validMembers={validMembers}
+              success={success}
+            />
             <div className={css.stepOne__group}>
-              <button type="submit" className={css.stepOne__submit} disabled={!validName || !validPwd || !validMatch || !validEmail || !validMembers}>
+              <label className={css.stepOne__label}>
+                <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
+                Akceptuje postanowienia <a href={doc1}>Regulaminu</a>
+              </label>
+              <button
+                type="submit"
+                className={css.stepOne__submit}
+                disabled={!validName || !validPwd || !validMatch || !validEmail || !validMembers || !checked}
+              >
                 Zarejestruj zespół
               </button>
             </div>
@@ -343,7 +362,7 @@ const RegisterPage = () => {
         </>
       )}
     </>
-  );
-};
+  )
+}
 
-export default RegisterPage;
+export default RegisterPage

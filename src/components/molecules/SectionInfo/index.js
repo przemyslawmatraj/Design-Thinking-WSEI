@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import css from './index.module.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import css from './index.module.scss'
 
-import Button from '../../atoms/Button';
+import Button from '../../atoms/Button'
 
 const SectionInfo = ({ title, subTitle, button, btnPath, btnColor, header, children, className }) => (
   <>
@@ -10,7 +10,7 @@ const SectionInfo = ({ title, subTitle, button, btnPath, btnColor, header, child
       <h5 className={css.subTitle}>{subTitle}</h5>
       <div>
         {header === 1 ? <h1 className={css.title}>{title}</h1> : <h2 className={css.title}>{title}</h2>}
-        <p className={css.description}>{children}</p>
+        <div className={css.description}>{children}</div>
       </div>
       {button ? (
         <Button path={btnPath} color="black">
@@ -21,7 +21,7 @@ const SectionInfo = ({ title, subTitle, button, btnPath, btnColor, header, child
       )}
     </div>
   </>
-);
+)
 
 SectionInfo.propTypes = {
   title: PropTypes.string.isRequired,
@@ -30,8 +30,8 @@ SectionInfo.propTypes = {
   btnPath: PropTypes.string,
   btnColor: PropTypes.string,
   header: PropTypes.number,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
-};
+}
 
-export default SectionInfo;
+export default SectionInfo
