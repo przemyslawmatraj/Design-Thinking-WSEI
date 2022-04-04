@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import css from './index.module.scss';
+// import PropTypes from 'prop-types';
+// import css from './index.module.scss';
 
-import useAuth from '../../hooks/useAuth';
+// import useAuth from '../../hooks/useAuth';
 
 const LoginPage = () => {
-  const { auth, setAuth } = useAuth();
+  // const { auth, setAuth } = useAuth();
   return <>LoginPage</>;
 };
 

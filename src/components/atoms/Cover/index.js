@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './index.module.scss';
-import Parallax from '../../../hooks/parallax';
+import useParallax from '../../../hooks/useParallax';
 const Cover = ({ children, delay }) => {
   const ref = useRef();
   const [divOffset, setDivOffset] = useState(null);
-  let offsetY = Parallax();
+  let offsetY = useParallax();
   useEffect(() => {
     if (ref.current) {
       setDivOffset(ref.current.getBoundingClientRect());

@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Button from '../Button';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import Button from '../Button'
+import css from './index.module.scss'
+import clsx from 'clsx'
+
 const ReadMore = ({ children, className, btnColor }) => {
-  const text = children;
-  const [isFull, setFullText] = useState(false);
-  const result = isFull ? text : text.slice(0, 200);
-  function toggleIsFull() {
-    setFullText(!isFull);
-  }
+  const [isFull, setFullText] = useState(false)
+
   return (
     <>
-      <p className={className}>{result}</p>
-      <Button onClick={toggleIsFull} tag="span" color={btnColor}>
+      <div
+        className={clsx({
+          [className]: className,
+          [css.notFull]: !isFull,
+        })}
+      >
+        {children}
+      </div>
+      <Button onClick={() => setFullText(!isFull)} tag="span" color={btnColor}>
         {isFull ? 'CZYTAJ MNIEJ' : 'CZYTAJ WIĘCEJ'}
       </Button>
     </>
-  );
-};
+  )
+}
 
 ReadMore.propTypes = {
   btnColor: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
-};
+}
 
-export default ReadMore;
+export default ReadMore
