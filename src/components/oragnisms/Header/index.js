@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
-import css from './index.module.scss';
-import logo from '../../../assets/logo/bigLogo.svg';
-import Burger from '../../atoms/Burger';
-import Navbar from '../../molecules/Navbar';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import css from './index.module.scss'
+import logo from '../../../assets/logo/bigLogo.svg'
+import Burger from '../../atoms/Burger'
+import Navbar from '../../molecules/Navbar'
 
-const Header = () => {
-  const [isOpen, setOpen] = useState(false);
+const Header = ({ navVariant }) => {
+  const [isOpen, setOpen] = useState(false)
 
   const toggleBurger = () => {
-    setOpen(!isOpen);
-  };
+    setOpen(!isOpen)
+  }
 
   return (
     <>
       <header className={css.container}>
-        <img loading="lazy" src={logo} className={css.logo} alt="" />
+        <Link to="/">
+          <img loading="lazy" src={logo} className={css.logo} alt="" />
+        </Link>
         <Burger isOpen={isOpen} toggle={toggleBurger} />
-        <Navbar toggle={toggleBurger} />
+        <Navbar toggle={toggleBurger} navVariant={navVariant} />
       </header>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+Header.propTypes = {
+  navVariant: PropTypes.string,
+}
+
+export default Header

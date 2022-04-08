@@ -1,5 +1,7 @@
 import React from 'react'
 // import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+// eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss'
 
 import logo from '../../../assets/graphics/elevatorPitch.svg'
@@ -8,7 +10,7 @@ import img2 from '../../../assets/photos/studentGoals.png'
 import img3 from '../../../assets/photos/newSkills.png'
 import clsx from 'clsx'
 // import useParallax from '../../../hooks/useParallax'
-import Button from '../../atoms/Button'
+// import Button from '../../atoms/Button'
 
 const ElevatorPitch = () => {
   // const path = useRef()
@@ -160,9 +162,9 @@ const ElevatorPitch = () => {
             <div className={css.right}>
               <img loading="lazy" src={img3} alt="Cele studenta" className={css.image_1} />
             </div>
-            <Button className={css.button} v="variant2" color="white">
+            <Link className={css.button} to="/register">
               Zapisz się teraz!
-            </Button>
+            </Link>
             <div className={css.learnMore}>
               lub <a href="#">Dowiedz się więcej...</a>
             </div>

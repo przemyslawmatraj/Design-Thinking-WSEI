@@ -25,7 +25,7 @@
       flex-direction: column;
       flex: 0 1 100%;
       padding: 20px 40px;
-
+      max-width: 100%;
       input:not(:last-of-type) {
         background-color: transparent;
         padding: 10px 20px;

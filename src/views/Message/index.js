@@ -8,6 +8,7 @@ import validateEmail from '../../utils/validateEmail'
 import getMessages from './messages'
 
 const Message = ({ type, status, email }) => {
+  const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState(null)
 
   const queryParams = new URLSearchParams(window.location.search)
@@ -18,10 +19,13 @@ const Message = ({ type, status, email }) => {
     const checkType = async () => {
       if (type === 'validate' && tokenQuery) {
         setMessage(await validateEmail(tokenQuery))
+        setLoading(false)
       } else if (type === 'signUp' || type === 'signIn') {
         setMessage(getMessages(type)[status])
+        setLoading(false)
       } else if (type === 'resend') {
         setMessage(await resendEmail(emailQuery))
+        setLoading(false)
       }
     }
     checkType()
@@ -35,29 +39,32 @@ const Message = ({ type, status, email }) => {
     <>
       <div className={css.main}>
         <div className={css.message}>
-          <h1 className={css.title}>{message && message.title}</h1>
+          <h1 className={css.title}>
+            {message && message.title}
+            {loading && 'Loading...'}
+          </h1>
           <p className={css.description}>{message && message.description}</p>
+          {message &&
+            message.buttons?.map((button) =>
+              button.type === 'button' ? (
+                <Button
+                  key={button.name}
+                  onClick={() => {
+                    emailQuery && handleResendEmail()
+                  }}
+                  tag="span"
+                  color="black"
+                  className={css.button}
+                >
+                  {button.name}
+                </Button>
+              ) : (
+                <Link key={button.name} to={button.path} className={css.button}>
+                  {button.name}
+                </Link>
+              )
+            )}
         </div>
-        {message &&
-          message.buttons?.map((button) =>
-            button.type === 'button' ? (
-              <Button
-                key={button.name}
-                onClick={() => {
-                  emailQuery && handleResendEmail()
-                }}
-                tag="span"
-                color="black"
-                className={css.button}
-              >
-                {button.name}
-              </Button>
-            ) : (
-              <Link key={button.name} to={button.path} className={css.button}>
-                {button.name}
-              </Link>
-            )
-          )}
       </div>
     </>
   )
