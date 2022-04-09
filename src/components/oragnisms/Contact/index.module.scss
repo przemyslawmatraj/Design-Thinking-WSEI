@@ -4,7 +4,7 @@
   background-color: var(--clr-darkgray);
   .title {
     color: var(--clr-primary);
-    background-color: #fff;
+    background-color: var(--clr-white);
     width: max-content;
     padding: 10px 7px;
     margin-inline: auto;
@@ -29,9 +29,9 @@
       input:not(:last-of-type) {
         background-color: transparent;
         padding: 10px 20px;
-        border: none;
+        border: 0;
         border-radius: 0;
-        border-bottom: 2px solid #fff;
+        border-bottom: 2px solid var(--clr-white);
         color: white;
       }
       input[type='text'],

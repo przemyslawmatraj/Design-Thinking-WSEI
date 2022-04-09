@@ -51,7 +51,7 @@
     }
 
     .link {
-      color: #fff;
+      color: var(--clr-white);
       font-weight: 700;
     }
   }
@@ -62,7 +62,7 @@
 }
 
 .white {
-  color: #fff;
+  color: var(--clr-white);
 }
 
 @media screen and (min-width: 768px) {

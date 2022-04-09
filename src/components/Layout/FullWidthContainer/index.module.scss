@@ -3,16 +3,16 @@
 }
 
 .white {
-  background-color: #fff;
+  background-color: var(--clr-white);
   color: #000;
 }
 
 .gray {
   background-color: var(--clr-gray);
-  color: #fff;
+  color: var(--clr-white);
 }
 
 .darkgray {
   background-color: #24282e;
-  color: #fff;
+  color: var(--clr-white);
 }

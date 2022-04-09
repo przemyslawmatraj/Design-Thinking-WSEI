@@ -1,3 +1,5 @@
+@import '../../../scss/mixins';
+
 .title {
   h2 {
     color: var(--clr-primary);
@@ -15,18 +17,16 @@
   grid-column: 1/-1;
 }
 .memberForm {
-  display: flex;
-  flex-direction: column;
+  @include flex($direction: column);
   margin-bottom: 130px;
 
   .addMemberBtn {
+    @include flex($align: center);
     margin-inline: auto;
     background: none;
     color: var(--clr-secondary);
-    border: none;
-    display: flex;
+    border: 0;
     gap: 5px;
-    align-items: center;
     cursor: pointer;
     transition: all 0.3s ease-out;
     &:hover {
@@ -38,7 +38,7 @@
 
         animation: disabled 0.3s ease-in-out;
         &::after {
-          content: 'Wypełni poprawnie wszystkie pola!';
+          content: 'Wypełnij poprawnie wszystkie pola!';
           color: var(--clr-error);
           font-weight: 700;
         }
@@ -51,11 +51,10 @@
     margin-bottom: 100px;
     background-color: rgb(250, 250, 250);
     &Title {
+      @include flex($justify: space-between);
       grid-column: 1/-1;
-      display: flex;
-      justify-content: space-between;
       background-color: var(--clr-gray);
-      color: #fff;
+      color: var(--clr-white);
       h3 {
         padding: 20px;
         span {
@@ -65,9 +64,9 @@
       }
       button {
         border-radius: 0;
-        border: none;
+        border: 0;
         background-color: var(--clr-secondary);
-        color: #fff;
+        color: var(--clr-white);
         padding-inline: 20px;
         transition: all 0.1s ease-out;
         &:hover {
@@ -85,9 +84,7 @@
     }
     gap: 50px;
     &Field {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      @include flex($direction: column, $justify: space-between);
       .error {
         color: var(--clr-error);
       }
@@ -102,10 +99,10 @@
 
       .input {
         width: 100%;
-        background: #ffffff;
+        background: var(--clr-white);
         box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
         padding: 13px 17px;
-        border: none;
+        border: 0;
         transition: box-shadow 0.2s ease-out;
         &::placeholder {
           color: var(--clr-lightgray);
@@ -115,7 +112,7 @@
         &:focus-visible,
         &:active {
           outline: none;
-          border: none;
+          border: 0;
           box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1), inset 0 -4px 0 var(--clr-lightgray);
         }
         &Valid {

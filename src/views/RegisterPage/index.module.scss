@@ -52,13 +52,13 @@
       cursor: pointer;
       background-color: var(--clr-primary);
       padding: 10px;
-      border: none;
-      color: #fff;
+      border: 0;
+      color: var(--clr-white);
       text-transform: uppercase;
       transition: all 0.3s ease-out;
       &:disabled {
         background-color: var(--clr-lightgray);
-        color: #fff;
+        color: var(--clr-white);
         cursor: not-allowed;
       }
     }
@@ -84,10 +84,10 @@
     }
     &Input {
       width: 100%;
-      background: #ffffff;
+      background: var(--clr-white);
       box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
       padding: 13px 17px;
-      border: none;
+      border: 0;
       transition: box-shadow 0.2s ease-out;
       &::placeholder {
         color: var(--clr-lightgray);
@@ -97,7 +97,7 @@
       &:focus-visible,
       &:active {
         outline: none;
-        border: none;
+        border: 0;
         box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1), inset 0 -4px 0 var(--clr-lightgray);
       }
       &Success {
@@ -129,11 +129,6 @@
     flex: 0 1 20%;
     position: relative;
   }
-  .asideColumn2 {
-    contain: 'backgrpoundRight';
-    flex: 0 1 20%;
-    position: relative;
-  }
   .form {
     flex: 1 0 70%;
     min-width: 300px;
@@ -159,13 +154,9 @@
       box-shadow: rgba(52, 81, 122, 0.1) -24px -9px 19px inset;
       background-attachment: fixed;
       background-position: left;
-    }
-    .asideColumn2 {
-      background-image: url('../../assets/graphics/registerAside.jpg');
-      opacity: 70%;
-      box-shadow: rgba(52, 81, 122, 0.1) 24px -9px 19px inset;
-      background-attachment: fixed;
-      background-position: right;
+      &:nth-of-type(2) {
+        box-shadow: rgba(52, 81, 122, 0.1) 24px -9px 19px inset;
+      }
     }
   }
 }

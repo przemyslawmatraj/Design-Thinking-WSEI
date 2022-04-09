@@ -150,9 +150,6 @@ const RegisterPage = ({ setNavVariant }) => {
       .post('/register', JSON.stringify(readyToSend), {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': true,
-          'Access-Control-Allow-Origin': 'http://localhost:8080',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         withCredentials: true,
       })
@@ -401,7 +398,7 @@ const RegisterPage = ({ setNavVariant }) => {
                   </button>
                 </div>
               </form>
-              <div className={css.asideColumn2}></div>
+              <div className={css.asideColumn}></div>
             </div>
           </>
         )}

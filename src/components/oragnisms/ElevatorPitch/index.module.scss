@@ -18,7 +18,7 @@
     top: -20vh;
     left: 50%;
     text-align: center;
-    color: #fff;
+    color: var(--clr-white);
     transform: translateX(-50%);
     font-weight: 600;
   }
@@ -71,7 +71,7 @@
       .button {
         margin-inline: auto;
         text-decoration: none;
-        color: #fff;
+        color: var(--clr-white);
         background-color: var(--clr-secondary);
         padding: 10px 20px;
         border-radius: 20px;
