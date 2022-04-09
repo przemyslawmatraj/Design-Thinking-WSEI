@@ -1,13 +1,13 @@
-import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import css from './index.module.scss';
-import clsx from 'clsx';
+import React, { useRef, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import css from './index.module.scss'
+import clsx from 'clsx'
 
 const Burger = ({ isOpen, toggle }) => {
-  const checkbox = useRef(null);
+  const checkbox = useRef(null)
   useEffect(() => {
-    checkbox.current.checked = isOpen;
-  }, [isOpen]);
+    checkbox.current.checked = isOpen
+  }, [isOpen])
   return (
     <>
       <input id="burger" type="checkbox" ref={checkbox} onClick={toggle} />
@@ -19,12 +19,12 @@ const Burger = ({ isOpen, toggle }) => {
         </span>
       </label>
     </>
-  );
-};
+  )
+}
 
 Burger.propTypes = {
   isOpen: PropTypes.bool,
   toggle: PropTypes.func,
-};
+}
 
-export default Burger;
+export default Burger

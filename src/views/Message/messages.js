@@ -13,7 +13,7 @@ const messages = {
     },
     error: {
       title: 'Nie udało się potwierdzić konta',
-      description: 'Wystąpił błąd podczas potwierdzania konta. Spróbuj ponownie.',
+      description: 'Wystąpił błąd podczas potwierdzania konta. Spróbuj ponownie lub skontaktuj się z administratorem.',
       buttons: [
         {
           name: 'Wyślij ponownie',
@@ -47,7 +47,7 @@ const messages = {
     },
     error: {
       title: 'Nie udało się zarejestrować zespołu',
-      description: 'Wystąpił błąd podczas rejestracji. Spróbuj ponownie.',
+      description: 'Wystąpił błąd podczas rejestracji. Spróbuj ponownie lub skontaktuj się z administratorem.',
       buttons: [
         {
           name: 'Zarejestruj się ponownie',
@@ -90,7 +90,8 @@ const messages = {
     },
     error: {
       title: 'Nie udało się wysłać linku aktywacyjnego',
-      description: 'Wystąpił błąd podczas wysyłania linku aktywacyjnego. Spróbuj ponownie.',
+      description:
+        'Wystąpił błąd podczas wysyłania linku aktywacyjnego. Spróbuj ponownie lub skontaktuj się z administratorem.',
       buttons: [
         {
           name: 'Wyślij ponownie',
@@ -100,9 +101,9 @@ const messages = {
       ],
     },
   },
-};
+}
 
 const getMessages = (type) => {
-  return messages[type];
-};
-export default getMessages;
+  return messages[type]
+}
+export default getMessages

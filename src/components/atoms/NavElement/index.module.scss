@@ -44,7 +44,7 @@
   &:last-of-type {
     padding: 10px;
     background-color: var(--clr-secondary);
-    width: min-content;
+    width: max-content;
 
     &:hover {
       animation: move 1s ease-in-out alternate infinite;

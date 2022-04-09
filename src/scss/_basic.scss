@@ -16,7 +16,7 @@ body {
 
 body {
   background-color: #fff;
-  color: black;
+  color: #3f5369;
 }
 
 img {
@@ -29,4 +29,11 @@ input[type='email'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--step--1);
+}
+
+a {
+  color: var(--clr-primary);
 }

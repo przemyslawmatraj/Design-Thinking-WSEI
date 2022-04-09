@@ -1,0 +1,19 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .message {
+    text-align: center;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
+    padding: 50px 100px;
+    .description {
+      margin-bottom: 35px;
+    }
+
+    .button {
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+  }
+}

@@ -55,6 +55,10 @@ div {
   font-size: var(--step--1);
 }
 
+button {
+  font-family: 'Roboto', sans-serif;
+}
+
 @media screen and (min-width: 768px) {
   span,
   p,

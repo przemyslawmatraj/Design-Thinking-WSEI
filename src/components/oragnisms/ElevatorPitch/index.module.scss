@@ -70,6 +70,11 @@
       }
       .button {
         margin-inline: auto;
+        text-decoration: none;
+        color: #fff;
+        background-color: var(--clr-secondary);
+        padding: 10px 20px;
+        border-radius: 20px;
       }
       .learnMore {
         margin-top: var(--space-l-xl);
