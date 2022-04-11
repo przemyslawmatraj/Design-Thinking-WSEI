@@ -12,7 +12,7 @@ const PHONE_REGEX = /^[0-9]{8,}$/
 const STR_NUMBER_REGEX = /^(?=.*[0-9]).{1,}$/
 const POSTAL = /^[0-9]{2}-[0-9]{3}$/
 
-const MemberForm = ({ members, setMembers, validMembers, setValidMembers, success }) => {
+const MemberForm = ({ members, setMembers, validMembers, setValidMembers, success, membersCount }) => {
   const [errMsg, setErrMsg] = useState('')
   const [count, setCount] = useState(0)
 
@@ -21,6 +21,10 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
       handleAddMember(true)
     }
   })
+
+  useEffect(() => {
+    setErrMsg('')
+  }, [members])
 
   useEffect(() => {
     const resutl = members.every((member, index) => {
@@ -101,10 +105,17 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
       },
     }
 
-    if (validMembers) {
+    if (members.length === 5) {
+      setErrMsg('Maksymalna ilość osób w zespole to 5')
+      return
+    }
+    if (!validMembers) {
+      setErrMsg('Wypełnij poprawnie wszystkie pola')
+      return
+    }
+    if (validMembers && members.length < 5) {
       setMembers([...members, initialMember])
-    } else {
-      setErrMsg('Wszystkie pola muszą zostać poprawnie wypełnione')
+      return
     }
   }
 
@@ -133,6 +144,10 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
       <div className={css.title}>
         <h2>Krok 2</h2>
         <h3>Wprowadź dane członków zespołu</h3>
+        <div>
+          <p>Zespół musi posiadać od 3 do 5 członków</p>
+          <p>Aktualna ilość członków: {membersCount}</p>
+        </div>
       </div>
       <div className={css.memberForm}>
         {!success &&
@@ -150,7 +165,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   </button>
                 )}
               </div>
-              {errMsg && !validMembers && <p className={css.error}>{errMsg}</p>}
+              {errMsg && <p className={css.error}>{errMsg}</p>}
               <div className={css.memberField}>
                 <label htmlFor={`member-${index}-name`}>
                   Imię:<span className={css.star}>*</span>
@@ -164,6 +179,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-name`}
                   type="text"
                   value={member.name}
+                  placeholder="Wpisz imię"
                   name="name"
                   onChange={(e) => onMemberChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -190,6 +206,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-surname`}
                   type="text"
                   value={member.surname}
+                  placeholder="Wpisz nazwisko"
                   name="surname"
                   onChange={(e) => onMemberChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -216,6 +233,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-email`}
                   type="text"
                   value={member.email}
+                  placeholder="Wpisz email"
                   name="email"
                   onChange={(e) => onMemberChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -242,6 +260,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-phoneNumber`}
                   type="text"
                   value={member.phoneNumber}
+                  placeholder="Wpisz numer telefonu"
                   name="phoneNumber"
                   onChange={(e) => onMemberChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -268,6 +287,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-school`}
                   type="text"
                   value={member.school}
+                  placeholder="Wpisz nazwę szkoły"
                   name="school"
                   onChange={(e) => onMemberChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -296,6 +316,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-address-street`}
                   type="text"
                   value={member.address.street}
+                  placeholder="Wpisz nazwę ulicy"
                   name="street"
                   onChange={(e) => onAddressChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -322,6 +343,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-address-number`}
                   type="text"
                   value={member.address.number}
+                  placeholder="Wpisz numer domu"
                   name="number"
                   onChange={(e) => onAddressChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -348,6 +370,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-address-postal`}
                   type="text"
                   value={member.address.postal}
+                  placeholder="Wpisz kod pocztowy"
                   name="postal"
                   onChange={(e) => onAddressChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -374,6 +397,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
                   id={`member-${index}-address-city`}
                   type="text"
                   value={member.address.city}
+                  placeholder="Wpisz nazwę miasta"
                   name="city"
                   onChange={(e) => onAddressChange(e, index)}
                   onBlur={() => setCount(count + 1)}
@@ -412,6 +436,7 @@ MemberForm.propTypes = {
   setValidMembers: PropTypes.func,
   validMembers: PropTypes.bool,
   success: PropTypes.bool,
+  membersCount: PropTypes.number,
 }
 
 export default MemberForm

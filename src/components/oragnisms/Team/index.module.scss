@@ -33,7 +33,7 @@
       font-family: var(--font-secondary);
       text-align: center;
       text-transform: uppercase;
-      color: #000;
+      color: var(--clr-darkgray);
       span {
         color: var(--clr-primary);
       }
@@ -55,7 +55,7 @@
       display: block;
       color: var(--clr-primary);
       span {
-        color: #000;
+        color: var(--clr-darkgray);
       }
     }
   }

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import css from './index.module.scss'
-import PropTypes from 'prop-types'
+
 import Baner from '../../components/oragnisms/Baner'
 import Team from '../../components/oragnisms/Team'
 import About from '../../components/oragnisms/About'
@@ -10,11 +10,7 @@ import Partners from '../../components/oragnisms/Partners'
 import Cover from '../../components/atoms/Cover'
 import Container from '../../components/Layout/Container'
 
-const LandingPage = ({ setNavVariant }) => {
-  useEffect(() => {
-    setNavVariant('anchor')
-  }, [setNavVariant])
-
+const LandingPage = () => {
   return (
     <>
       <Container>
@@ -33,10 +29,6 @@ const LandingPage = ({ setNavVariant }) => {
       </Container>
     </>
   )
-}
-
-LandingPage.propTypes = {
-  setNavVariant: PropTypes.func,
 }
 
 export default LandingPage

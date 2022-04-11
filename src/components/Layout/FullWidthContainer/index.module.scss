@@ -4,7 +4,7 @@
 
 .white {
   background-color: var(--clr-white);
-  color: #000;
+  color: var(--clr-darkgray);
 }
 
 .gray {
@@ -13,6 +13,6 @@
 }
 
 .darkgray {
-  background-color: #24282e;
+  background-color: var(--clr-darkgray);
   color: var(--clr-white);
 }

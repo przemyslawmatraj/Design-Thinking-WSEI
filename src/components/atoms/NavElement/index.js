@@ -6,11 +6,11 @@ import css from './index.module.scss'
 
 import clsx from 'clsx'
 
-const NavElement = ({ elementName, path, toggle, color, navVariant }) => {
+const NavElement = ({ elementName, path, toggle, color, type }) => {
   return (
     <>
       <li className={css.element} onClick={toggle}>
-        {navVariant === 'link' ? (
+        {type === 'link' && (
           <Link
             to={path}
             className={clsx(css.link, {
@@ -20,7 +20,8 @@ const NavElement = ({ elementName, path, toggle, color, navVariant }) => {
           >
             {elementName}
           </Link>
-        ) : (
+        )}
+        {type === 'anchor' && (
           <a
             href={path}
             className={clsx(css.link, {
@@ -41,7 +42,7 @@ NavElement.propTypes = {
   path: PropTypes.string,
   toggle: PropTypes.func,
   color: PropTypes.string,
-  navVariant: PropTypes.string.isRequired,
+  type: PropTypes.string,
 }
 
 export default NavElement

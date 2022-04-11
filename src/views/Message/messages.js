@@ -76,6 +76,25 @@ const messages = {
       ],
     },
   },
+  logOut: {
+    success: {
+      title: 'Wylogowano',
+      description: 'Zostałeś wylogowany z platformy.',
+      buttons: [
+        {
+          name: 'Zaloguj się',
+          path: '/login',
+          type: 'link',
+        },
+        {
+          name: 'Powrót do strony głównej',
+          path: '/',
+          type: 'link',
+        },
+      ],
+    },
+  },
+
   resend: {
     success: {
       title: 'Wysłano ponownie link aktywacyjny',

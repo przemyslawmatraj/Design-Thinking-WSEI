@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-// import PropTypes from 'prop-types';
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
 // eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss'
@@ -11,7 +10,9 @@ import loginTop from '../../assets/graphics/loginTop.svg'
 import Container from '../../components/Layout/Container'
 const LoginPage = () => {
   const { setAuth } = useAuth()
+
   const navigate = useNavigate()
+  const location = useLocation()
 
   const emailRef = useRef()
   const errRef = useRef()
@@ -19,7 +20,6 @@ const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [token, setToken] = useState('')
 
   useEffect(() => {
     if (emailRef.current) {
@@ -31,40 +31,67 @@ const LoginPage = () => {
     setError('')
   }, [email, password])
 
-  const handleSubmit = (e) => {
+  const checkRole = (role, data) => {
+    if (data?.roles?.some(({ role: r }) => r === role)) {
+      return `/${role.toLowerCase()}/dashboard`
+    }
+    return false
+  }
+
+  const saveToken = (token) => {
+    localStorage.setItem('token', token)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (email === '' || password === '') {
       setError('Wypełnij wszystkie pola!')
       return
     }
-    axios
-      .post('/login', JSON.stringify({ username: email, password }), {
+    await axios
+      .post('/login', JSON.stringify({ username: email, password: password }), {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': true,
-          'Access-Control-Allow-Origin': 'http://localhost:8080',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res)
-        // if (res.data.error) {
-        //   setError('Błędny login lub hasło!')
-        // } else {
-        //   localStorage.setItem('token', res.data.token)
-        //   setToken(res.data.token)
-        //   console.log(localStorage.getItem('token'))
-        // }
+        if (res.data.error) {
+          setError('Błędny login lub hasło!')
+        } else {
+          saveToken(res.data.token)
+          return res.data.token
+        }
       })
       .catch((err) => {
-        // err.response.data.status === 401
-        //   ? setError('Błędny login lub hasło!')
-        //   : setError('Wystąpił błąd podczas logowania. Spróbuj ponownie później.')
-        console.log(err.response.data)
+        if (!err.response) {
+          setError('Błąd połączenia z serwerem!')
+        } else if (err.response.status === 401 || err.response.status === 400) {
+          setError('Błędny login lub hasło!')
+        } else {
+          setError('Nie udało się zalogować! Spróbuj ponownie później lub skontaktuj się z administratorem.')
+        }
+        errRef.current.focus()
       })
-    setAuth()
-    // navigate('/dashboard')
+      .then(async (authtoken) => {
+        await axios
+          .get('/getUserData', {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${authtoken}`,
+            },
+            withCredentials: true,
+          })
+          .then((res) => {
+            setAuth({ data: res.data, accessToken: authtoken })
+            navigate(location.state?.from || checkRole('ADMIN', res.data) || checkRole('USER', res.data), {
+              replace: true,
+            })
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      })
   }
 
   return (
@@ -100,6 +127,7 @@ const LoginPage = () => {
                     className={clsx({
                       [css.stepOneInput]: true,
                       [css.stepOneInputError]: !!error,
+                      [css.stepOneInputSuccess]: !!email,
                     })}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -118,6 +146,7 @@ const LoginPage = () => {
                     className={clsx({
                       [css.stepOneInput]: true,
                       [css.stepOneInputError]: !!error,
+                      [css.stepOneInputSuccess]: !!password,
                     })}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -125,7 +154,7 @@ const LoginPage = () => {
                   />
                 </label>
               </div>
-              <button type="submit" className={css.stepOneButton} disabled={email === '' || password === ''}>
+              <button type="submit" className={css.stepOneButton}>
                 Zaloguj się
               </button>
             </div>
@@ -136,7 +165,5 @@ const LoginPage = () => {
     </Container>
   )
 }
-
-LoginPage.propTypes = {}
 
 export default LoginPage

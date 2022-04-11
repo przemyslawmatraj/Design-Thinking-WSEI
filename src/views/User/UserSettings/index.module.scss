@@ -1,0 +1,19 @@
+.title {
+  h1 {
+    color: var(--clr-primary);
+    margin-top: 100px;
+    text-align: center;
+    font-size: var(--step-4);
+  }
+  h2 {
+    text-align: center;
+    font-size: var(--step-3);
+  }
+}
+
+.person {
+  background-color: var(--clr-gray);
+  color: var(--clr-white);
+  margin-bottom: 50px;
+  padding: 50px;
+}

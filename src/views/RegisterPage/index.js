@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 // eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,7 +22,7 @@ const PASSWORD_ALL = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/
 const USER_REGEX = /^[A-Z\s].{2,}$/
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 
-const RegisterPage = ({ setNavVariant }) => {
+const RegisterPage = () => {
   const userRef = useRef()
   const errRef = useRef()
 
@@ -56,7 +55,7 @@ const RegisterPage = ({ setNavVariant }) => {
   /* Members State */
   const [members, setMembers] = useState([])
   const [validMembers, setValidMembers] = useState(true)
-
+  const [membersCount, setMembersCount] = useState(0)
   /* Checkbox State */
   const [checked, setChecked] = useState(false)
 
@@ -74,8 +73,11 @@ const RegisterPage = ({ setNavVariant }) => {
     if (userRef.current) {
       userRef.current.focus()
     }
-    setNavVariant('link')
-  }, [setNavVariant])
+  }, [])
+
+  useEffect(() => {
+    setMembersCount(members.length)
+  }, [members])
 
   /* Form Validation */
   useEffect(() => {
@@ -116,11 +118,20 @@ const RegisterPage = ({ setNavVariant }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
+
     if (!USER_REGEX.test(user) || !PASSWORD_ALL.test(pwd) || matchPwd !== pwd || !EMAIL_REGEX.test(email) || !checked) {
       setErrMsg('Wszystkie pola muszą być poprawnie wypełnione')
+      goToTop()
+      errRef.current.focus()
       return
     }
+    if (members.length < 3) {
+      setErrMsg('Musisz dodać przynajmniej 3 członków')
+      goToTop()
+      errRef.current.focus()
+      return
+    }
+    setLoading(true)
     const membersFinal = members.map((member) => {
       return {
         name: member.name,
@@ -157,7 +168,6 @@ const RegisterPage = ({ setNavVariant }) => {
         setResponse(res)
         setSuccess(true)
         setLoading(false)
-        return res
       })
       .catch((err) => {
         setValidEmail(false)
@@ -165,6 +175,7 @@ const RegisterPage = ({ setNavVariant }) => {
         setErrMsg(
           'Wystąpił błąd podczas rejestracji, prawdopodobnie podany email juz istnieje lub masz kłopot z połączeniem. Spróbuj ponownie lub skontaktuj się z administratorem.'
         )
+        errRef.current.focus()
       })
   }
 
@@ -199,7 +210,7 @@ const RegisterPage = ({ setNavVariant }) => {
             <div className={css.bottom}>
               <div className={css.asideColumn}></div>
               <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
-                {errMsg && !validEmail && (
+                {errMsg && (
                   <p ref={errRef} className={css.formError} aria-live="assertive">
                     {errMsg}
                   </p>
@@ -380,6 +391,7 @@ const RegisterPage = ({ setNavVariant }) => {
                   setValidMembers={setValidMembers}
                   validMembers={validMembers}
                   success={success}
+                  membersCount={membersCount}
                 />
                 <h2 className={css.stepTitle}>Krok 3</h2>
                 <h3 className={css.stepSubTitle}>Przeczytaj i zaakceptuj regulamin konkursu</h3>
@@ -405,9 +417,6 @@ const RegisterPage = ({ setNavVariant }) => {
       </>
     </Container>
   )
-}
-RegisterPage.propTypes = {
-  setNavVariant: PropTypes.func.isRequired,
 }
 
 export default RegisterPage

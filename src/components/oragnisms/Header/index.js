@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import css from './index.module.scss'
 import logo from '../../../assets/logo/bigLogo.svg'
 import Burger from '../../atoms/Burger'
 import Navbar from '../../molecules/Navbar'
 
-const Header = ({ navVariant }) => {
+const Header = () => {
   const [isOpen, setOpen] = useState(false)
 
   const toggleBurger = () => {
@@ -20,14 +19,10 @@ const Header = ({ navVariant }) => {
           <img loading="lazy" src={logo} className={css.logo} alt="" />
         </Link>
         <Burger isOpen={isOpen} toggle={toggleBurger} />
-        <Navbar toggle={toggleBurger} navVariant={navVariant} />
+        <Navbar toggle={toggleBurger} />
       </header>
     </>
   )
-}
-
-Header.propTypes = {
-  navVariant: PropTypes.string,
 }
 
 export default Header

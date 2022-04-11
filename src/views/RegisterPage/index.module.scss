@@ -89,10 +89,6 @@
       padding: 13px 17px;
       border: 0;
       transition: box-shadow 0.2s ease-out;
-      &::placeholder {
-        color: var(--clr-lightgray);
-        font-style: italic;
-      }
       &:focus,
       &:focus-visible,
       &:active {
@@ -126,7 +122,6 @@
   }
   .asideColumn {
     contain: 'backgroundLeft';
-    flex: 0 1 20%;
     position: relative;
   }
   .form {
@@ -154,6 +149,7 @@
       box-shadow: rgba(52, 81, 122, 0.1) -24px -9px 19px inset;
       background-attachment: fixed;
       background-position: left;
+      flex: 0 1 20%;
       &:nth-of-type(2) {
         box-shadow: rgba(52, 81, 122, 0.1) 24px -9px 19px inset;
       }
