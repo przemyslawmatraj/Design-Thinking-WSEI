@@ -29,6 +29,7 @@ function Root() {
             <Route path="dashboard" element={<UserDashboard />} />
             <Route path="settings" element={<UserSettings />} />
             <Route path="idea" element={<UserIdea />} />
+            <Route path="ideaSend" element={<Message type="ideaSend" status="success" />} />
           </Route>
 
           {/* admin routes */}

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import css from './index.module.scss'
 import useAuth from '../../../hooks/useAuth'
 import Container from '../../../components/Layout/Container'
@@ -19,8 +18,6 @@ const UserDashboard = () => {
     }
     scrollToTop()
   }, [])
-
-  console.log(data)
   return (
     <Container>
       <div className={css.title}>
@@ -73,7 +70,5 @@ const UserDashboard = () => {
     </Container>
   )
 }
-
-UserDashboard.propTypes = {}
 
 export default UserDashboard

@@ -56,13 +56,13 @@ const naviagationElements = {
     type: 'link',
   },
   idea: {
-    name: 'Nasz pomysł',
+    name: 'Wyślij pomysł',
     path: '/user/idea',
     type: 'link',
   },
   ideaList: {
     name: 'Lista pomysłów',
-    path: '/admin/list',
+    path: '/admin/ideaList',
     type: 'link',
   },
   userDashboard: {

@@ -20,7 +20,7 @@ const Message = ({ type, status, email, ...props }) => {
       if (type === 'validate' && tokenQuery) {
         setMessage(await validateEmail(tokenQuery))
         setLoading(false)
-      } else if (type === 'signUp' || type === 'signIn' || type === 'logOut') {
+      } else if (type !== 'validate' && type !== 'resend') {
         setMessage(getMessages(type)[status])
         setLoading(false)
       } else if (type === 'resend') {

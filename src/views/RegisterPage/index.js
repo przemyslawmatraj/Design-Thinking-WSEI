@@ -156,7 +156,6 @@ const RegisterPage = () => {
       members: membersFinal,
     }
     goToTop()
-
     await axios
       .post('/register', JSON.stringify(readyToSend), {
         headers: {

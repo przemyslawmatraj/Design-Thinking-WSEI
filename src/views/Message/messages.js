@@ -94,7 +94,6 @@ const messages = {
       ],
     },
   },
-
   resend: {
     success: {
       title: 'Wysłano ponownie link aktywacyjny',
@@ -116,6 +115,19 @@ const messages = {
           name: 'Wyślij ponownie',
           path: '',
           type: 'button',
+        },
+      ],
+    },
+  },
+  ideaSend: {
+    success: {
+      title: 'Pomyślna rejestracja pomysłu',
+      description: 'Pomyślna rejestracja pomysłu.',
+      buttons: [
+        {
+          name: 'Powrót do strony głównej',
+          path: '/user/dashboard',
+          type: 'link',
         },
       ],
     },

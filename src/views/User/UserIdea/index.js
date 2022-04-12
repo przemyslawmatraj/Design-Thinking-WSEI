@@ -1,52 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import css from './index.module.scss'
+// import css from './index.module.scss'
 import useAuth from '../../../hooks/useAuth'
 import Container from '../../../components/Layout/Container'
-
-import img1 from '../../../assets/graphics/yourIdeaNapkin.jpeg'
+import Button from '../../../components/atoms/Button'
 
 const UserIdea = () => {
   const {
     auth: { data },
   } = useAuth()
 
-  return (
-    <Container>
-      <div className={css.title}>
-        <h1>Nasz pomysł</h1>
-        <h2>
-          Zespół <strong>{data.username}</strong>
-        </h2>
-      </div>
-      <div className={css.idea}>
-        <div className={css.column}>
-          <h3>Załącz potrzebne pliki</h3>
-          <form>
-            <div className={css.file}>
-              <label htmlFor="file">
-                <span>Plik z prezentacją</span>
-                <br />
-                <input type="file" id="file" />
-              </label>
-            </div>
-            <div className={css.file}>
-              <label htmlFor="file">
-                <span>Plik ze zgłoszeniem</span>
-                <br />
-                <input type="file" id="file" />
-              </label>
-            </div>
-          </form>
-        </div>
-        <div className={css.column}>
-          <img src={img1} alt="" />
-        </div>
-      </div>
-    </Container>
-  )
-}
+  if (data.enabled) {
+    window.location.href = `https://docs.google.com/forms/d/e/1FAIpQLSenhy3XR6Fn3E7JUY5aBBkxkijMjQzC3qvTU_2tdA_T36QLmQ/viewform?usp=pp_url&entry.1334767853=${data.email}`
+  }
 
-UserIdea.propTypes = {}
+  return null
+}
 
 export default UserIdea

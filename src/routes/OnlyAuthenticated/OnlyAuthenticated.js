@@ -9,16 +9,14 @@ const OnlyAuthenticated = ({ allowed }) => {
   const { auth, setAuth } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
-  console.log(auth)
-
-  const checkRole = (role, data) => {
-    if (data?.roles?.some(({ role: r }) => r === role)) {
-      return `/${role.toLowerCase()}/dashboard`
-    }
-    return false
-  }
 
   useEffect(() => {
+    const checkRole = (role, data) => {
+      if (data?.roles?.some(({ role: r }) => r === role)) {
+        return `/${role.toLowerCase()}/${location.pathname.split('/')[2]}`
+      }
+      return false
+    }
     const token = localStorage.getItem('token') || null
     if (token && !auth.data) {
       axios
@@ -39,7 +37,7 @@ const OnlyAuthenticated = ({ allowed }) => {
           console.log(err)
         })
     }
-  }, [auth.data, location.state?.from, navigate, setAuth])
+  }, [auth.data, location.pathname, location.state?.from, navigate, setAuth])
 
   if (auth?.data?.enabled && auth?.data?.roles?.some(({ role }) => allowed.includes(role))) {
     return <Outlet />
