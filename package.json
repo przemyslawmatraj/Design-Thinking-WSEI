@@ -42,6 +42,10 @@
     "*.+(json|css|scss|md)": [
       "prettier --write",
       "git add"
+    ],
+    "*.+(scss)": [
+      "stylelint --fix",
+      "git add"
     ]
   },
   "eslintConfig": {
@@ -59,6 +63,36 @@
       "react/react-in-jsx-scope": 0
     }
   },
+  "stylelint": {
+    "extends": [
+      "stylelint-prettier/recommended",
+      "stylelint-config-sass-guidelines",
+      "stylelint-config-prettier"
+    ],
+    "plugins": [
+      "stylelint-prettier",
+      "stylelint-scss"
+    ],
+    "rules": {
+      "max-nesting-depth": 6,
+      "scss/at-mixin-pattern": "^[a-z][a-z0-9-_]*[a-z0-9]$",
+      "scss/dollar-variable-pattern": null,
+      "order/properties-alphabetical-order": null,
+      "prettier/prettier": true,
+      "selector-class-pattern": null,
+      "selector-max-compound-selectors": 4,
+      "selector-no-qualifying-type": [
+        true,
+        {
+          "ignore": [
+            "attribute",
+            "class",
+            "id"
+          ]
+        }
+      ]
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -73,12 +107,11 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.17.8",
-    "eslint-plugin-css-modules": "^2.11.0",
-    "lint-staged": "^12.3.7",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-css-modules": "^2.11.0",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -86,6 +119,9 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.2.3",
-    "prettier": "^2.0.2"
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.0.2",
+    "stylelint": "^14.6.1",
+    "stylelint-config-standard-scss": "^3.0.0"
   }
 }
