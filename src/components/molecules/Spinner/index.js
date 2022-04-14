@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import css from './index.module.scss'
 import SpinnerElement from '../../atoms/SpinnerElement'
 import date from './date'
@@ -15,7 +14,5 @@ const Spinner = () => (
     </div>
   </>
 )
-
-Spinner.propTypes = {}
 
 export default Spinner

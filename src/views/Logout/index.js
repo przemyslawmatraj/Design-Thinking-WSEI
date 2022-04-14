@@ -9,7 +9,7 @@ const Logout = () => {
   useEffect(() => {
     logout()
     localStorage.removeItem('token')
-  }, [])
+  })
 
   return <Message type="logOut" status="success" />
 }

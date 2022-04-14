@@ -1,8 +1,4 @@
-import React from 'react'
-// import css from './index.module.scss'
 import useAuth from '../../../hooks/useAuth'
-import Container from '../../../components/Layout/Container'
-import Button from '../../../components/atoms/Button'
 
 const UserIdea = () => {
   const {
