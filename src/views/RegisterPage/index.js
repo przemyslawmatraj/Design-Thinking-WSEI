@@ -56,9 +56,9 @@ const RegisterPage = () => {
   const [members, setMembers] = useState([])
   const [validMembers, setValidMembers] = useState(true)
   const [membersCount, setMembersCount] = useState(0)
-  /* Checkbox State */
+  /* Checkboxes State */
   const [checked, setChecked] = useState(false)
-
+  const [checked2, setChecked2] = useState(false)
   /* Submit State */
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
@@ -119,7 +119,14 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!USER_REGEX.test(user) || !PASSWORD_ALL.test(pwd) || matchPwd !== pwd || !EMAIL_REGEX.test(email) || !checked) {
+    if (
+      !USER_REGEX.test(user) ||
+      !PASSWORD_ALL.test(pwd) ||
+      matchPwd !== pwd ||
+      !EMAIL_REGEX.test(email) ||
+      !checked ||
+      !checked2
+    ) {
       setErrMsg('Wszystkie pola muszą być poprawnie wypełnione')
       goToTop()
       errRef.current.focus()
@@ -171,6 +178,7 @@ const RegisterPage = () => {
       .catch((err) => {
         setValidEmail(false)
         setLoading(false)
+        setSuccess(true)
         setErrMsg(
           'Wystąpił błąd podczas rejestracji, prawdopodobnie podany email juz istnieje lub masz kłopot z połączeniem. Spróbuj ponownie lub skontaktuj się z administratorem.'
         )
@@ -400,10 +408,22 @@ const RegisterPage = () => {
                     Akceptuje postanowienia <a href={doc1}>Regulaminu</a>
                     <span className={css.star}>*</span>
                   </label>
+                  <label className={css.checkbox}>
+                    <input type="checkbox" checked={checked2} onChange={() => setChecked2(!checked2)} />
+                    Wyrazam zgodę na przetwarzanie danych osobowych zgodnie z ustawą o ochronie danych osobowych w
+                    związku z rejestracją zespołu. Podanie danych jest dobrowolne, ale niezbędne do przetworzenia prośby
+                    o rejestrację zespołu. Zostatem poinformowany, Przysługuje mi prawo dostepu do swoich danych,
+                    możliwości ich poprawiania, żądania zaprzestania ich przetwarzania. Administratorem danych osobowych
+                    jest Wysza Szkoła Ekonomii i Informatyki w Krakowie.
+                    <span className={css.star}>*</span>
+                  </label>
+
                   <button
                     type="submit"
                     className={css.stepOneButton}
-                    disabled={!validName || !validPwd || !validMatch || !validEmail || !validMembers || !checked}
+                    disabled={
+                      !validName || !validPwd || !validMatch || !validEmail || !validMembers || !checked || !checked2
+                    }
                   >
                     Zarejestruj zespół
                   </button>

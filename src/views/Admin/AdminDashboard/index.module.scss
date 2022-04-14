@@ -1,0 +1,28 @@
+@import '../../../scss/mixins';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-l-xl);
+  .title {
+    color: var(--clr-primary);
+    text-align: center;
+    grid-column: 1/-1;
+    margin-top: 100px;
+  }
+
+  .spinner {
+    align-items: center;
+    align-content: center;
+    & > * {
+      flex-basis: 100%;
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}

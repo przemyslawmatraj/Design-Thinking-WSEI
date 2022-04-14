@@ -6,6 +6,7 @@ import Button from '../../components/atoms/Button'
 import resendEmail from '../../utils/resendEmail'
 import validateEmail from '../../utils/validateEmail'
 import getMessages from './messages'
+import deleteAccount from '../../utils/deleteAccount'
 
 const Message = ({ type, status, email, ...props }) => {
   const [loading, setLoading] = useState(true)
@@ -14,7 +15,10 @@ const Message = ({ type, status, email, ...props }) => {
   const queryParams = new URLSearchParams(window.location.search)
   const emailQuery = email || queryParams.get('email') || null
   const tokenQuery = queryParams.get('token') || null
-
+  const confirmedDeletion = queryParams.get('confirmed') || null
+  if (confirmedDeletion) {
+    deleteAccount()
+  }
   useEffect(() => {
     const checkType = async () => {
       if (type === 'validate' && tokenQuery) {
@@ -35,6 +39,7 @@ const Message = ({ type, status, email, ...props }) => {
     const message = await resendEmail(emailQuery)
     setMessage(message)
   }
+
   return (
     <>
       <div className={css.main} {...props}>

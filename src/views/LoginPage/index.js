@@ -33,9 +33,16 @@ const LoginPage = () => {
 
   const checkRole = (role, data) => {
     if (data?.roles?.some(({ role: r }) => r === role)) {
+      if (data.roles.some(({ role: r }) => r === 'TEST')) {
+        return '/user/dashboard'
+      }
       return `/${role.toLowerCase()}/dashboard`
     }
     return false
+  }
+
+  const goToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const saveToken = (token) => {
@@ -84,9 +91,17 @@ const LoginPage = () => {
           })
           .then((res) => {
             setAuth({ data: res.data, accessToken: authtoken })
-            navigate(location.state?.from || checkRole('ADMIN', res.data) || checkRole('USER', res.data), {
-              replace: true,
-            })
+            console.log(res.data)
+            goToTop()
+            navigate(
+              location.state?.from ||
+                checkRole('ADMIN', res.data) ||
+                checkRole('USER', res.data) ||
+                checkRole('TEST', res.data),
+              {
+                replace: true,
+              }
+            )
           })
           .catch((err) => {
             console.log(err)

@@ -30,6 +30,13 @@ input {
   }
 }
 
+textarea {
+  &::placeholder {
+    color: var(--clr-lightgray);
+    font-style: italic;
+  }
+}
+
 input[type='text'],
 input[type='textarea'],
 input[type='email'] {

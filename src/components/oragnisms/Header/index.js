@@ -9,7 +9,7 @@ const Header = () => {
   const [isOpen, setOpen] = useState(false)
 
   const toggleBurger = () => {
-    setOpen(!isOpen)
+    window.innerWidth < 1200 && setOpen(!isOpen)
   }
 
   return (

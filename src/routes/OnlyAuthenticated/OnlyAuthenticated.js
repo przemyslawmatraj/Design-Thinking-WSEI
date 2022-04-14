@@ -4,18 +4,22 @@ import { useLocation, useNavigate, Navigate, Outlet } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import Message from '../../views/Message'
 import axios from '../../utils/axios'
-
+import { ROLES } from '../../constants/roles'
 const OnlyAuthenticated = ({ allowed }) => {
   const { auth, setAuth } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
-    const checkRole = (role, data) => {
-      if (data?.roles?.some(({ role: r }) => r === role)) {
-        return `/${role.toLowerCase()}/${location.pathname.split('/')[2]}`
-      }
-      return false
+    const checkRole = (data) => {
+      ROLES.forEach((role) => {
+        if (data?.roles?.some(({ role: r }) => r === role)) {
+          if (data.roles.some(({ role: r }) => r === 'TEST')) {
+            return '/user/dashboard'
+          }
+          return `/${role.toLowerCase()}/dashboard`
+        }
+      })
     }
     const token = localStorage.getItem('token') || null
     if (token && !auth.data) {

@@ -5,8 +5,8 @@ const messages = {
       description: 'Możesz się teraz zalogować.',
       buttons: [
         {
-          name: 'Zaloguj się',
-          path: '/login',
+          name: 'Przejdź do panelu',
+          path: '/user/dashboard',
           type: 'link',
         },
       ],
@@ -127,6 +127,70 @@ const messages = {
         {
           name: 'Powrót do strony głównej',
           path: '/user/dashboard',
+          type: 'link',
+        },
+      ],
+    },
+  },
+  deleteAccount: {
+    success: {
+      title: 'Konto zostało usunięte',
+      description: 'Twoje konto zostało usunięte.',
+      buttons: [
+        {
+          name: 'Powrót do strony głównej',
+          path: '/',
+          type: 'link',
+        },
+      ],
+    },
+    question: {
+      title: 'Czy na pewno chcesz usunąć swoje konto?',
+      description: 'Usunięcie konta jest nieodwracalne.',
+      buttons: [
+        {
+          name: 'Tak',
+          path: '?confirmed=true',
+          type: 'link',
+        },
+        {
+          name: 'Nie',
+          path: '/user/dashboard',
+          type: 'link',
+        },
+      ],
+    },
+    error: {
+      title: 'Nie udało się usunąć konta',
+      description: 'Wystąpił błąd podczas usuwania konta. Spróbuj ponownie lub skontaktuj się z administratorem.',
+      buttons: [
+        {
+          name: 'Powrót do strony głównej',
+          path: '/user/dashboard',
+          type: 'link',
+        },
+      ],
+    },
+  },
+  changePassword: {
+    success: {
+      title: 'Hasło zostało zmienione',
+      description: 'Twoje hasło zostało zmienione.',
+      buttons: [
+        {
+          name: 'Powrót do strony głównej',
+          path: '/dashboard',
+          type: 'link',
+        },
+      ],
+    },
+    error: {
+      title: 'Nie udało się zmienić hasła',
+      description: 'Wystąpił błąd podczas zmiany hasła. Spróbuj ponownie lub skontaktuj się z administratorem.',
+      buttons: [
+        {
+          name: 'Powrót do strony głównej',
+          path: '/dashboard',
           type: 'link',
         },
       ],

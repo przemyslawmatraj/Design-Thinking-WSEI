@@ -1,5 +1,6 @@
 import regulations from '../../../assets/docs/regulamin_konkursu_WSEI_Ep.docx'
-const naviagationElements = {
+
+const navigationElements = {
   register: {
     name: 'Zarejestruj się',
     path: '/register',
@@ -51,8 +52,8 @@ const naviagationElements = {
     type: 'link',
   },
   adminSettings: {
-    name: 'Ustawienia',
-    path: '/admin/settings',
+    name: 'Ustawienia hasła',
+    path: '/changePassword',
     type: 'link',
   },
   idea: {
@@ -62,7 +63,7 @@ const naviagationElements = {
   },
   ideaList: {
     name: 'Lista pomysłów',
-    path: '/admin/ideaList',
+    path: '/admin/userList',
     type: 'link',
   },
   userDashboard: {
@@ -78,30 +79,29 @@ const naviagationElements = {
 }
 
 export const landingPageNavbar = [
-  naviagationElements.elevatorPitch,
-  naviagationElements.about,
-  naviagationElements.news,
-  naviagationElements.team,
-  naviagationElements.contact,
-  naviagationElements.login,
-  naviagationElements.register,
+  navigationElements.elevatorPitch,
+  navigationElements.about,
+  navigationElements.news,
+  navigationElements.team,
+  navigationElements.contact,
+  navigationElements.login,
+  navigationElements.register,
 ]
 
 export const userDashboardNavbar = [
-  naviagationElements.userDashboard,
-  naviagationElements.idea,
-  naviagationElements.userSettings,
-  naviagationElements.regulations,
-  naviagationElements.contact,
-  naviagationElements.logout,
+  navigationElements.userDashboard,
+  navigationElements.idea,
+  navigationElements.userSettings,
+  navigationElements.regulations,
+  navigationElements.contact,
+  navigationElements.logout,
 ]
 
 export const adminDashboardNavbar = [
-  naviagationElements.adminDashboard,
-  naviagationElements.ideaList,
-  naviagationElements.adminSettings,
-  naviagationElements.regulations,
-  naviagationElements.logout,
+  navigationElements.adminDashboard,
+  navigationElements.ideaList,
+  navigationElements.adminSettings,
+  navigationElements.logout,
 ]
 const variants = { landingPageNavbar, userDashboardNavbar, adminDashboardNavbar }
 

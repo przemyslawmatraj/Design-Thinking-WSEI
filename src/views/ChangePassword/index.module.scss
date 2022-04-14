@@ -1,33 +1,40 @@
-.title {
-  h1 {
-    color: var(--clr-primary);
-    margin-top: 100px;
-    text-align: center;
-    font-size: var(--step-4);
-  }
-  h2 {
-    text-align: center;
-    font-size: var(--step-3);
-  }
+.green {
+  color: var(--clr-primary);
+}
+.gray {
+  color: var(--clr-lightgray);
 }
 
 .star {
   color: var(--clr-secondary);
-  font-size: var(--step-2);
-  margin-right: 10px;
 }
 
-.bottom {
+.changePassword {
   display: flex;
   justify-content: center;
-  .stepTitle {
-    color: var(--clr-primary);
-  }
-  .form {
+  flex-direction: column;
+  form {
     flex: 1 0 70%;
     min-width: 300px;
     margin-bottom: 100px;
     .stepOne {
+      &Submit {
+        display: flex;
+        justify-content: space-between;
+      }
+      &PwdDots {
+        display: flex;
+        flex-direction: column;
+        margin-block: 20px;
+        & > span {
+          margin-block: 8px;
+          margin-left: 13px;
+          font-size: var(--step--1);
+        }
+        & > * > svg {
+          margin-right: 5px;
+        }
+      }
       &Group {
         margin-block: 50px;
       }
@@ -82,23 +89,11 @@
           color: var(--clr-white);
           cursor: not-allowed;
         }
-        &:last-of-type {
-          background-color: var(--clr-error);
-        }
       }
       &Submit {
         display: flex;
         justify-content: space-between;
       }
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .bottom {
-    .form {
-      padding: 65px var(--space-l-xl);
-      box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
     }
   }
 }

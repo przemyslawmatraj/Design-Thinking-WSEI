@@ -1,4 +1,4 @@
-@mixin flex($direction: null, $justify: null, $align: null, $wrap: null) {
+@mixin flex($direction: null, $justify: null, $align: null, $wrap: null, $row-gap: null, $column-gap: null) {
   display: flex;
   @if $direction != null {
     flex-direction: $direction;
@@ -11,5 +11,11 @@
   }
   @if $wrap != null {
     flex-wrap: $wrap;
+  }
+  @if $row-gap != null {
+    row-gap: $row-gap;
+  }
+  @if $column-gap != null {
+    column-gap: $column-gap;
   }
 }

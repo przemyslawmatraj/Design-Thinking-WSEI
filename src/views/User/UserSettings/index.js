@@ -6,7 +6,7 @@ import Container from '../../../components/Layout/Container'
 import axios from '../../../utils/axios'
 import clsx from 'clsx'
 import { default as StepTwo } from '../../../components/oragnisms/MemberForm'
-
+import { useNavigate, Link } from 'react-router-dom'
 const USER_REGEX = /^[A-Z\s].{2,}$/
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 
@@ -14,6 +14,8 @@ const UserSettings = () => {
   const {
     auth: { data },
   } = useAuth()
+
+  const navigate = useNavigate()
 
   const userRef = useRef()
   const errRef = useRef()
@@ -151,6 +153,10 @@ const UserSettings = () => {
     })
   }
 
+  const handdleDeleteAccount = () => {
+    navigate('/user/deleteAccount')
+  }
+
   return (
     <Container>
       <div className={css.title}>
@@ -183,7 +189,7 @@ const UserSettings = () => {
                         <input
                           type="text"
                           id="user"
-                          placeholder='np. "Team Rocket"'
+                          placeholder='np. "Team Pitch Polska"'
                           className={clsx({
                             [css.stepOneInput]: true,
                             [css.stepOneInputError]: !userFocus && user && !validName,
@@ -225,6 +231,9 @@ const UserSettings = () => {
                         />
                       </label>
                     </div>
+                    <div className={css.stepOneGroup}>
+                      chcesz zmienić hasło? <Link to="/changePassword">kliknij tutaj</Link>
+                    </div>
                   </div>
                   <StepTwo
                     members={members}
@@ -237,6 +246,9 @@ const UserSettings = () => {
                   <div className={css.stepOneSubmit}>
                     <button type="submit" className={css.stepOneButton} disabled={!validName || !validMembers}>
                       Zatwierdź zmiany
+                    </button>
+                    <button type="button" onClick={handdleDeleteAccount} className={css.stepOneButton}>
+                      Usunięcie konta
                     </button>
                   </div>
                 </form>
