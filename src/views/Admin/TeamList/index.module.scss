@@ -1,0 +1,5 @@
+@import '../../../scss/mixins';
+
+.wrapper {
+  @include flex($direction: row, $wrap: wrap, $row-gap: 29px, $column-gap: 48px);
+}
