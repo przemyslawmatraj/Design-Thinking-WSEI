@@ -43,7 +43,6 @@ const Announcement = () => {
         setError('')
         setSuccess(true)
         setLoading(false)
-        console.log(res)
       })
       .catch((err) => {
         setError('Coś poszło nie tak')

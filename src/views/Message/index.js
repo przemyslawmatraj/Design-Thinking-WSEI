@@ -41,7 +41,6 @@ const Message = ({ type, status, email, ...props }) => {
   }
 
   return (
-    <>
       <div className={css.main} {...props}>
         <div className={css.message}>
           <h1 className={css.title}>
@@ -73,7 +72,6 @@ const Message = ({ type, status, email, ...props }) => {
           </div>
         </div>
       </div>
-    </>
   )
 }
 

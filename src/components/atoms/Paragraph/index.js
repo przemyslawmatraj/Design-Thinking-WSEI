@@ -7,12 +7,10 @@ const Paragraph = ({ tag, title, color, content }) => {
   const Tag = tag
 
   return (
-    <>
       <div className={css.paragraph}>
         <Tag className={css[color || 'black']}>{title}</Tag>
         {content && <p className={css.paragraph}>{content}</p>}
       </div>
-    </>
   )
 }
 

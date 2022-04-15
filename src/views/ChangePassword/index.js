@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react'
-import PropTypes from 'prop-types'
 // eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss'
 import useAuth from '../../hooks/useAuth'
@@ -85,7 +84,6 @@ const ChangePassword = () => {
       .then((res) => {
         setLoading(false)
         setSuccess(true)
-        console.log(res)
       })
       .catch((err) => {
         setLoading(false)
@@ -215,6 +213,5 @@ const ChangePassword = () => {
   )
 }
 
-ChangePassword.propTypes = {}
 
 export default ChangePassword

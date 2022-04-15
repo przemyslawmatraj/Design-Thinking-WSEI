@@ -195,7 +195,6 @@ const RegisterPage = () => {
 
   return (
     <Container>
-      <>
         {success ? (
           <div className={css.success}>
             {response?.status && success ? (
@@ -433,7 +432,6 @@ const RegisterPage = () => {
             </div>
           </>
         )}
-      </>
     </Container>
   )
 }

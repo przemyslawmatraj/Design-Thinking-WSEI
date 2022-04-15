@@ -12,7 +12,6 @@ const Cover = ({ children, delay }) => {
     }
   }, []);
   return (
-    <>
       <div className={css.overlaySection} ref={ref}>
         <div className={css.overlay}>
           <div
@@ -45,7 +44,6 @@ const Cover = ({ children, delay }) => {
         </div>
         {children}
       </div>
-    </>
   );
 };
 Cover.propTypes = {

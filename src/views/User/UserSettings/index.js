@@ -168,7 +168,6 @@ const UserSettings = () => {
       <div className={css.data}>
         <Container>
           <>
-            <>
               {loading && 'Ładownie...'}
               <div className={css.bottom}>
                 <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
@@ -253,7 +252,6 @@ const UserSettings = () => {
                   </div>
                 </form>
               </div>
-            </>
           </>
         </Container>
       </div>

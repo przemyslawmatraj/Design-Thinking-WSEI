@@ -7,7 +7,6 @@ import Stats from '../../../components/oragnisms/Stats'
 import Spinner from '../../../components/molecules/Spinner'
 import Announcement from '../../../components/oragnisms/Announcement'
 const AdminDashboard = () => (
-  <>
     <Container>
       <div className={css.wrapper}>
         <h1 className={css.title}>Panel Administratora</h1>
@@ -19,7 +18,6 @@ const AdminDashboard = () => (
         <Announcement />
       </div>
     </Container>
-  </>
 )
 
 AdminDashboard.propTypes = {}

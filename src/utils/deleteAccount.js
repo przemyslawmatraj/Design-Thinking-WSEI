@@ -1,27 +1,25 @@
 import axios from './axios'
 import getMessages from '../views/Message/messages'
+import Token from './token'
 
-const getToken = () => {
-  return localStorage.getItem('token') || null
-}
 
 const deleteAccount = async () => {
   return await axios
     .delete('/deleteTeam', {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getToken()}`,
+        Authorization: `Bearer ${Token.get()}`,
       },
     })
     .then((res) => {
       const ok = res.status === 200 || res.status === 204
       if (ok) {
-        localStorage.removeItem('token')
+        Token.remove('token')
         window.location.reload(false)
       }
       return getMessages('deleteAccount')[ok ? 'success' : 'error']
     })
-    .catch((error) => {
+    .catch(() => {
       return getMessages('deleteAccount')['error']
     })
 }
