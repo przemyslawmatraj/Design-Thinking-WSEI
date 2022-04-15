@@ -259,6 +259,4 @@ const UserSettings = () => {
   )
 }
 
-UserSettings.propTypes = {}
-
 export default UserSettings

@@ -212,6 +212,4 @@ const ChangePassword = () => {
     </Container>
   )
 }
-
-
 export default ChangePassword
