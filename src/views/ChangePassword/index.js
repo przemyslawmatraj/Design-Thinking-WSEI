@@ -84,7 +84,6 @@ const ChangePassword = () => {
       .then((res) => {
         setLoading(false)
         setSuccess(true)
-        console.log(res)
       })
       .catch((err) => {
         setLoading(false)
@@ -213,5 +212,4 @@ const ChangePassword = () => {
     </Container>
   )
 }
-
 export default ChangePassword

@@ -7,7 +7,7 @@ const validateEmail = async (token) => {
     .then((res) => {
       return getMessages('validation')[res.status === 200 ? 'success' : 'error']
     })
-    .catch((error) => {
+    .catch(() => {
       return getMessages('validation')['error']
     })
 }

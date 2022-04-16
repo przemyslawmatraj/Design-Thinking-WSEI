@@ -8,7 +8,6 @@ import clsx from 'clsx'
 
 const NavElement = ({ elementName, path, toggle, color, type }) => {
   return (
-    <>
       <li className={css.element} onClick={toggle}>
         {type === 'link' && (
           <Link
@@ -33,7 +32,6 @@ const NavElement = ({ elementName, path, toggle, color, type }) => {
           </a>
         )}
       </li>
-    </>
   )
 }
 

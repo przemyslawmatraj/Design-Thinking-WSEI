@@ -5,6 +5,8 @@ import useAuth from '../../hooks/useAuth'
 import Message from '../../views/Message'
 import axios from '../../utils/axios'
 import { ROLES } from '../../constants/roles'
+import Token from '../../utils/token'
+
 const OnlyAuthenticated = ({ allowed }) => {
   const { auth, setAuth } = useAuth()
   const location = useLocation()
@@ -21,7 +23,7 @@ const OnlyAuthenticated = ({ allowed }) => {
         }
       })
     }
-    const token = localStorage.getItem('token') || null
+    const token = Token.get('token')
     if (token && !auth.data) {
       axios
         .get('/getUserData', {

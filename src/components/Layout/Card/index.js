@@ -4,7 +4,6 @@ import css from './index.module.scss'
 import clsx from 'clsx'
 
 const Card = ({ className, children, id }) => (
-  <>
     <div
       className={clsx({
         [css.cardDefault]: true,
@@ -14,7 +13,6 @@ const Card = ({ className, children, id }) => (
     >
       {children}
     </div>
-  </>
 )
 
 Card.propTypes = {

@@ -7,7 +7,7 @@ const resendEmail = (email) => {
     .then((res) => {
       return getMessages('resend')[res.status === 200 ? 'success' : 'error']
     })
-    .catch((error) => {
+    .catch(() => {
       return getMessages('resend')['error']
     })
 }

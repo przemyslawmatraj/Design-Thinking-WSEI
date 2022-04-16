@@ -5,9 +5,6 @@ import './index.module.scss'
 import Root from './views/Root'
 import { AuthProvider } from './context/AuthProvider'
 
-// import dotenv from 'dotenv';
-// dotenv.config();
-
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>

@@ -5,9 +5,11 @@ import clsx from 'clsx'
 import css from './index.module.scss'
 import axios from '../../utils/axios'
 import useAuth from '../../hooks/useAuth'
-
 import loginTop from '../../assets/graphics/loginTop.svg'
 import Container from '../../components/Layout/Container'
+
+import Token from '../../utils/token'
+
 const LoginPage = () => {
   const { setAuth } = useAuth()
 
@@ -45,10 +47,6 @@ const LoginPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const saveToken = (token) => {
-    localStorage.setItem('token', token)
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (email === '' || password === '') {
@@ -66,7 +64,7 @@ const LoginPage = () => {
         if (res.data.error) {
           setError('Błędny login lub hasło!')
         } else {
-          saveToken(res.data.token)
+          Token.add(res.data.token)
           return res.data.token
         }
       })
@@ -91,7 +89,6 @@ const LoginPage = () => {
           })
           .then((res) => {
             setAuth({ data: res.data, accessToken: authtoken })
-            console.log(res.data)
             goToTop()
             navigate(
               location.state?.from ||
@@ -111,7 +108,6 @@ const LoginPage = () => {
 
   return (
     <Container>
-      <>
         <div className={css.top}>
           <div className={css.title}>
             <h1>Elevator Pitch</h1>
@@ -176,7 +172,6 @@ const LoginPage = () => {
           </form>
           <div className={css.asideColumn}></div>
         </div>
-      </>
     </Container>
   )
 }

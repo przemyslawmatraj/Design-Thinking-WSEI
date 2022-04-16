@@ -1,0 +1,40 @@
+@import '../../../scss/mixins';
+
+.wrapper {
+  @include flex($direction: row, $wrap: wrap);
+  position: relative;
+  background-color: #fff;
+  padding: 40px;
+  justify-content: center;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.1);
+  max-width: 767px;
+  height: auto;
+  gap: 75px;
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 256px;
+    max-width: 257px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 80px;
+    padding-left: 20px;
+  }
+}
+
+.dataWrapper {
+  .title {
+    font-size: 30px;
+  }
+
+  .dataContent {
+    margin-bottom: 26px;
+  }
+
+  .statusTitle {
+    text-transform: uppercase;
+    color: var(--clr-primary);
+  }
+}
