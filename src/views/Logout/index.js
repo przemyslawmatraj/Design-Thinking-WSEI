@@ -8,11 +8,10 @@ const Logout = () => {
   const { logout } = useAuth()
 
   useEffect(() => {
-      logout()
-      Token.remove('token')
-    }, [])
+    logout()
+    Token.remove('token')
   })
-
   return <Message type="logOut" status="success" />
 }
+
 export default Logout

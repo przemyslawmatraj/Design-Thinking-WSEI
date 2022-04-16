@@ -14,6 +14,7 @@ import AdminDashboard from './Admin/AdminDashboard'
 import ChangePassword from './ChangePassword'
 import * as roles from '../constants/roles'
 import Dashboard from '../routes/Dashboard/Dashboard'
+import Teamlist from './Admin/TeamList/TeamList'
 
 function Root() {
   return (
@@ -40,8 +41,7 @@ function Root() {
           {/* admin routes */}
           <Route path="/admin" element={<OnlyAuthenticated allowed={[roles.ADMIN]} />}>
             <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="settings" element={<div>Ustawienia</div>} />
-            <Route path="userList" element={<div>Lista Pomysłów</div>} />
+            <Route path="userList" element={<Teamlist />} />
             <Route path="user" element={<div>Pomysł</div>} />
           </Route>
 

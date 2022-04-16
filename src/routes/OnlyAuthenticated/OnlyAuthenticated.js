@@ -4,7 +4,6 @@ import { useLocation, useNavigate, Navigate, Outlet } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import Message from '../../views/Message'
 import axios from '../../utils/axios'
-import { ROLES } from '../../constants/roles'
 import Token from '../../utils/token'
 
 const OnlyAuthenticated = ({ allowed }) => {
@@ -13,16 +12,6 @@ const OnlyAuthenticated = ({ allowed }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const checkRole = (data) => {
-      ROLES.forEach((role) => {
-        if (data?.roles?.some(({ role: r }) => r === role)) {
-          if (data.roles.some(({ role: r }) => r === 'TEST')) {
-            return '/user/dashboard'
-          }
-          return `/${role.toLowerCase()}/dashboard`
-        }
-      })
-    }
     const token = Token.get('token')
     if (token && !auth.data) {
       axios
@@ -35,7 +24,7 @@ const OnlyAuthenticated = ({ allowed }) => {
         })
         .then((res) => {
           setAuth({ data: res.data, accessToken: token })
-          navigate(location.state?.from || checkRole('ADMIN', res.data) || checkRole('USER', res.data), {
+          navigate(location.state?.from || `/${res.data.roles[0].role.toLowerCase()}/dashboard` || '/login', {
             replace: true,
           })
         })
@@ -49,7 +38,7 @@ const OnlyAuthenticated = ({ allowed }) => {
     return <Outlet />
   }
 
-  if (auth.data && auth?.data?.enabled === false) {
+  if (auth?.data?.enabled === false && auth?.data?.roles?.some(({ role }) => allowed.includes(role))) {
     return (
       <>
         <Message type="signIn" status="error" />
