@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import css from './index.module.scss'
 import useAuth from '../../../hooks/useAuth'
 import Container from '../../../components/Layout/Container'
-
+import date from '../../../components/molecules/Spinner/date.js'
 import img1 from '../../../assets/graphics/dashboard.svg'
 
 const UserDashboard = () => {
@@ -44,26 +44,27 @@ const UserDashboard = () => {
         <div>
           <h3>Zadania</h3>
           <ul>
-            <li>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur</p>
-            </li>
-            <li>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur</p>
-            </li>
-            <li>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur</p>
-            </li>
+            {date.map((item) => (
+              <li key={item.id}>
+                <p>
+                  {item.date} - {item.title}
+                </p>
+                <p></p>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
           <h3>Wazne daty</h3>
           <ul>
-            <li>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur</p>
-            </li>
-            <li>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur</p>
-            </li>
+            {date.map((item) => (
+              <li key={item.id}>
+                <p>
+                  {item.date} - {item.title}
+                </p>
+                <p></p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

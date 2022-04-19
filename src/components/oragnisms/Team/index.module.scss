@@ -15,7 +15,6 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    padding: 20px;
     border: 2px dotted var(--clr-gray);
 
     &:nth-child(2n) {
@@ -110,8 +109,6 @@
     }
   }
 
-  // I used calculator from https://www.desmos.com/calculator to set position for each person
-
   :global #person {
     &1 {
       left: 17%;
@@ -141,9 +138,9 @@
       left: 33%;
       bottom: 27%;
     }
-    &8 {
+    &11 {
       left: 50%;
-      bottom: 26%;
+      bottom: 35%;
     }
     &9 {
       left: 66%;
@@ -152,6 +149,10 @@
     &10 {
       left: 83%;
       bottom: 32%;
+    }
+    &8 {
+      left: 50%;
+      bottom: 5%;
     }
   }
 }

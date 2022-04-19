@@ -1,4 +1,4 @@
-import regulations from '../../../assets/docs/regulamin_konkursu_WSEI_Ep.docx'
+import regulations from '../../../assets/docs/regulamin_konkursu_WSEI_Ep.pdf'
 
 const navigationElements = {
   register: {

@@ -10,7 +10,7 @@ import { default as StepTwo } from '../../components/oragnisms/MemberForm'
 import Message from '../Message'
 import Container from '../../components/Layout/Container'
 
-import doc1 from '../../assets/docs/regulamin_konkursu_WSEI_Ep.docx'
+import doc1 from '../../assets/docs/regulamin_konkursu_WSEI_Ep.pdf'
 import registerTop from '../../assets/graphics/registerTop.svg'
 
 /* Regex */

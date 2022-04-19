@@ -43,6 +43,9 @@ const OnlyAuthenticated = ({ allowed }) => {
             withCredentials: true,
           })
           .then((res) => {
+            if (res.data === []) {
+              setTeams(['Brak drużyn'])
+            }
             setTeams(res.data)
           })
           .catch((err) => {
@@ -51,7 +54,7 @@ const OnlyAuthenticated = ({ allowed }) => {
       }
     }
     getData()
-  }, [allowed, auth.data, location.pathname, location.state?.from, navigate, setAuth, setTeams, teams, teams.data])
+  }, [teams.length])
 
   if (auth?.data?.enabled && auth?.data?.roles?.some(({ role }) => allowed.includes(role))) {
     return <Outlet />
