@@ -80,17 +80,17 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
 
   const handleAddMember = (isLeader = false) => {
     const initialMember = {
-      name: 'Przemo',
-      surname: 'Matraj',
-      email: 'osoba1@gmailk.com',
-      school: 'WSEI',
-      phoneNumber: '334466334',
+      name: '',
+      surname: '',
+      email: '',
+      school: '',
+      phoneNumber: '',
       isLeader: isLeader,
       address: {
-        street: 'Sezamkowa',
-        number: '12',
-        postal: '33-100',
-        city: 'Tarnów',
+        street: '',
+        number: '',
+        postal: '',
+        city: '',
       },
       errors: {
         name: null,

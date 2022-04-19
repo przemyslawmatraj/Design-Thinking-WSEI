@@ -50,7 +50,7 @@ const Contact = () => {
   return (
     <div className={css.container} id="contact">
       <h1 className={css.title}>Napisz do nas</h1>
-      <p className={css.description}>Lorem ipsum dolor sit amet , consectetur adipsicing elit.</p>
+      <p className={css.description}>Śmiało napisz do nas!</p>
       <div className={css.bottom}>
         {error && <p className={css.error}>{error}</p>}
         {success && <p className={css.success}>Wiadomość została wysłana!</p>}
