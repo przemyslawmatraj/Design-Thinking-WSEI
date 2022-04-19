@@ -35,43 +35,55 @@ const Message = ({ type, status, email, ...props }) => {
     checkType()
   })
 
+  const goToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const handleResendEmail = async () => {
     const message = await resendEmail(emailQuery)
     setMessage(message)
+    goToTop()
   }
 
   return (
-      <div className={css.main} {...props}>
-        <div className={css.message}>
-          <h1 className={css.title}>
-            {message && message.title}
-            {loading && 'Loading...'}
-          </h1>
-          <p className={css.description}>{message && message.description}</p>
-          <div className={css.buttons}>
-            {message &&
-              message.buttons?.map((button) =>
-                button.type === 'button' ? (
-                  <Button
-                    key={button.name}
-                    onClick={() => {
-                      emailQuery && handleResendEmail()
-                    }}
-                    tag="span"
-                    color="black"
-                    className={css.button}
-                  >
-                    {button.name}
-                  </Button>
-                ) : (
-                  <Link key={button.name} to={button.path} className={css.button}>
-                    {button.name}
-                  </Link>
-                )
-              )}
-          </div>
+    <div className={css.main} {...props}>
+      <div className={css.message}>
+        <h1 className={css.title}>
+          {message && message.title}
+          {loading && 'Loading...'}
+        </h1>
+        <p className={css.description}>{message && message.description}</p>
+        <div className={css.buttons}>
+          {message &&
+            message.buttons?.map((button) =>
+              button.type === 'button' ? (
+                <Button
+                  key={button.name}
+                  onClick={() => {
+                    emailQuery && handleResendEmail()
+                  }}
+                  tag="span"
+                  color="black"
+                  className={css.button}
+                >
+                  {button.name}
+                </Button>
+              ) : (
+                <Link
+                  key={button.name}
+                  to={button.path}
+                  onClick={() => {
+                    goToTop()
+                  }}
+                  className={css.button}
+                >
+                  {button.name}
+                </Link>
+              )
+            )}
         </div>
       </div>
+    </div>
   )
 }
 

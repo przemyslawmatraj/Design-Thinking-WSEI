@@ -16,7 +16,7 @@ const MainLayout = () => {
       <FullWidthContainer bgColor="gray">
         <Contact />
       </FullWidthContainer>
-      <FullWidthContainer bgColor="darkgray">
+      <FullWidthContainer bgColor="lightblack">
         <Footer />
       </FullWidthContainer>
     </>

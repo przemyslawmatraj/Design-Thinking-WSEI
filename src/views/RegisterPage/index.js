@@ -178,7 +178,6 @@ const RegisterPage = () => {
       .catch((err) => {
         setValidEmail(false)
         setLoading(false)
-        setSuccess(true)
         setErrMsg(
           'Wystąpił błąd podczas rejestracji, prawdopodobnie podany email juz istnieje lub masz kłopot z połączeniem. Spróbuj ponownie lub skontaktuj się z administratorem.'
         )
@@ -195,243 +194,243 @@ const RegisterPage = () => {
 
   return (
     <Container>
-        {success ? (
-          <div className={css.success}>
-            {response?.status && success ? (
-              <Message type="signUp" status={response?.status === 200 ? 'success' : 'error'} email={email} />
-            ) : (
-              <Message type="signUp" status={'error'} />
-            )}
+      {success ? (
+        <div className={css.success}>
+          {response?.status && success ? (
+            <Message type="signUp" status={response?.status === 200 ? 'success' : 'error'} email={email} />
+          ) : (
+            <Message type="signUp" status={'error'} />
+          )}
+        </div>
+      ) : (
+        <>
+          <div className={css.top}>
+            <div className={css.title}>
+              <h1>Elevator Pitch</h1>
+              <h2>Formularz rejestracyjny Konkursu</h2>
+            </div>
+            <img className={css.imgTop} src={registerTop} alt="Grafika przedstawiająca forumlarz rejestracyjny" />
           </div>
-        ) : (
-          <>
-            <div className={css.top}>
-              <div className={css.title}>
-                <h1>Elevator Pitch</h1>
-                <h2>Formularz rejestracyjny Konkursu</h2>
+          {loading && 'Ładownie...'}
+          <div className={css.bottom}>
+            <div className={css.asideColumn}></div>
+            <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
+              {errMsg && (
+                <p ref={errRef} className={css.formError} aria-live="assertive">
+                  {errMsg}
+                </p>
+              )}
+              <div className={css.stepOne}>
+                <h2 className={css.stepTitle}>Krok 1</h2>
+                <h3 className={css.stepSubTitle}>Wprowadź podstawowe dane zespołu</h3>
+                <div className={css.stepOneGroup}>
+                  <label htmlFor="user" className={css.stepOneLabel}>
+                    <span className={css.stepOneLabelText}>
+                      Nazwa zespołu:
+                      <span className={css.star}>*</span>
+                    </span>
+
+                    <input
+                      type="text"
+                      id="user"
+                      placeholder='np. "Team Rocket"'
+                      className={clsx({
+                        [css.stepOneInput]: true,
+                        [css.stepOneInputError]: !userFocus && user && !validName,
+                        [css.stepOneInputFocus]: userFocus,
+                        [css.stepOneInputSuccess]: validName,
+                      })}
+                      value={user}
+                      onChange={(e) => setUser(e.target.value)}
+                      onFocus={() => setUserFocus(true)}
+                      onBlur={() => setUserFocus(false)}
+                      required
+                      aria-invalid={!validName}
+                      aria-describedby="user-err"
+                      ref={userRef}
+                      autoComplete="nope"
+                    />
+                  </label>
+                  {userFocus && user && !validName && (
+                    <span id="user-err" className={css.stepOneError}>
+                      Nazwa powinna rozpoczynać się od duzej litery oraz składać się z przynajmniej 4 znaków
+                    </span>
+                  )}
+                </div>
+                <div className={css.stepOneGroup}>
+                  <label htmlFor="email" className={css.stepOneLabel}>
+                    <span className={css.stepOneLabelText}>
+                      Email:
+                      <span className={css.star}>*</span>
+                    </span>
+                    <input
+                      type="text"
+                      id="email"
+                      placeholder="Wpisz email"
+                      className={clsx({
+                        [css.stepOneInput]: true,
+                        [css.stepOneInputError]: !emailFocus && email && !validEmail,
+                        [css.stepOneInputFocus]: emailFocus,
+                        [css.stepOneInputSuccess]: validEmail,
+                      })}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      onFocus={() => setEmailFocus(true)}
+                      onBlur={() => setEmailFocus(false)}
+                      required
+                      aria-invalid={!validEmail}
+                      aria-describedby="email-err"
+                      autoComplete="nope"
+                    />
+                  </label>
+                  {emailFocus && email && !validEmail && (
+                    <span id="email-err" className={css.stepOneError}>
+                      Email jest niepoprawny
+                    </span>
+                  )}
+                </div>
+                <div className={css.stepOneGroup}>
+                  <label htmlFor="pwd" className={css.stepOneLabel}>
+                    <span className={css.stepOneLabelText}>
+                      Hasło:<span className={css.star}>*</span>
+                    </span>
+                    <input
+                      type="password"
+                      id="pwd"
+                      placeholder="Wpisz hasło"
+                      className={clsx({
+                        [css.stepOneInput]: true,
+                        [css.stepOneInputError]: !pwdFocus && pwd && !validPwd,
+                        [css.stepOneInputFocus]: pwdFocus,
+                        [css.stepOneInputSuccess]: validPwd,
+                      })}
+                      value={pwd}
+                      onChange={(e) => setPwd(e.target.value.trim())}
+                      onFocus={() => setPwdFocus(true)}
+                      onBlur={() => setPwdFocus(false)}
+                      aria-invalid={!validPwd}
+                      aria-describedby="pwd-err"
+                      autoComplete="nope"
+                      required
+                    />
+                  </label>
+                  {pwdFocus && pwd && !validPwd && (
+                    <span id="pwd-err" className={css.stepOneError}>
+                      Wprowadź poprawne hasło
+                    </span>
+                  )}
+                  <div className={css.stepOnePwdDots}>
+                    <span
+                      className={clsx({
+                        [css.gray]: !pwdDot1,
+                        [css.green]: pwdDot1,
+                      })}
+                    >
+                      <FontAwesomeIcon icon={faCircle} />
+                      Przynajmniej 8 znaków
+                    </span>
+                    <span
+                      className={clsx({
+                        [css.gray]: !pwdDot2,
+                        [css.green]: pwdDot2,
+                      })}
+                    >
+                      <FontAwesomeIcon icon={faCircle} />
+                      Przynajmniej 1 mała litera
+                    </span>
+                    <span
+                      className={clsx({
+                        [css.gray]: !pwdDot4,
+                        [css.green]: pwdDot4,
+                      })}
+                    >
+                      <FontAwesomeIcon icon={faCircle} />
+                      Przynajmniej 1 duza litera
+                    </span>
+                    <span
+                      className={clsx({
+                        [css.gray]: !pwdDot3,
+                        [css.green]: pwdDot3,
+                      })}
+                    >
+                      <FontAwesomeIcon icon={faCircle} />
+                      Przynajmniej 1 liczba
+                    </span>
+                  </div>
+                </div>
+                <div className={css.stepOneGroup}>
+                  <label htmlFor="match" className={css.stepOneLabel}>
+                    <span className={css.stepOneLabelText}>
+                      Powtórz hasło:
+                      <span className={css.star}>*</span>
+                    </span>
+                    <input
+                      type="password"
+                      id="match"
+                      className={clsx({
+                        [css.stepOneInput]: true,
+                        [css.stepOneInputError]: !matchFocus && matchPwd && !validMatch,
+                        [css.stepOneInputFocus]: matchFocus,
+                        [css.stepOneInputSuccess]: matchPwd && validMatch,
+                      })}
+                      value={matchPwd}
+                      onChange={(e) => setMatchPwd(e.target.value.trim())}
+                      onFocus={() => setMatchFocus(true)}
+                      onBlur={() => setMatchFocus(false)}
+                      aria-invalid={!validMatch}
+                      aria-describedby="pwdmatch-err"
+                      autoComplete="nope"
+                      required
+                    />
+                  </label>
+                  {matchFocus && matchPwd && !validMatch && (
+                    <span id="pwdmatch-err" className={css.stepOneError}>
+                      Hasła nie są identyczne
+                    </span>
+                  )}
+                </div>
               </div>
-              <img className={css.imgTop} src={registerTop} alt="Grafika przedstawiająca forumlarz rejestracyjny" />
-            </div>
-            {loading && 'Ładownie...'}
-            <div className={css.bottom}>
-              <div className={css.asideColumn}></div>
-              <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
-                {errMsg && (
-                  <p ref={errRef} className={css.formError} aria-live="assertive">
-                    {errMsg}
-                  </p>
-                )}
-                <div className={css.stepOne}>
-                  <h2 className={css.stepTitle}>Krok 1</h2>
-                  <h3 className={css.stepSubTitle}>Wprowadź podstawowe dane zespołu</h3>
-                  <div className={css.stepOneGroup}>
-                    <label htmlFor="user" className={css.stepOneLabel}>
-                      <span className={css.stepOneLabelText}>
-                        Nazwa zespołu:
-                        <span className={css.star}>*</span>
-                      </span>
+              <StepTwo
+                members={members}
+                setMembers={setMembers}
+                setValidMembers={setValidMembers}
+                validMembers={validMembers}
+                success={success}
+                membersCount={membersCount}
+              />
+              <h2 className={css.stepTitle}>Krok 3</h2>
+              <h3 className={css.stepSubTitle}>Przeczytaj i zaakceptuj regulamin konkursu</h3>
+              <div className={css.stepOneSubmit}>
+                <label className={css.checkbox}>
+                  <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
+                  Akceptuje postanowienia <a href={doc1}>Regulaminu</a>
+                  <span className={css.star}>*</span>
+                </label>
+                <label className={css.checkbox}>
+                  <input type="checkbox" checked={checked2} onChange={() => setChecked2(!checked2)} />
+                  Wyrazam zgodę na przetwarzanie danych osobowych zgodnie z ustawą o ochronie danych osobowych w związku
+                  z rejestracją zespołu. Podanie danych jest dobrowolne, ale niezbędne do przetworzenia prośby o
+                  rejestrację zespołu. Zostatem poinformowany, Przysługuje mi prawo dostepu do swoich danych, możliwości
+                  ich poprawiania, żądania zaprzestania ich przetwarzania. Administratorem danych osobowych jest Wysza
+                  Szkoła Ekonomii i Informatyki w Krakowie.
+                  <span className={css.star}>*</span>
+                </label>
 
-                      <input
-                        type="text"
-                        id="user"
-                        placeholder='np. "Team Rocket"'
-                        className={clsx({
-                          [css.stepOneInput]: true,
-                          [css.stepOneInputError]: !userFocus && user && !validName,
-                          [css.stepOneInputFocus]: userFocus,
-                          [css.stepOneInputSuccess]: validName,
-                        })}
-                        value={user}
-                        onChange={(e) => setUser(e.target.value)}
-                        onFocus={() => setUserFocus(true)}
-                        onBlur={() => setUserFocus(false)}
-                        required
-                        aria-invalid={!validName}
-                        aria-describedby="user-err"
-                        ref={userRef}
-                        autoComplete="nope"
-                      />
-                    </label>
-                    {userFocus && user && !validName && (
-                      <span id="user-err" className={css.stepOneError}>
-                        Nazwa powinna rozpoczynać się od duzej litery oraz składać się z przynajmniej 4 znaków
-                      </span>
-                    )}
-                  </div>
-                  <div className={css.stepOneGroup}>
-                    <label htmlFor="email" className={css.stepOneLabel}>
-                      <span className={css.stepOneLabelText}>
-                        Email:
-                        <span className={css.star}>*</span>
-                      </span>
-                      <input
-                        type="text"
-                        id="email"
-                        placeholder="Wpisz email"
-                        className={clsx({
-                          [css.stepOneInput]: true,
-                          [css.stepOneInputError]: !emailFocus && email && !validEmail,
-                          [css.stepOneInputFocus]: emailFocus,
-                          [css.stepOneInputSuccess]: validEmail,
-                        })}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onFocus={() => setEmailFocus(true)}
-                        onBlur={() => setEmailFocus(false)}
-                        required
-                        aria-invalid={!validEmail}
-                        aria-describedby="email-err"
-                        autoComplete="nope"
-                      />
-                    </label>
-                    {emailFocus && email && !validEmail && (
-                      <span id="email-err" className={css.stepOneError}>
-                        Email jest niepoprawny
-                      </span>
-                    )}
-                  </div>
-                  <div className={css.stepOneGroup}>
-                    <label htmlFor="pwd" className={css.stepOneLabel}>
-                      <span className={css.stepOneLabelText}>
-                        Hasło:<span className={css.star}>*</span>
-                      </span>
-                      <input
-                        type="password"
-                        id="pwd"
-                        placeholder="Wpisz hasło"
-                        className={clsx({
-                          [css.stepOneInput]: true,
-                          [css.stepOneInputError]: !pwdFocus && pwd && !validPwd,
-                          [css.stepOneInputFocus]: pwdFocus,
-                          [css.stepOneInputSuccess]: validPwd,
-                        })}
-                        value={pwd}
-                        onChange={(e) => setPwd(e.target.value.trim())}
-                        onFocus={() => setPwdFocus(true)}
-                        onBlur={() => setPwdFocus(false)}
-                        aria-invalid={!validPwd}
-                        aria-describedby="pwd-err"
-                        autoComplete="nope"
-                        required
-                      />
-                    </label>
-                    {pwdFocus && pwd && !validPwd && (
-                      <span id="pwd-err" className={css.stepOneError}>
-                        Wprowadź poprawne hasło
-                      </span>
-                    )}
-                    <div className={css.stepOnePwdDots}>
-                      <span
-                        className={clsx({
-                          [css.gray]: !pwdDot1,
-                          [css.green]: pwdDot1,
-                        })}
-                      >
-                        <FontAwesomeIcon icon={faCircle} />
-                        Przynajmniej 8 znaków
-                      </span>
-                      <span
-                        className={clsx({
-                          [css.gray]: !pwdDot2,
-                          [css.green]: pwdDot2,
-                        })}
-                      >
-                        <FontAwesomeIcon icon={faCircle} />
-                        Przynajmniej 1 mała litera
-                      </span>
-                      <span
-                        className={clsx({
-                          [css.gray]: !pwdDot4,
-                          [css.green]: pwdDot4,
-                        })}
-                      >
-                        <FontAwesomeIcon icon={faCircle} />
-                        Przynajmniej 1 duza litera
-                      </span>
-                      <span
-                        className={clsx({
-                          [css.gray]: !pwdDot3,
-                          [css.green]: pwdDot3,
-                        })}
-                      >
-                        <FontAwesomeIcon icon={faCircle} />
-                        Przynajmniej 1 liczba
-                      </span>
-                    </div>
-                  </div>
-                  <div className={css.stepOneGroup}>
-                    <label htmlFor="match" className={css.stepOneLabel}>
-                      <span className={css.stepOneLabelText}>
-                        Powtórz hasło:
-                        <span className={css.star}>*</span>
-                      </span>
-                      <input
-                        type="password"
-                        id="match"
-                        className={clsx({
-                          [css.stepOneInput]: true,
-                          [css.stepOneInputError]: !matchFocus && matchPwd && !validMatch,
-                          [css.stepOneInputFocus]: matchFocus,
-                          [css.stepOneInputSuccess]: matchPwd && validMatch,
-                        })}
-                        value={matchPwd}
-                        onChange={(e) => setMatchPwd(e.target.value.trim())}
-                        onFocus={() => setMatchFocus(true)}
-                        onBlur={() => setMatchFocus(false)}
-                        aria-invalid={!validMatch}
-                        aria-describedby="pwdmatch-err"
-                        autoComplete="nope"
-                        required
-                      />
-                    </label>
-                    {matchFocus && matchPwd && !validMatch && (
-                      <span id="pwdmatch-err" className={css.stepOneError}>
-                        Hasła nie są identyczne
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <StepTwo
-                  members={members}
-                  setMembers={setMembers}
-                  setValidMembers={setValidMembers}
-                  validMembers={validMembers}
-                  success={success}
-                  membersCount={membersCount}
-                />
-                <h2 className={css.stepTitle}>Krok 3</h2>
-                <h3 className={css.stepSubTitle}>Przeczytaj i zaakceptuj regulamin konkursu</h3>
-                <div className={css.stepOneSubmit}>
-                  <label className={css.checkbox}>
-                    <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
-                    Akceptuje postanowienia <a href={doc1}>Regulaminu</a>
-                    <span className={css.star}>*</span>
-                  </label>
-                  <label className={css.checkbox}>
-                    <input type="checkbox" checked={checked2} onChange={() => setChecked2(!checked2)} />
-                    Wyrazam zgodę na przetwarzanie danych osobowych zgodnie z ustawą o ochronie danych osobowych w
-                    związku z rejestracją zespołu. Podanie danych jest dobrowolne, ale niezbędne do przetworzenia prośby
-                    o rejestrację zespołu. Zostatem poinformowany, Przysługuje mi prawo dostepu do swoich danych,
-                    możliwości ich poprawiania, żądania zaprzestania ich przetwarzania. Administratorem danych osobowych
-                    jest Wysza Szkoła Ekonomii i Informatyki w Krakowie.
-                    <span className={css.star}>*</span>
-                  </label>
-
-                  <button
-                    type="submit"
-                    className={css.stepOneButton}
-                    disabled={
-                      !validName || !validPwd || !validMatch || !validEmail || !validMembers || !checked || !checked2
-                    }
-                  >
-                    Zarejestruj zespół
-                  </button>
-                </div>
-              </form>
-              <div className={css.asideColumn}></div>
-            </div>
-          </>
-        )}
+                <button
+                  type="submit"
+                  className={css.stepOneButton}
+                  disabled={
+                    !validName || !validPwd || !validMatch || !validEmail || !validMembers || !checked || !checked2
+                  }
+                >
+                  Zarejestruj zespół
+                </button>
+              </div>
+            </form>
+            <div className={css.asideColumn}></div>
+          </div>
+        </>
+      )}
     </Container>
   )
 }

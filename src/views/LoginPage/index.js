@@ -108,70 +108,70 @@ const LoginPage = () => {
 
   return (
     <Container>
-        <div className={css.top}>
-          <div className={css.title}>
-            <h1>Elevator Pitch</h1>
-            <h2>Logowanie do panelu</h2>
-          </div>
-          <img className={css.imgTop} src={loginTop} alt="ludzie wypełniający dokumenty" />
+      <div className={css.top}>
+        <div className={css.title}>
+          <h1>Elevator Pitch</h1>
+          <h2>Logowanie do panelu</h2>
         </div>
-        <div className={css.bottom}>
-          <div className={css.asideColumn}></div>
-          <form onSubmit={handleSubmit} className={css.form}>
-            <div className={css.stepOne}>
-              <h2 className={css.stepTitle}>Logowanie</h2>
-              <h3 className={css.stepSubTitle}>
-                Zaloguj się do platformy konkursu EP używając emaila zespołu oraz hasła:
-              </h3>
-              {error && (
-                <p ref={errRef} className={css.formError} aria-live="assertive">
-                  {error}
-                </p>
-              )}
-              <div className={css.stepOneGroup}>
-                <label htmlFor="email" className={css.stepOneLabel}>
-                  <span className={css.stepOneLabelText}>Email zespołu:</span>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="Email zespołu"
-                    className={clsx({
-                      [css.stepOneInput]: true,
-                      [css.stepOneInputError]: !!error,
-                      [css.stepOneInputSuccess]: !!email,
-                    })}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    ref={emailRef}
-                  />
-                </label>
-              </div>
-              <div className={css.stepOneGroup}>
-                <label htmlFor="password" className={css.stepOneLabel}>
-                  <span className={css.stepOneLabelText}>Hasło:</span>
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Hasło:"
-                    className={clsx({
-                      [css.stepOneInput]: true,
-                      [css.stepOneInputError]: !!error,
-                      [css.stepOneInputSuccess]: !!password,
-                    })}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </label>
-              </div>
-              <button type="submit" className={css.stepOneButton}>
-                Zaloguj się
-              </button>
+        <img className={css.imgTop} src={loginTop} alt="ludzie wypełniający dokumenty" />
+      </div>
+      <div className={css.bottom}>
+        <div className={css.asideColumn}></div>
+        <form onSubmit={handleSubmit} className={css.form}>
+          <div className={css.stepOne}>
+            <h2 className={css.stepTitle}>Logowanie</h2>
+            <h3 className={css.stepSubTitle}>
+              Zaloguj się do platformy konkursu EP używając emaila zespołu oraz hasła:
+            </h3>
+            {error && (
+              <p ref={errRef} className={css.formError} aria-live="assertive">
+                {error}
+              </p>
+            )}
+            <div className={css.stepOneGroup}>
+              <label htmlFor="email" className={css.stepOneLabel}>
+                <span className={css.stepOneLabelText}>Email zespołu:</span>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Email zespołu"
+                  className={clsx({
+                    [css.stepOneInput]: true,
+                    [css.stepOneInputError]: !!error,
+                    [css.stepOneInputSuccess]: !!email,
+                  })}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  ref={emailRef}
+                />
+              </label>
             </div>
-          </form>
-          <div className={css.asideColumn}></div>
-        </div>
+            <div className={css.stepOneGroup}>
+              <label htmlFor="password" className={css.stepOneLabel}>
+                <span className={css.stepOneLabelText}>Hasło:</span>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Hasło:"
+                  className={clsx({
+                    [css.stepOneInput]: true,
+                    [css.stepOneInputError]: !!error,
+                    [css.stepOneInputSuccess]: !!password,
+                  })}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <button type="submit" className={css.stepOneButton}>
+              Zaloguj się
+            </button>
+          </div>
+        </form>
+        <div className={css.asideColumn}></div>
+      </div>
     </Container>
   )
 }

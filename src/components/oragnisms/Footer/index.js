@@ -1,15 +1,21 @@
-import React from 'react';
+import React from 'react'
 
-import css from './index.module.scss';
-
-import Navbar from '../../molecules/Navbar';
+import css from './index.module.scss'
 
 const Footer = () => (
   <>
     <div className={css.container}>
-      <Navbar color="white" />
+      <div className={css.creators}>
+        Twórcy platformy:
+        <a href="https://github.com/przemyslawmatraj" className={css.github}>
+          Przemysław Matraj
+        </a>
+        <a href="https://github.com/adwas3213" className={css.github}>
+          Adam Wasylewicz
+        </a>
+      </div>
     </div>
   </>
-);
+)
 
-export default Footer;
+export default Footer

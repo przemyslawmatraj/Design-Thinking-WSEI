@@ -1,7 +1,7 @@
 @import '../../../scss/mixins';
 
 .wrapper {
-  @include flex($direction: row, $wrap: wrap);
+  @include flex($wrap: wrap);
   position: relative;
   background-color: #fff;
   padding: 40px;
@@ -10,6 +10,7 @@
   max-width: 767px;
   height: auto;
   gap: 75px;
+  transition: transform 0.3s ease-in-out;
 
   .img {
     width: 100%;
@@ -21,6 +22,10 @@
   @media screen and (min-width: 1200px) {
     padding: 80px;
     padding-left: 20px;
+  }
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
   }
 }
 

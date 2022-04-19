@@ -10,7 +10,7 @@ const Logout = () => {
   useEffect(() => {
     logout()
     Token.remove('token')
-  })
+  }, [])
   return <Message type="logOut" status="success" />
 }
 

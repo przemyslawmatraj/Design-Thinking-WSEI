@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import circleDocument from '../../../assets/graphics/circleDocument.svg'
 
-const Stats = ({ isEditable }) => (
+const Stats = ({ isEditable, teams }) => (
   <>
     <Card className={css.stats}>
       {isEditable && (
@@ -18,8 +18,8 @@ const Stats = ({ isEditable }) => (
       )}
       <img src={circleDocument} alt="" className={css.statsImage} />
       <div className={css.right}>
-        <Paragraph tag="h3" title="DZISIAJ ZAPISAŁO SIĘ" content="5 ZESPOŁÓW, 25 UCZESTNIKÓW" />
-        <Paragraph tag="h3" title="JEST ICH CORAZ WIECEJ " color="green" content="50 OSÓB W 10 ZESPOŁACH " />
+        <Paragraph tag="h3" title="DZISIAJ ZAPISAŁO SIĘ" content="Y ZESPOŁÓW, X UCZESTNIKÓW" />
+        <Paragraph tag="h3" title="W SUMIE UCZESTNICZY" color="green" content="X OSÓB W Y ZESPOŁACH " />
       </div>
     </Card>
   </>
@@ -27,6 +27,7 @@ const Stats = ({ isEditable }) => (
 
 Stats.propTypes = {
   isEditable: PropTypes.bool,
+  teams: PropTypes.object,
 }
 
 export default Stats

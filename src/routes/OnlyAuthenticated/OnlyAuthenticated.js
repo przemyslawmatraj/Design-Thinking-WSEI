@@ -7,32 +7,51 @@ import axios from '../../utils/axios'
 import Token from '../../utils/token'
 
 const OnlyAuthenticated = ({ allowed }) => {
-  const { auth, setAuth } = useAuth()
+  const { auth, setAuth, teams, setTeams } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
     const token = Token.get('token')
-    if (token && !auth.data) {
-      axios
-        .get('/getUserData', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        })
-        .then((res) => {
-          setAuth({ data: res.data, accessToken: token })
-          navigate(location.state?.from || `/${res.data.roles[0].role.toLowerCase()}/dashboard` || '/login', {
-            replace: true,
+    const getData = async () => {
+      if (token && !auth.data) {
+        axios
+          .get('/getUserData', {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
           })
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            setAuth({ data: res.data, accessToken: token })
+            navigate(location.state?.from || location.pathname || '/login', {
+              replace: true,
+            })
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+      if (token && auth?.data?.roles?.some(({ role }) => allowed.includes(role)) && teams.length === 0) {
+        axios
+          .get('/admin/getTeams', {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          })
+          .then((res) => {
+            setTeams(res.data)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     }
-  }, [auth.data, location.pathname, location.state?.from, navigate, setAuth])
+    getData()
+  }, [allowed, auth.data, location.pathname, location.state?.from, navigate, setAuth, setTeams, teams, teams.data])
 
   if (auth?.data?.enabled && auth?.data?.roles?.some(({ role }) => allowed.includes(role))) {
     return <Outlet />

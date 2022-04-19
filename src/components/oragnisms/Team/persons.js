@@ -1,44 +1,63 @@
+import img1 from '../../../assets/team/1.png'
+import img2 from '../../../assets/team/2.png'
+import img3 from '../../../assets/team/3.png'
+import img4 from '../../../assets/team/4.png'
+import img5 from '../../../assets/team/5.png'
+import img6 from '../../../assets/team/6.png'
+import img7 from '../../../assets/team/7.png'
+import img8 from '../../../assets/team/8.png'
+
 const persons = [
   {
     name: 'Szymon Świderek',
     role: 'Lider',
+    image: img5,
   },
   {
-    name: 'Mateusz Daszyk',
-    role: 'Wice Lider',
+    name: 'Ania Gołda',
+    role: 'Social Media',
+    image: img7,
   },
   {
     name: 'dr Ryszard Ćwiertniak',
-    role: 'Opiekun Zespołu',
+    role: 'Mentor',
+    image: img8,
   },
   {
-    name: 'Anna Nowak4',
-    role: 'Marketing',
+    name: 'Maciej Przybyła',
+    role: 'Rola',
+    image: img4,
   },
   {
-    name: 'Anna Nowak5',
-    role: 'Marketing',
+    name: 'Alicja Cap',
+    role: 'Rola',
+    image: img2,
   },
   {
     name: 'Przemysław Matraj',
     role: 'Frontend',
+    image: img3,
   },
   {
     name: 'Julia Kućmierczyk',
-    role: 'Frontend',
+    role: 'Grafika',
+    image: img1,
   },
   {
-    name: 'Anna Nowak8',
-    role: 'Marketing',
+    name: 'Agnieszka Filas',
+    role: 'Rola',
+    image: img6,
   },
   {
-    name: 'Anna Nowak9',
-    role: 'Marketing',
+    name: 'None name',
+    role: 'Rola',
+    image: null,
   },
   {
-    name: 'Anna Nowak10',
-    role: 'Marketing',
+    name: 'None name2',
+    role: 'Rola',
+    image: null,
   },
-];
+]
 
-export default persons;
+export default persons

@@ -21,7 +21,7 @@ const Team = () => (
           <img
             loading="lazy"
             className={css.personImage}
-            src={'https://thiscatdoesnotexist.com/'}
+            src={person.image != null ? person.image : `https://i.pravatar.cc/150?u=${person.name}`}
             alt="zdjęcie członka zespołu"
           />
           <h5>

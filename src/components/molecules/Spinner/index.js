@@ -7,8 +7,8 @@ const Spinner = () => (
   <>
     <div className={css.spinner}>
       <ul className={css.list}>
-        {date.map(({ title, date }, index) => (
-          <SpinnerElement key={title} count={index + 1} content={`${date} - ${title}`} />
+        {date.map(({ title, date, id }, index) => (
+          <SpinnerElement key={id} count={index + 1} content={`${date} - ${title}`} />
         ))}
       </ul>
     </div>
