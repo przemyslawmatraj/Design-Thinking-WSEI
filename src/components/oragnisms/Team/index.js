@@ -60,6 +60,8 @@ const Team = () => (
         { from: '#person8', to: '#person9' },
         { from: '#person9', to: '#teamLogo' },
         { from: '#person9', to: '#person10' },
+        { from: '#person9', to: '#person11' },
+        { from: '#person7', to: '#person11' },
       ]}
     />
   </>

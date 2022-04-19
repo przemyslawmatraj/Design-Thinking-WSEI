@@ -6,6 +6,9 @@ import img5 from '../../../assets/team/5.png'
 import img6 from '../../../assets/team/6.png'
 import img7 from '../../../assets/team/7.png'
 import img8 from '../../../assets/team/8.png'
+import img9 from '../../../assets/team/9.png'
+import img10 from '../../../assets/team/10.png'
+import img11 from '../../../assets/team/11.png'
 
 const persons = [
   {
@@ -15,7 +18,7 @@ const persons = [
   },
   {
     name: 'Ania Gołda',
-    role: 'Social Media',
+    role: 'Partnership Manager',
     image: img7,
   },
   {
@@ -25,12 +28,12 @@ const persons = [
   },
   {
     name: 'Maciej Przybyła',
-    role: 'Rola',
+    role: 'Marketing',
     image: img4,
   },
   {
     name: 'Alicja Cap',
-    role: 'Rola',
+    role: 'Social Media',
     image: img2,
   },
   {
@@ -40,23 +43,29 @@ const persons = [
   },
   {
     name: 'Julia Kućmierczyk',
-    role: 'Grafika',
+    role: 'Graphic Designer',
     image: img1,
   },
   {
+    name: 'Kamil Wicijewski',
+    role: 'Finances',
+    image: img10,
+  },
+  {
+    name: 'Oliwer Szyba',
+    role: 'Finances',
+    image: img11,
+  },
+  {
+    name: 'Marek Dominiec',
+    role: 'Support',
+    image: img9,
+  },
+
+  {
     name: 'Agnieszka Filas',
-    role: 'Rola',
+    role: 'UX Designer',
     image: img6,
-  },
-  {
-    name: 'None name',
-    role: 'Rola',
-    image: null,
-  },
-  {
-    name: 'None name2',
-    role: 'Rola',
-    image: null,
   },
 ]
 

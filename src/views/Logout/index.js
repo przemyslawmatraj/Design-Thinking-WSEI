@@ -10,6 +10,7 @@ const Logout = () => {
   useEffect(() => {
     logout()
     Token.remove('token')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return <Message type="logOut" status="success" />
 }

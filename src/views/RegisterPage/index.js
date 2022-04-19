@@ -10,7 +10,7 @@ import { default as StepTwo } from '../../components/oragnisms/MemberForm'
 import Message from '../Message'
 import Container from '../../components/Layout/Container'
 
-import doc1 from '../../assets/docs/regulamin_konkursu_WSEI_Ep.docx'
+import doc1 from '../../assets/docs/regulamin_konkursu_WSEI_Ep.pdf'
 import registerTop from '../../assets/graphics/registerTop.svg'
 
 /* Regex */
@@ -27,12 +27,12 @@ const RegisterPage = () => {
   const errRef = useRef()
 
   /* User State */
-  const [user, setUser] = useState('Team')
+  const [user, setUser] = useState('')
   const [validName, setValidName] = useState(false)
   const [userFocus, setUserFocus] = useState(false)
 
   /* Password State */
-  const [pwd, setPwd] = useState('Ciastko12')
+  const [pwd, setPwd] = useState('')
   const [validPwd, setValidPwd] = useState(false)
   const [pwdFocus, setPwdFocus] = useState(false)
 
@@ -43,12 +43,12 @@ const RegisterPage = () => {
   const [pwdDot4, setPwdDot4] = useState(false)
 
   /* Password Match State */
-  const [matchPwd, setMatchPwd] = useState('Ciastko12')
+  const [matchPwd, setMatchPwd] = useState('')
   const [validMatch, setValidMatch] = useState(false)
   const [matchFocus, setMatchFocus] = useState(false)
 
   /* Email State */
-  const [email, setEmail] = useState('jupila.orange@gmail.com')
+  const [email, setEmail] = useState('')
   const [validEmail, setValidEmail] = useState(false)
   const [emailFocus, setEmailFocus] = useState(false)
 

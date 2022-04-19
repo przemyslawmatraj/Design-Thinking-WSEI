@@ -196,6 +196,19 @@ const messages = {
       ],
     },
   },
+  testUser: {
+    error: {
+      title: 'Testowy uytkownik ma zablokowaną tą możliwość',
+      description: 'Przepraszamy, ale testowy użytkownik ma zablokowaną tą możliwość.',
+      buttons: [
+        {
+          name: 'Powrót do strony głównej',
+          path: '/user/dashboard',
+          type: 'link',
+        },
+      ],
+    },
+  },
 }
 
 const getMessages = (type) => {

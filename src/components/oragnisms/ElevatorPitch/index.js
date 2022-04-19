@@ -10,7 +10,7 @@ import img2 from '../../../assets/photos/studentGoals.png'
 import img3 from '../../../assets/photos/newSkills.png'
 import clsx from 'clsx'
 // import useParallax from '../../../hooks/useParallax'
-import regulations from '../../../assets/docs/regulamin_konkursu_WSEI_Ep.docx'
+import regulations from '../../../assets/docs/regulamin_konkursu_WSEI_Ep.pdf'
 
 const ElevatorPitch = () => {
   // const path = useRef()
