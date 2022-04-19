@@ -15,19 +15,50 @@ body {
 }
 
 body {
-  background-color: #fff;
-  color: black;
+  background-color: var(--clr-white);
+  color: var(--clr-darkgray);
 }
 
 img {
   max-width: 100%;
 }
 
-input,
+input {
+  &::placeholder {
+    color: var(--clr-lightgray);
+    font-style: italic;
+  }
+}
+
+textarea {
+  &::placeholder {
+    color: var(--clr-lightgray);
+    font-style: italic;
+  }
+}
+
 input[type='text'],
 input[type='textarea'],
 input[type='email'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--step--1);
+}
+
+a {
+  color: var(--clr-primary);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+[contenteditable='true']:focus {
+  outline: none;
 }

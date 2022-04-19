@@ -1,0 +1,25 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .message {
+    text-align: center;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
+    padding: 50px 100px;
+    max-width: 850px;
+    .description {
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+
+      .button {
+        margin-inline: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

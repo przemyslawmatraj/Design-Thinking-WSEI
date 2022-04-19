@@ -1,18 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './index.module.scss';
-import Parallax from '../../../hooks/parallax';
+import useParallax from '../../../hooks/useParallax';
 const Cover = ({ children, delay }) => {
   const ref = useRef();
   const [divOffset, setDivOffset] = useState(null);
-  let offsetY = Parallax();
+  let offsetY = useParallax();
   useEffect(() => {
     if (ref.current) {
       setDivOffset(ref.current.getBoundingClientRect());
     }
   }, []);
   return (
-    <>
       <div className={css.overlaySection} ref={ref}>
         <div className={css.overlay}>
           <div
@@ -45,7 +44,6 @@ const Cover = ({ children, delay }) => {
         </div>
         {children}
       </div>
-    </>
   );
 };
 Cover.propTypes = {

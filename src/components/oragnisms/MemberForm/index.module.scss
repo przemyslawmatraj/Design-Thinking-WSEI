@@ -1,0 +1,153 @@
+@import '../../../scss/mixins';
+
+.title {
+  h2 {
+    color: var(--clr-primary);
+  }
+  div {
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+}
+.school {
+  grid-column: 1/-1;
+}
+.error {
+  color: var(--clr-error);
+  margin-top: 10px;
+  grid-column: 1/-1;
+}
+.memberForm {
+  @include flex($direction: column);
+  margin-bottom: 130px;
+
+  .addMemberBtn {
+    @include flex($align: center);
+    margin-inline: auto;
+    background: none;
+    color: var(--clr-secondary);
+    border: 0;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    &:hover {
+      color: var(--clr-primary);
+    }
+    &Disabled {
+      &:hover {
+        color: var(--clr-lightgray);
+
+        animation: disabled 0.3s ease-in-out;
+        &::after {
+          content: 'Wypełnij poprawnie wszystkie pola!';
+          color: var(--clr-error);
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .member {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 100px;
+    background-color: rgb(250, 250, 250);
+    &Title {
+      @include flex($justify: space-between);
+      grid-column: 1/-1;
+      background-color: var(--clr-gray);
+      color: var(--clr-white);
+      h3 {
+        padding: 20px;
+        span {
+          color: var(--clr-primary);
+          font-size: var(--step-1);
+        }
+      }
+      button {
+        border-radius: 0;
+        border: 0;
+        background-color: var(--clr-secondary);
+        color: var(--clr-white);
+        padding-inline: 20px;
+        transition: all 0.1s ease-out;
+        &:hover {
+          background-color: var(--clr-primary);
+        }
+        &:active {
+          background-color: var(--clr-error);
+        }
+      }
+    }
+
+    h4 {
+      grid-column: 1/-1;
+      color: var(--clr-primary);
+    }
+    gap: 50px;
+    &Field {
+      @include flex($direction: column, $justify: space-between);
+      .error {
+        color: var(--clr-error);
+      }
+      label {
+        margin-bottom: 25px;
+        font-weight: 700;
+        font-size: var(--step-0);
+        .star {
+          color: var(--clr-secondary);
+        }
+      }
+
+      .input {
+        width: 100%;
+        background: var(--clr-white);
+        box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
+        padding: 13px 17px;
+        border: 0;
+        transition: box-shadow 0.2s ease-out;
+        &:focus,
+        &:focus-visible,
+        &:active {
+          outline: none;
+          border: 0;
+          box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1), inset 0 -4px 0 var(--clr-lightgray);
+        }
+        &Valid {
+          box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1), inset 0 -4px 0 var(--clr-primary);
+        }
+        &Error {
+          box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1), inset 0 -4px 0 var(--clr-error);
+        }
+      }
+    }
+  }
+}
+
+@keyframes disabled {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .memberForm {
+    .member {
+      grid-template-columns: 1fr 1fr;
+      &Field {
+        justify-content: flex-start;
+      }
+    }
+  }
+}

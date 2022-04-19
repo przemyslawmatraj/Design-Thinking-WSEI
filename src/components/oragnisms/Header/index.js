@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
-import css from './index.module.scss';
-import logo from '../../../assets/logo/bigLogo.svg';
-import Burger from '../../atoms/Burger';
-import Navbar from '../../molecules/Navbar';
-import clsx from 'clsx';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import css from './index.module.scss'
+import logo from '../../../assets/logo/bigLogo.svg'
+import Burger from '../../atoms/Burger'
+import Navbar from '../../molecules/Navbar'
+
 const Header = () => {
-  const [isOpen, setOpen] = useState(false);
-  console.log(isOpen);
+  const [isOpen, setOpen] = useState(false)
 
   const toggleBurger = () => {
-    setOpen(!isOpen);
-  };
+    window.innerWidth < 1200 && setOpen(!isOpen)
+  }
 
   return (
     <>
-      <header className={clsx(css.container)}>
-        <img loading="lazy" src={logo} className={clsx(css.logo)} alt="" />
+      <header className={css.container}>
+        <Link to="/">
+          <img loading="lazy" src={logo} className={css.logo} alt="" />
+        </Link>
         <Burger isOpen={isOpen} toggle={toggleBurger} />
         <Navbar toggle={toggleBurger} />
       </header>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

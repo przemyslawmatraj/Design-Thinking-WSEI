@@ -1,24 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import css from './index.module.scss';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import css from './index.module.scss'
+import clsx from 'clsx'
 
-import CircleGroup from '../../molecules/CircleGroup';
-import SectionInfo from '../../molecules/SectionInfo';
+import CircleGroup from '../../molecules/CircleGroup'
+import SectionInfo from '../../molecules/SectionInfo'
 
 const Baner = ({ className }) => (
   <>
     <div className={clsx(css.container, className)}>
-      <SectionInfo subTitle="Ready for future" title="Design Thinking Hub" header={1} button="Sprawdź" btnColor="black" btnPath="#about">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore earum repudiandae cumque doloremque, consequatur autem!
+      <SectionInfo
+        subTitle="Ready for future"
+        title="Design Thinking Hub"
+        header={1}
+        button="Sprawdź"
+        btnColor="black"
+        btnPath="#about"
+      >
+        <p>
+          Koło Naukowe Studentów WSEI – Design Thinking HuB to grupa ambitnych młodych ludzi, którzy rozwijają się
+          dzięki współpracy w zespole i osiągają korzyści zarówno indywidualne, jak i zawodowe z dzielenia się wiedzą,
+          opiniami oraz nowymi pomysłami w praktyce.
+        </p>
+        <p>
+          Praca w Design Thinking HuB przynosi studentom WSEI nowe możliwości rozwoju kreatywności w zakresie znacznie
+          wykraczającym poza program studiów.
+        </p>
       </SectionInfo>
       <CircleGroup section={1} className={css.circleGroup} />
     </div>
   </>
-);
+)
 
 Baner.propTypes = {
   className: PropTypes.string,
-};
+}
 
-export default Baner;
+export default Baner

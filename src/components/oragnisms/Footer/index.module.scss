@@ -1,5 +1,13 @@
 .container {
-  display: flex;
+  display: grid;
   width: 100%;
   justify-content: center;
+  .creators {
+    display: flex;
+    padding: 10px 60px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+  }
 }

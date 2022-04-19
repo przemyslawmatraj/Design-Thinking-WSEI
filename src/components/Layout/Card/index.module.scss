@@ -1,0 +1,8 @@
+@import '../../../scss/mixins';
+
+.cardDefault {
+  @include flex($wrap: wrap, $justify: space-around, $row-gap: var(--space-l-xl));
+  background: linear-gradient(101.21deg, #ffffff 55.6%, #ffffff 101.66%);
+  box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}

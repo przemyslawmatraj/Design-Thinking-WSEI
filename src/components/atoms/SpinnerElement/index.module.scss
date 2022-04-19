@@ -1,0 +1,36 @@
+@function power($number, $power) {
+  $exponent: 1;
+
+  @if $power > 0 {
+    @for $i from 1 through $power {
+      $exponent: $exponent * $number;
+    }
+  } @else if $power < 0 {
+    @for $i from 1 through $power {
+      $exponent: $exponent / $number;
+    }
+  }
+
+  @return $exponent;
+}
+
+@for $var from 1 to 6 {
+  $result: -0.2 * (power(($var - 3), 2)) + 1.8;
+  $result2: -1 * power(($var - 3), 2) + 5;
+  .spinnerElement#{$var} {
+    color: #{rgba(241, 145, 6, ($result2/5))};
+    font-size: #{$result}em;
+    list-style: none;
+    text-align: center;
+    transition: transform 0.5s ease-out;
+    @if $result2 == 5 {
+      font-weight: 900;
+    }
+    &:hover {
+      transform: scale(1+0.2 * $result2/5);
+    }
+    &:hover ~ * {
+      transform: translate(0, (#{0.1 * $var}em));
+    }
+  }
+}

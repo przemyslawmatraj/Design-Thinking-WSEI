@@ -17,7 +17,6 @@
 
   .link {
     font-size: var(--step-0);
-    font-weight: 300;
     text-decoration: none;
     text-transform: uppercase;
     position: relative;
@@ -45,25 +44,25 @@
   &:last-of-type {
     padding: 10px;
     background-color: var(--clr-secondary);
-    width: min-content;
+    width: max-content;
 
     &:hover {
       animation: move 1s ease-in-out alternate infinite;
     }
 
     .link {
-      color: #fff;
+      color: var(--clr-white);
       font-weight: 700;
     }
   }
 }
 
 .black {
-  color: #000;
+  color: var(--clr-darkgray);
 }
 
 .white {
-  color: #fff;
+  color: var(--clr-white);
 }
 
 @media screen and (min-width: 768px) {

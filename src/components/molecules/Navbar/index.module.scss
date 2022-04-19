@@ -4,7 +4,7 @@
   left: 100%;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+  background-color: var(--clr-white);
   z-index: 50;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .navigation {
     position: relative;
     top: auto;

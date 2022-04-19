@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './index.module.scss';
 import clsx from 'clsx';
-import Parallax from '../../../hooks/parallax';
+import useParallax from '../../../hooks/useParallax';
 
 const Circle = ({ size, color, image, alt, className, id }) => {
-  let offsetY = Parallax();
+  let offsetY = useParallax();
 
   return (
     <>
