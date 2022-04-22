@@ -36,7 +36,7 @@ const AdminDashboard = () => {
     <Container>
       <div className={css.wrapper}>
         <h1 className={css.title}>Panel Administratora</h1>
-        <Stats teams={teams} />
+        {teams && <Stats teams={teams} />}
         <Card className={css.spinner}>
           <Paragraph tag="h3" title="NADCHODZĄCE TERMINY" />
           <Spinner />
