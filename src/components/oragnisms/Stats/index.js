@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import css from './index.module.scss'
 import Card from '../../Layout/Card'
@@ -6,32 +6,50 @@ import Paragraph from '../../atoms/Paragraph'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import circleDocument from '../../../assets/graphics/circleDocument.svg'
+import useAuth from '../../../hooks/useAuth'
 
-const Stats = ({ isEditable, teams }) => {
-  let teamCount = 0
-  let teamToday = 0
-  let membersToday = 0
-  function getPreviousDay(date = new Date()) {
-    const previous = new Date(date.getTime())
-    previous.setDate(date.getDate() - 1)
+const Stats = ({ isEditable }) => {
+  const { teams } = useAuth()
+  const [stats, setStats] = React.useState({
+    teamCount: 0,
+    teamToday: 0,
+    membersToday: 0,
+  })
 
-    return previous
-  }
-  const checkDate = (team, teamToday, membersToday) => {
-    const today = new Date()
-    const yesterday = getPreviousDay()
-    const dateToCheck = new Date(team.dateOfRegistry)
-    if (dateToCheck >= yesterday && dateToCheck <= today) {
-      teamToday++
-      membersToday += team.members.length
+  useEffect(() => {
+    const getPreviousDay = (date = new Date()) => {
+      const previous = new Date(date.getTime())
+      previous.setDate(date.getDate() - 1)
+      return previous
+    }
+    const checkDate = (team, teamToday, membersToday) => {
+      const today = new Date()
+      const yesterday = getPreviousDay()
+      const dateToCheck = new Date(team.dateOfRegistry)
+      if (dateToCheck >= yesterday && dateToCheck <= today) {
+        teamToday += 1
+        membersToday += team.members.length
+      }
       return { teamToday, membersToday }
     }
-  }
-  teams.forEach((team) => {
-    teamCount += team.members.length
-    teamToday = checkDate(team, teamToday, membersToday).teamToday
-    membersToday = checkDate(team, teamToday, membersToday).membersToday
-  })
+    if (teams) {
+      let teamCount = 0
+      let teamToday = 0
+      let membersToday = 0
+      teams.forEach((team) => {
+        teamCount += team.members.length
+        let result = checkDate(team, teamToday, membersToday)
+        teamToday = result.teamToday
+        membersToday = result.membersToday
+      })
+      setStats((prev) => ({
+        ...prev,
+        teamCount,
+        teamToday,
+        membersToday,
+      }))
+    }
+  }, [teams])
 
   return (
     <Card className={css.stats}>
@@ -46,13 +64,13 @@ const Stats = ({ isEditable, teams }) => {
         <Paragraph
           tag="h3"
           title="DZISIAJ ZAPISAŁO SIĘ"
-          content={`${teamToday} ZESPOŁÓW, ${membersToday} UCZESTNIKÓW`}
+          content={`${stats.teamToday} ZESPOŁÓW, ${stats.membersToday} UCZESTNIKÓW`}
         />
         <Paragraph
           tag="h3"
           title="W SUMIE UCZESTNICZY"
           color="green"
-          content={`${teamCount} OSÓB W ${teams.length} ZESPOŁACH`}
+          content={`${stats.teamCount} OSÓB W ${teams.length} ZESPOŁACH`}
         />
       </div>
     </Card>
@@ -61,7 +79,6 @@ const Stats = ({ isEditable, teams }) => {
 
 Stats.propTypes = {
   isEditable: PropTypes.bool,
-  teams: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default Stats
