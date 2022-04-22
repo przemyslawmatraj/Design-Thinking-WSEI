@@ -18,9 +18,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   background-color: var(--clr-white);
-  min-height: 100vh;
+  min-height: 50vh;
   justify-content: center;
   & > div {
+    p {
+      margin-bottom: 20px;
+    }
     display: flex;
     flex-direction: column;
     padding: 30px;

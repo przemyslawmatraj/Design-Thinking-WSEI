@@ -1,0 +1,36 @@
+@import '../../../scss/mixins';
+
+.wrapper {
+  display: grid;
+  .teams {
+    @include flex($direction: row, $justify: center, $wrap: wrap, $row-gap: 29px, $column-gap: 48px);
+    padding-block: var(--space-l-xl);
+  }
+  .dropdown {
+    justify-self: center;
+  }
+  label {
+    @include flex($direction: column);
+    margin-bottom: 25px;
+    font-weight: 700;
+    align-items: center;
+    font-size: var(--step-0);
+    input {
+      margin-top: 25px;
+      width: 100%;
+      max-width: 500px;
+      background: var(--clr-white);
+      box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
+      padding: 13px 17px;
+      border: 0;
+      transition: box-shadow 0.2s ease-out;
+      &:focus,
+      &:focus-visible,
+      &:active {
+        outline: none;
+        border: 0;
+        box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1), inset 0 -4px 0 var(--clr-lightgray);
+      }
+    }
+  }
+}

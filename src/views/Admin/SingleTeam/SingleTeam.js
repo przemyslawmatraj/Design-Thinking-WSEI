@@ -8,34 +8,39 @@ import img from '../../../assets/graphics/default.svg'
 import Paragraph from '../../../components/atoms/Paragraph'
 import axios from '../../../utils/axios'
 import Token from '../../../utils/token'
+import Dropdown from '../../../components/molecules/Dropdown/Dropdown'
+import { singleTeam, returnStatus } from '../../../constants/dropdownOptions'
 const SingleTeam = () => {
   const { id } = useParams()
   const { teams } = useAuth()
   const team = teams.find((team) => team.id === Number(id))
 
-  const [review, setReview] = useState({
-    review: '',
-    status: '',
-  })
+  const [review, setReview] = useState('')
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [selected, setSelected] = useState(team?.idea?.staus || '')
 
   useEffect(() => {
     setError('')
     setSuccess(false)
-  }, [review])
+  }, [review, selected])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
+    if (review === '' || selected === '') {
+      setError('Wypełnij wszystkie pola!')
+      setLoading(false)
+      return
+    }
     axios
       .post(
         `/admin/setQualifcationStatusAndComment/${id}`,
-        {
-          review: review.review,
-          status: review.status,
-        },
+        JSON.stringify({
+          review,
+          status: selected,
+        }),
         {
           headers: {
             'Content-Type': 'application/json',
@@ -55,7 +60,7 @@ const SingleTeam = () => {
   }
 
   const handleChange = (e) => {
-    setReview({ ...review, [e.target.name]: e.target.value })
+    setReview(e.target.value)
   }
 
   return (
@@ -69,7 +74,7 @@ const SingleTeam = () => {
             tag="h4"
             title="Status Zespołu"
             color="black"
-            content={team?.idea ? team.idea.status : 'Oczekuje na akceptację'}
+            content={team?.idea ? returnStatus(team.idea.status) : 'Oczekuje na akceptację'}
           />
         </div>
 
@@ -112,14 +117,11 @@ const SingleTeam = () => {
 
           <label htmlFor="status">
             <Paragraph tag="h4" title="Status:" />
-            <input
-              type="text"
-              name="status"
-              id="status"
-              placeholder="Status"
-              value={review.status}
-              onChange={handleChange}
-              requierd
+            <Dropdown
+              onChange={(e) => setSelected(e.target.value)}
+              options={singleTeam}
+              selected={selected || team?.idea?.status || ''}
+              setSelected={setSelected}
             />
           </label>
           <label htmlFor="review">
@@ -129,7 +131,7 @@ const SingleTeam = () => {
               id="review"
               rows="10"
               placeholder="Treść recencji"
-              value={review.review}
+              value={review}
               onChange={handleChange}
               required
             />
@@ -140,6 +142,7 @@ const SingleTeam = () => {
       {team?.idea?.status && (
         <Card className={css.card}>
           <Paragraph tag="h3" title="Aktualna Recenzja" content={team.idea.review} />
+          <Paragraph tag="h4" title="Status" content={returnStatus(team.idea.status)} />
         </Card>
       )}
     </Container>

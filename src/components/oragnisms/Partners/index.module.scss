@@ -24,18 +24,13 @@
     .right {
       flex: 0 0 #{'min(100%, 400px)'};
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 50px;
       margin-inline: auto;
+      place-items: center;
       .logo {
         max-height: 70px;
-        &:nth-of-type(2n) {
-          justify-self: flex-end;
-        }
-        &:nth-of-type(n + 3) {
-          align-self: flex-end;
-        }
       }
     }
   }

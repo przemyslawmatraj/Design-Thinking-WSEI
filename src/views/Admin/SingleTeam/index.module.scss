@@ -19,6 +19,9 @@
     flex-direction: column;
     padding: 70px;
   }
+  &:last-of-type {
+    justify-content: space-between;
+  }
   form {
     margin-top: 35px;
     label {

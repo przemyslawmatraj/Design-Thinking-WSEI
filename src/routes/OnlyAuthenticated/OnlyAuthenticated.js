@@ -54,7 +54,7 @@ const OnlyAuthenticated = ({ allowed }) => {
       }
     }
     getData()
-  }, [teams.length])
+  }, [allowed, location, navigate])
 
   if (auth?.data?.enabled && auth?.data?.roles?.some(({ role }) => allowed.includes(role))) {
     return <Outlet />

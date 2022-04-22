@@ -30,29 +30,12 @@ const UserDashboard = () => {
         <div>
           <h3>Aktualności</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur euismod,
-            nisi erat euismod diam, eget porttitor nisl nisi sed nisl.
+            Celem Elevator Pitch jest opisanie sytuacji lub rozwiązania tak fascynującego, że osoba, z którą rozmawiasz,
+            będzie chciała usłyszeć więcej nawet po zakończeniu jazdy windą.
           </p>
-        </div>
-        <div>
-          <h3>Pomysł</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur euismod,
-            nisi erat euismod diam, eget porttitor nisl nisi sed nisl.
+            ~Seth Godin, <i>co to jest Elevator Pitch?</i>
           </p>
-        </div>
-        <div>
-          <h3>Zadania</h3>
-          <ul>
-            {date.map((item) => (
-              <li key={item.id}>
-                <p>
-                  {item.date} - {item.title}
-                </p>
-                <p></p>
-              </li>
-            ))}
-          </ul>
         </div>
         <div>
           <h3>Wazne daty</h3>

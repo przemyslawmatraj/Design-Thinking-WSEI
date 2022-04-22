@@ -62,6 +62,10 @@ const ChangePassword = () => {
     setValidMatch(result5)
   }, [pwd, matchPwd])
 
+  const goToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!validPwd || !validMatch) {
@@ -84,11 +88,13 @@ const ChangePassword = () => {
       .then((res) => {
         setLoading(false)
         setSuccess(true)
+        goToTop()
       })
       .catch((err) => {
         setLoading(false)
         setError(err.response.data.message)
         console.log(err)
+        goToTop()
       })
   }
 

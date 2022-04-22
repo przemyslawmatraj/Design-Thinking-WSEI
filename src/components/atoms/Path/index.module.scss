@@ -1,0 +1,12 @@
+.path {
+  display: none;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 400px;
+    left: 50%;
+    transform: translate(-10%, -200px);
+    display: block;
+    height: 4880px;
+    z-index: 10;
+  }
+}

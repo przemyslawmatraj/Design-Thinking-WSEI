@@ -79,30 +79,32 @@ const LoginPage = () => {
         errRef.current.focus()
       })
       .then(async (authtoken) => {
-        await axios
-          .get('/getUserData', {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${authtoken}`,
-            },
-            withCredentials: true,
-          })
-          .then((res) => {
-            setAuth({ data: res.data, accessToken: authtoken })
-            goToTop()
-            navigate(
-              location.state?.from ||
-                checkRole('ADMIN', res.data) ||
-                checkRole('USER', res.data) ||
-                checkRole('TEST', res.data),
-              {
-                replace: true,
-              }
-            )
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+        if (authtoken !== undefined) {
+          await axios
+            .get('/getUserData', {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${authtoken}`,
+              },
+              withCredentials: true,
+            })
+            .then((res) => {
+              setAuth({ data: res.data, accessToken: authtoken })
+              goToTop()
+              navigate(
+                location.state?.from ||
+                  checkRole('ADMIN', res.data) ||
+                  checkRole('USER', res.data) ||
+                  checkRole('TEST', res.data),
+                {
+                  replace: true,
+                }
+              )
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        }
       })
   }
 
