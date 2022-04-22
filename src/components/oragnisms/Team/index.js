@@ -33,7 +33,7 @@ const Team = () => (
       ))}
     </div>
     <ConnectElements
-      color="#00000025"
+      color="#85bd4b"
       strokeWidth={1}
       selector="#team"
       overlay={-1}

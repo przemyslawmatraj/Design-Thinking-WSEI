@@ -374,6 +374,7 @@ const RegisterPage = () => {
                         [css.stepOneInputSuccess]: matchPwd && validMatch,
                       })}
                       value={matchPwd}
+                      placeholder="Powtórz hasło"
                       onChange={(e) => setMatchPwd(e.target.value.trim())}
                       onFocus={() => setMatchFocus(true)}
                       onBlur={() => setMatchFocus(false)}

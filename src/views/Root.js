@@ -16,6 +16,7 @@ import * as roles from '../constants/roles'
 import Dashboard from '../routes/Dashboard/Dashboard'
 import Teamlist from './Admin/TeamList/TeamList'
 import SingleTeam from './Admin/SingleTeam/SingleTeam'
+import DeleteAccount from './DeleteAccount/DeleteAccount'
 function Root() {
   return (
     <>
@@ -35,7 +36,7 @@ function Root() {
             <Route path="settings" element={<UserSettings />} />
             <Route path="idea" element={<UserIdea />} />
             <Route path="ideaSend" element={<Message type="ideaSend" status="success" />} />
-            <Route path="deleteAccount" element={<Message type="deleteAccount" status="question" />} />
+            <Route path="deleteAccount" element={<DeleteAccount />} />
           </Route>
 
           {/* admin routes */}

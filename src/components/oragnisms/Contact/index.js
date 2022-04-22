@@ -11,6 +11,8 @@ const Contact = () => {
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     setError('')
   }, [contact])
@@ -22,6 +24,7 @@ const Contact = () => {
       setError('Wypełnij wszystkie pola!')
       return
     }
+    setLoading(true)
     await axios
       .post('/contact-form', JSON.stringify({ email, name, message }), {
         headers: {
@@ -32,13 +35,16 @@ const Contact = () => {
       .then((res) => {
         if (res.data.error) {
           setError('Błąd połączenia z serwerem!')
+          setLoading(false)
         } else {
           setContact({ name: '', email: '', message: '' })
+          setLoading(false)
           setSuccess(true)
         }
       })
       .catch((err) => {
         setError('Błąd połączenia z serwerem!')
+        setLoading(false)
       })
   }
 
@@ -50,10 +56,11 @@ const Contact = () => {
   return (
     <div className={css.container} id="contact">
       <h1 className={css.title}>Napisz do nas</h1>
-      <p className={css.description}>Śmiało napisz do nas!</p>
+      <p className={css.description}>Czekamy na Twoje pytania!</p>
       <div className={css.bottom}>
         {error && <p className={css.error}>{error}</p>}
         {success && <p className={css.success}>Wiadomość została wysłana!</p>}
+        {loading && <p className={css.success}>Wysyłanie wiadomości...</p>}
         <form className={css.form} name="contact" onSubmit={handleSubmit}>
           <label htmlFor="contact-email">Email:</label>
           <input

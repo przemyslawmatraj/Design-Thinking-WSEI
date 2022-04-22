@@ -11,6 +11,7 @@
     width: 100%;
     border-radius: 30px;
     min-height: 100px;
+    padding: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -26,6 +27,7 @@
       width: 100px;
       aspect-ratio: 1 /1;
       object-fit: cover;
+      transition: all 0.3s ease-out;
     }
 
     h5 {
@@ -76,6 +78,14 @@
       position: absolute;
       transform: translate(-50%, 50%);
       border-radius: 50%;
+      padding: 0;
+      &:hover {
+        border: 2px solid var(--clr-primary);
+        img {
+          filter: brightness(1.2);
+          transform: scale(1.05);
+        }
+      }
       &:nth-child(4) {
         h5 {
           width: max-content;
@@ -97,6 +107,7 @@
       transform: translate(-50%, 50%);
       left: 50%;
       bottom: 60%;
+
       h3 {
         position: absolute;
         width: max-content;
@@ -116,7 +127,7 @@
     }
     &2 {
       left: 33%;
-      bottom: 65%;
+      bottom: 60%;
     }
     &3 {
       left: 50%;
@@ -124,7 +135,7 @@
     }
     &4 {
       left: 66%;
-      bottom: 65%;
+      bottom: 60%;
     }
     &5 {
       left: 83%;
@@ -136,15 +147,15 @@
     }
     &7 {
       left: 33%;
-      bottom: 27%;
+      bottom: 20%;
     }
     &11 {
       left: 50%;
-      bottom: 35%;
+      bottom: 32%;
     }
     &9 {
       left: 66%;
-      bottom: 27%;
+      bottom: 20%;
     }
     &10 {
       left: 83%;

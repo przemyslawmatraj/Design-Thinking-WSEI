@@ -4,9 +4,6 @@
   display: grid;
   margin-top: 100px;
   padding-bottom: 100px;
-  .path {
-    display: none;
-  }
   .logo {
     justify-self: center;
     z-index: 11;
@@ -93,15 +90,6 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    .path {
-      position: absolute;
-      top: 400px;
-      left: 50%;
-      transform: translate(-10%, -200px);
-      display: block;
-      height: 4880px;
-      z-index: 10;
-    }
     .logo {
       max-width: 350px;
     }

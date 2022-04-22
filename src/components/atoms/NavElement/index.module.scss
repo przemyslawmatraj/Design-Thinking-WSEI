@@ -1,6 +1,6 @@
 //transition for each elements in menu
 @mixin transition {
-  @for $i from 1 through 5 {
+  @for $i from 1 through 7 {
     &:nth-child(#{$i}) {
       transition: opacity 0.75s cubic-bezier(0.29, 0, 0.14, 0.98) #{$i * 0.1}s;
     }

@@ -150,7 +150,7 @@ const messages = {
       buttons: [
         {
           name: 'Tak',
-          path: '?confirmed=true',
+          path: '/user/deleteAccount',
           type: 'link',
         },
         {

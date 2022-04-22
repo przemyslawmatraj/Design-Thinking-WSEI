@@ -7,6 +7,7 @@ import axios from '../../../utils/axios'
 import clsx from 'clsx'
 import { default as StepTwo } from '../../../components/oragnisms/MemberForm'
 import { useNavigate, Link } from 'react-router-dom'
+import Message from '../../Message'
 const USER_REGEX = /^[A-Z\s].{2,}$/
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 
@@ -32,7 +33,9 @@ const UserSettings = () => {
   const [members, setMembers] = useState([])
   const [validMembers, setValidMembers] = useState(true)
   const [membersCount, setMembersCount] = useState(0)
-  /* Checkbox State */
+
+  /* Delete Account State */
+  const [deleteAccount, setDeleteAccount] = useState(false)
 
   /* Submit State */
   const [errMsg, setErrMsg] = useState('')
@@ -154,7 +157,7 @@ const UserSettings = () => {
   }
 
   const handdleDeleteAccount = () => {
-    navigate('/user/deleteAccount')
+    setDeleteAccount(true)
   }
 
   return (
@@ -168,90 +171,91 @@ const UserSettings = () => {
       <div className={css.data}>
         <Container>
           <>
-              {loading && 'Ładownie...'}
-              <div className={css.bottom}>
-                <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
-                  {errMsg && (
-                    <p ref={errRef} className={css.formError} aria-live="assertive">
-                      {errMsg}
-                    </p>
-                  )}
-                  <div className={css.stepOne}>
-                    <h2 className={css.stepTitle}>Podstawowe dane zespołu</h2>
-                    <div className={css.stepOneGroup}>
-                      <label htmlFor="user" className={css.stepOneLabel}>
-                        <span className={css.stepOneLabelText}>
-                          Nazwa zespołu:
-                          <span className={css.star}>*</span>
-                        </span>
+            {loading && 'Ładownie...'}
+            <div className={css.bottom}>
+              <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
+                {errMsg && (
+                  <p ref={errRef} className={css.formError} aria-live="assertive">
+                    {errMsg}
+                  </p>
+                )}
+                <div className={css.stepOne}>
+                  <h2 className={css.stepTitle}>Podstawowe dane zespołu</h2>
+                  <div className={css.stepOneGroup}>
+                    <label htmlFor="user" className={css.stepOneLabel}>
+                      <span className={css.stepOneLabelText}>
+                        Nazwa zespołu:
+                        <span className={css.star}>*</span>
+                      </span>
 
-                        <input
-                          type="text"
-                          id="user"
-                          placeholder='np. "Team Pitch Polska"'
-                          className={clsx({
-                            [css.stepOneInput]: true,
-                            [css.stepOneInputError]: !userFocus && user && !validName,
-                            [css.stepOneInputSuccess]: validName,
-                          })}
-                          value={user}
-                          onChange={(e) => setUser(e.target.value)}
-                          onFocus={() => setUserFocus(true)}
-                          onBlur={() => setUserFocus(false)}
-                          required
-                          aria-invalid={!validName}
-                          aria-describedby="user-err"
-                          ref={userRef}
-                          autoComplete="nope"
-                        />
-                      </label>
-                      {userFocus && user && !validName && (
-                        <span id="user-err" className={css.stepOneError}>
-                          Nazwa powinna rozpoczynać się od duzej litery oraz składać się z przynajmniej 4 znaków
-                        </span>
-                      )}
-                    </div>
-                    <div className={css.stepOneGroup}>
-                      <label htmlFor="email" className={css.stepOneLabel}>
-                        <span className={css.stepOneLabelText}>
-                          Email:
-                          <span className={css.star}>*</span>
-                        </span>
-                        <input
-                          type="text"
-                          id="email"
-                          className={clsx({
-                            [css.stepOneInput]: true,
-                            [css.stepOneInputDisabled]: true,
-                          })}
-                          value={email}
-                          disabled
-                          autoComplete="nope"
-                        />
-                      </label>
-                    </div>
-                    <div className={css.stepOneGroup}>
-                      chcesz zmienić hasło? <Link to="/changePassword">kliknij tutaj</Link>
-                    </div>
+                      <input
+                        type="text"
+                        id="user"
+                        placeholder='np. "Team Pitch Polska"'
+                        className={clsx({
+                          [css.stepOneInput]: true,
+                          [css.stepOneInputError]: !userFocus && user && !validName,
+                          [css.stepOneInputSuccess]: validName,
+                        })}
+                        value={user}
+                        onChange={(e) => setUser(e.target.value)}
+                        onFocus={() => setUserFocus(true)}
+                        onBlur={() => setUserFocus(false)}
+                        required
+                        aria-invalid={!validName}
+                        aria-describedby="user-err"
+                        ref={userRef}
+                        autoComplete="nope"
+                      />
+                    </label>
+                    {userFocus && user && !validName && (
+                      <span id="user-err" className={css.stepOneError}>
+                        Nazwa powinna rozpoczynać się od duzej litery oraz składać się z przynajmniej 4 znaków
+                      </span>
+                    )}
                   </div>
-                  <StepTwo
-                    members={members}
-                    setMembers={setMembers}
-                    setValidMembers={setValidMembers}
-                    validMembers={validMembers}
-                    success={success}
-                    membersCount={membersCount}
-                  />
-                  <div className={css.stepOneSubmit}>
-                    <button type="submit" className={css.stepOneButton} disabled={!validName || !validMembers}>
-                      Zatwierdź zmiany
-                    </button>
-                    <button type="button" onClick={handdleDeleteAccount} className={css.stepOneButton}>
-                      Usunięcie konta
-                    </button>
+                  <div className={css.stepOneGroup}>
+                    <label htmlFor="email" className={css.stepOneLabel}>
+                      <span className={css.stepOneLabelText}>
+                        Email:
+                        <span className={css.star}>*</span>
+                      </span>
+                      <input
+                        type="text"
+                        id="email"
+                        className={clsx({
+                          [css.stepOneInput]: true,
+                          [css.stepOneInputDisabled]: true,
+                        })}
+                        value={email}
+                        disabled
+                        autoComplete="nope"
+                      />
+                    </label>
                   </div>
-                </form>
-              </div>
+                  <div className={css.stepOneGroup}>
+                    chcesz zmienić hasło? <Link to="/changePassword">kliknij tutaj</Link>
+                  </div>
+                </div>
+                <StepTwo
+                  members={members}
+                  setMembers={setMembers}
+                  setValidMembers={setValidMembers}
+                  validMembers={validMembers}
+                  success={success}
+                  membersCount={membersCount}
+                />
+                {deleteAccount && <Message type="deleteAccount" status="question" />}
+                <div className={css.stepOneSubmit}>
+                  <button type="submit" className={css.stepOneButton} disabled={!validName || !validMembers}>
+                    Zatwierdź zmiany
+                  </button>
+                  <button type="button" onClick={handdleDeleteAccount} className={css.stepOneButton}>
+                    Usunięcie konta
+                  </button>
+                </div>
+              </form>
+            </div>
           </>
         </Container>
       </div>
