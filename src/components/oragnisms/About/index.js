@@ -13,13 +13,13 @@ const About = ({ className }) => (
     <div id="about" className={clsx(css.container, className)}>
       <SectionInfo subTitle="JASNY CEL | ABY ŻYŁO SIĘ LEPIEJ" title="Czym się zajmujemy?">
         <ReadMore btnColor="black">
-          <p>
+          <p style={{ textAlign: 'justify' }}>
             Jeżeli lubisz zmieniać rzeczywistość wokół siebie, to Design Thinking Hub jest przygotowany specjalnie dla
             Ciebie. Projektowanie unikalnych produktów oraz usług jest dyscypliną wszechstronną. W ramach pracy w Kole
             poznasz zasady projektowania zgodne ze zwinnymi metodykami Design Thinking, Scrum oraz User/Client
             Experience (UX/CX).
           </p>{' '}
-          <p>
+          <p style={{ textAlign: 'justify' }}>
             Nauczysz się „twórczej odwagi” oraz w jaki sposób patrzeć na produkty oczami klientów, jak odkrywać ich
             potrzeby oraz oczekiwania. Dowiesz się również, jak zarządzać projektami według wartości i zasad Agile,
             które później wykorzystasz w pracy na licznych stanowiskach w IT, finansach i zarządzaniu, np. w marketingu,

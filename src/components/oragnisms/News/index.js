@@ -23,20 +23,29 @@ const News = () => (
       <div className={css.grid}>
         <img loading="lazy" src={img1} alt="zespół szukający rozwiązania" className={css.image} />
         <div className={css.content}>
-          <h3 className={css.articleTitle}>Nawiązanie współpracy z VENEO</h3>
-          <ReadMore btnColor="white">
+          <h3 className={css.articleTitle}>Nawiązanie współpracy z Kraków Miastem Startupów</h3>
+          <ReadMore btnColor="white" className={css.paragraphs}>
             <p>
-              Kampania launchingowa „Lody Koral Ekipa” promująca produkt impulsowy to najskuteczniejsza kampania
-              marketingowa ostatnich lat w Polsce. Hit marketingowy i sprzedażowy w 2021 roku. Kampania VENEO, która
-              zmieniła rynek lodów w Polsce w skali dotychczas niespotykanej, przynosząc efekty biznesowe i marketingowe
-              jest dla nas wzorcem pomysłowości i skuteczności projektowania, dlatego wśród partnerów Design Thinking
-              Hub pojawiła się ta krakowska firma, nadając sens naszym działaniom.
+              Fundacja Kraków Miastem Startupów to jedna z najprężniej działających organizacji startupowych w
+              Małopolsce. Funkcjonuje ona non profit od 2015 roku, dbając o rozwój przedsiębiorczości i innowacji oraz
+              kondycję krakowskiego ekosystemu startupowego.
+            </p>{' '}
+            <p>
+              KMS inspiruje i doradza młodym przedsiębiorcom, jak stawiać pierwsze kroki w innowacjach, gdzie szukać
+              finansowania i jak budować swoje przewagi konkurencyjne poprzez organizację wyzwań biznesowych i
+              społecznych w ramach Akademickich Maratonów Innowacji, Jesiennego Uniwersytetu Przedsiębiorczości i
+              Innowacji oraz programu Krk InnoTech Starter.
             </p>
-            <p>Podpowiadając nam też jakie aktualne trendy obowiązują w czasie tworzenia nowych produktów lub usług.</p>
+            <p>
+              Mottem KMS jest „łączenie kropek”, czyli zapewnienie ciągłego przepływu informacji i kontaktów, docieranie
+              do właściwych osób, które mogą inwestować, wspierać oraz rozwijać przedsiębiorczość w Krakowie w
+              przyszłości. W ciągu kilku lat działalności Fundacja zorganizowała kilkaset wydarzeń sieciujących,
+              wykształciła kilka tysięcy osób, wypuściła wiele innowacyjnych przedsiębiorstw oraz wydała książkę -
+              Pierwszy krakowski przewodnik startupowy, która stanowi inspirację dla startupów w świecie biznesu.
+            </p>
           </ReadMore>
         </div>
       </div>
-      {/* <Button className={css.button}>Więcej artykułów</Button> */}
     </div>
   </>
 )

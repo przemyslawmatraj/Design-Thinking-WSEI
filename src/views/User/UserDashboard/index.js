@@ -1,14 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+// eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss'
 import useAuth from '../../../hooks/useAuth'
 import Container from '../../../components/Layout/Container'
 import date from '../../../components/molecules/Spinner/date.js'
 import img1 from '../../../assets/graphics/dashboard.svg'
+import img2 from '../../../assets/graphics/yourIdeaNapkin.jpeg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import clsx from 'clsx'
+import doc1 from '../../../assets/docs/zalacznik_formularz_zloszeniowy_Ep.pdf'
 
 const UserDashboard = () => {
   const {
     auth: { data },
   } = useAuth()
+  const [modal, setModal] = useState(false)
 
   useEffect(() => {
     const scrollToTop = () => {
@@ -18,11 +25,40 @@ const UserDashboard = () => {
     }
     scrollToTop()
   }, [])
+
+  const toggleModal = () => {
+    setModal(!modal)
+    console.log(modal)
+  }
+
   return (
     <Container>
+      <div
+        className={clsx({
+          [css.modal]: true,
+          [css.show]: modal,
+        })}
+      >
+        <div className={css.content}>
+          <div onClick={toggleModal}>
+            <FontAwesomeIcon icon={faTimes} color="#fff" />
+          </div>
+          <img src={img2} alt="your idea napkin" />
+        </div>
+      </div>
       <div className={css.title}>
         <h1>Panel Zespołu</h1>
         <h2>Zespół {data?.username}</h2>
+        {!data?.idea && (
+          <p>
+            Co teraz? Wzorując się na{' '}
+            <span onClick={toggleModal} className={css.link}>
+              Your Idea Napkin
+            </span>{' '}
+            zadaj sobie 5 pytań. Wypełni <a href={doc1}>ten dokument</a> i wyślij go za pomocą formularza, który
+            znajduje się w zakładce WYŚLI POMYSŁ.
+          </p>
+        )}
         <img src={img1} alt="dashboard" />
       </div>
 

@@ -39,6 +39,11 @@
       flex-direction: column;
       justify-content: space-evenly;
       gap: 40px;
+      .paragraphs {
+        & > * {
+          margin-bottom: 20px;
+        }
+      }
     }
     .image {
       width: 100%;
