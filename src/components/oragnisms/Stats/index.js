@@ -5,7 +5,7 @@ import Card from '../../Layout/Card'
 import Paragraph from '../../atoms/Paragraph'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import circleDocument from '../../../assets/graphics/circleDocument.svg'
+import circleDocument from '../../../assets/graphics/circleDocument.webp'
 import useAuth from '../../../hooks/useAuth'
 
 const Stats = ({ isEditable }) => {

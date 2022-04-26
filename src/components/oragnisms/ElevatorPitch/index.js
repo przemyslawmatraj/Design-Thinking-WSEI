@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 // eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss'
 import logo from '../../../assets/graphics/elevatorPitch.svg'
-import img1 from '../../../assets/photos/mainGoals.png'
-import img2 from '../../../assets/photos/studentGoals.png'
-import img3 from '../../../assets/photos/newSkills.png'
+import img1 from '../../../assets/photos/mainGoals.webp'
+import img2 from '../../../assets/photos/studentGoals.webp'
+import img3 from '../../../assets/photos/newSkills.webp'
+import img4 from '../../../assets/photos/elevatorPith.webp'
 import clsx from 'clsx'
 import regulations from '../../../assets/docs/regulamin_konkursu_WSEI_Ep.pdf'
 import Path from '../../atoms/Path/Path'
@@ -108,7 +109,7 @@ const ElevatorPitch = () => {
               </div>
             </div>
             <div className={clsx(css.right, css.reverseRight)}>
-              <img loading="lazy" src={img2} alt="Cele studenta" className={css.image_1} />
+              <img loading="lazy" src={img4} alt="Cele studenta" className={css.image_1} />
             </div>
           </div>
           <div className={css.step}>

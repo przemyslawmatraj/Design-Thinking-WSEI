@@ -3,9 +3,9 @@ import css from './index.module.scss'
 
 import logo1 from '../../../assets/partnersLogo/kms.png'
 import logo2 from '../../../assets/partnersLogo/veneo.png'
-import logo3 from '../../../assets/partnersLogo/project5.png'
-import logo4 from '../../../assets/partnersLogo/knpz.jpeg'
-import logo5 from '../../../assets/partnersLogo/sgh.jpg'
+import logo3 from '../../../assets/partnersLogo/project5.webp'
+import logo4 from '../../../assets/partnersLogo/knpz.webp'
+import logo5 from '../../../assets/partnersLogo/sgh.webp'
 import logo6 from '../../../assets/partnersLogo/parktechnologiczny.png'
 import logo7 from '../../../assets/partnersLogo/knpi.png'
 

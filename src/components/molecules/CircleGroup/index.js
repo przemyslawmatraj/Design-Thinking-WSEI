@@ -1,12 +1,12 @@
 /* eslint-disable css-modules/no-unused-class */
-import React from 'react';
-import PropTypes from 'prop-types';
-import css from './index.module.scss';
-import Circle from '../../atoms/Circle';
-import img1 from '../../../assets/photos/mainPhoto.png';
-import img2 from '../../../assets/photos/secondPhoto.jpg';
-import circleGrid from '../../../assets/graphics/circleGrid-1.svg';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import css from './index.module.scss'
+import Circle from '../../atoms/Circle'
+import img1 from '../../../assets/photos/mainPhoto.webp'
+import img2 from '../../../assets/photos/secondPhoto.webp'
+import circleGrid from '../../../assets/graphics/circleGrid-1.webp'
+import clsx from 'clsx'
 
 const CircleGroup = ({ section, top, className }) => {
   return (
@@ -27,13 +27,13 @@ const CircleGroup = ({ section, top, className }) => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
 CircleGroup.propTypes = {
   section: PropTypes.number,
   className: PropTypes.string,
   top: PropTypes.number,
-};
+}
 
-export default CircleGroup;
+export default CircleGroup

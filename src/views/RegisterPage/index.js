@@ -11,7 +11,7 @@ import Message from '../Message'
 import Container from '../../components/Layout/Container'
 
 import doc1 from '../../assets/docs/regulamin_konkursu_WSEI_Ep.pdf'
-import registerTop from '../../assets/graphics/registerTop.svg'
+import registerTop from '../../assets/graphics/registerTop.webp'
 
 /* Regex */
 const PASSWORD_LOWERCASE = /^(?=.*[a-z]).{0,}$/

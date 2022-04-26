@@ -33,7 +33,7 @@ const OnlyAuthenticated = ({ allowed }) => {
             console.log(err)
           })
       }
-      if (token && auth?.data?.roles?.some(({ role }) => allowed.includes(role)) && teams.length === 0) {
+      if (token && auth?.data?.roles?.some(({ role }) => role === 'ADMIN') && teams.length === 0) {
         axios
           .get('/admin/getTeams', {
             headers: {

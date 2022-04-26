@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import TeamCard from './TeamCard'
-import DefaultImg from '../../../assets/graphics/default.svg'
+import DefaultImg from '../../../assets/graphics/default.webp'
 
 test('should render TeamCard image', () => {
   render(

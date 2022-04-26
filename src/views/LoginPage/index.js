@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import css from './index.module.scss'
 import axios from '../../utils/axios'
 import useAuth from '../../hooks/useAuth'
-import loginTop from '../../assets/graphics/loginTop.svg'
+import loginTop from '../../assets/graphics/loginTop.webp'
 import Container from '../../components/Layout/Container'
 
 import Token from '../../utils/token'

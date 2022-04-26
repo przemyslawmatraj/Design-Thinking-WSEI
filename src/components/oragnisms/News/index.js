@@ -3,8 +3,8 @@ import React from 'react'
 import css from './index.module.scss'
 
 import ReadMore from '../../atoms/ReadMore'
-import undraw from '../../../assets/graphics/undraw.svg'
-import img1 from '../../../assets/photos/thirdPhoto.png'
+import undraw from '../../../assets/graphics/undraw.webp'
+import img1 from '../../../assets/photos/thirdPhoto.webp'
 
 const News = () => (
   <>
