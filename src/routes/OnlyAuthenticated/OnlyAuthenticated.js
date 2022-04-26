@@ -45,8 +45,9 @@ const OnlyAuthenticated = ({ allowed }) => {
           .then((res) => {
             if (res.data === []) {
               setTeams(['Brak drużyn'])
+            } else {
+              setTeams(res.data)
             }
-            setTeams(res.data)
           })
           .catch((err) => {
             console.log(err)

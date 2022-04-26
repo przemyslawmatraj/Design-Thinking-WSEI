@@ -24,14 +24,18 @@ const AdminDashboard = () => {
             },
             withCredentials: true,
           })
-          setTeams(res.data)
+          if (res.data === []) {
+            setTeams(['Brak drużyn'])
+          } else {
+            setTeams(res.data)
+          }
         } catch (err) {
           console.log(err)
         }
       }
     }
     getTeams()
-  })
+  }, [])
   return (
     <Container>
       <div className={css.wrapper}>
