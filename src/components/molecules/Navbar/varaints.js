@@ -26,6 +26,11 @@ const navigationElements = {
     path: '#contact',
     type: 'anchor',
   },
+  home: {
+    name: 'Strona główna',
+    path: '/',
+    type: 'link',
+  },
   elevatorPitch: {
     name: 'Elevator Pitch',
     path: '/#ep',
@@ -79,10 +84,11 @@ const navigationElements = {
 }
 
 export const landingPageNavbar = [
+  navigationElements.home,
   navigationElements.elevatorPitch,
   navigationElements.about,
-  navigationElements.news,
-  navigationElements.team,
+  // navigationElements.news,
+  // navigationElements.team,
   navigationElements.contact,
   navigationElements.login,
   navigationElements.register,
