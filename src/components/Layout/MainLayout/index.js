@@ -10,7 +10,7 @@ const MainLayout = () => {
   return (
     <>
       <Header />
-      <main className={css.main}>
+      <main className={css.main} id="main">
         <Outlet />
       </main>
       <FullWidthContainer bgColor="gray">

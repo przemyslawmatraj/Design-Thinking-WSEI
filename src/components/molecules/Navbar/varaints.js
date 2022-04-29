@@ -28,8 +28,8 @@ const navigationElements = {
   },
   home: {
     name: 'Strona główna',
-    path: '/',
-    type: 'link',
+    path: '/#main',
+    type: 'anchor',
   },
   elevatorPitch: {
     name: 'Elevator Pitch',
