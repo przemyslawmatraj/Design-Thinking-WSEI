@@ -4,6 +4,8 @@ import useAuth from '../../../hooks/useAuth'
 import Message from '../../Message'
 import Card from '../../../components/Layout/Card'
 import { returnStatus } from '../../../constants/dropdownOptions'
+import Paragraph from '../../../components/atoms/Paragraph'
+import css from './index.module.scss'
 const UserIdea = () => {
   const {
     auth: { data },
@@ -20,13 +22,11 @@ const UserIdea = () => {
 
   return (
     <Container>
-      <Card flexDirection={'column'}>
-        <h1>{returnStatus(data.idea?.status)}</h1>
-        <p>
-          Recenzja Twojego pomysłu została zakończona. Dziękujemy za udział w konkursie! :) Oto komentarz recenzenta:
-        </p>
-        <p>{data.idea?.review}</p>
-      </Card>
+      <div className={css.center}>
+        <Card flexDirection={'column'} className={css.card}>
+          <Paragraph tag="h1" title={returnStatus(data.idea?.status)} content={data.idea?.review} />
+        </Card>
+      </div>
     </Container>
   )
 }
