@@ -74,7 +74,7 @@ const SingleTeam = () => {
             tag="h4"
             title="Status Zespołu"
             color="black"
-            content={team?.idea ? returnStatus(team.idea.status) : 'Oczekuje na akceptację'}
+            content={team?.idea ? returnStatus(team.idea.status) : 'Nie ustalony'}
           />
         </div>
 

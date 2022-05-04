@@ -73,7 +73,7 @@ const Search = () => {
               leaderEmail={team.email}
               leaderPhone={team.members[0].phoneNumber}
               statusTitle="Status"
-              statusContent={team.idea ? returnStatus(team.idea.status) : 'Oczekuje na akceptację'}
+              statusContent={team.idea ? returnStatus(team.idea.status) : 'Nie ustalony'}
             />
           ))
         ) : (
