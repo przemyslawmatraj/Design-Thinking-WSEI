@@ -1,8 +1,8 @@
 const date = [
   {
     id: 1,
-    date: '2022-04-19',
-    title: 'Uruchomienie strony',
+    date: '',
+    title: '',
   },
   {
     id: 2,

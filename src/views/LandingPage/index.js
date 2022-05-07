@@ -9,6 +9,7 @@ import ElevatorPitch from '../../components/oragnisms/ElevatorPitch'
 import Partners from '../../components/oragnisms/Partners'
 import Cover from '../../components/atoms/Cover'
 import Container from '../../components/Layout/Container'
+import Spinner from '../../components/molecules/Spinner'
 
 const LandingPage = () => {
   return (
@@ -22,6 +23,8 @@ const LandingPage = () => {
         </Container>
       </Cover>
       <Container overflow={false}>
+        <h1 className={css.textCenter}>Wazne daty:</h1>
+        <Spinner />
         <About className={css.about} />
         <Team />
         <News />

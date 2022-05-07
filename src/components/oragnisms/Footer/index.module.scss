@@ -1,13 +1,28 @@
 .container {
-  display: grid;
   width: 100%;
   justify-content: center;
-  .creators {
+  .row {
     display: flex;
     padding: 10px 60px;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    width: 100%;
+    background-color: var(--clr-darkgray);
+    .socialMedia {
+      a {
+        display: flex;
+        column-gap: 5px;
+        text-decoration: none;
+        svg {
+          margin-block: auto;
+        }
+      }
+    }
+    & > h5 {
+      margin-block: auto;
+    }
+    &:nth-of-type(2) {
+      background-color: var(--clr-darkgray);
+    }
   }
 }
