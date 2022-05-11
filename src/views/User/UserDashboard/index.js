@@ -74,7 +74,7 @@ const UserDashboard = () => {
           </p>
         </div>
         <div>
-          <h3>Wazne daty</h3>
+          <h3>Ważne daty</h3>
           <ul>
             {date.map((item) => (
               <li key={item.id}>

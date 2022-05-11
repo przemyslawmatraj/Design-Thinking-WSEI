@@ -23,7 +23,7 @@ const LandingPage = () => {
         </Container>
       </Cover>
       <Container overflow={false}>
-        <h1 className={css.textCenter}>Wazne daty:</h1>
+        <h1 className={css.textCenter}>Ważne daty:</h1>
         <Spinner />
         <About className={css.about} />
         <Team />
