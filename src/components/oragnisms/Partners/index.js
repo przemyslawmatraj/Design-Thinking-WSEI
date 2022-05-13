@@ -8,6 +8,7 @@ import logo4 from '../../../assets/partnersLogo/knpz.webp'
 import logo5 from '../../../assets/partnersLogo/sgh.webp'
 import logo6 from '../../../assets/partnersLogo/parktechnologiczny.png'
 import logo7 from '../../../assets/partnersLogo/knpi.png'
+import logo8 from '../../../assets/partnersLogo/pti.webp'
 
 const Partners = () => (
   <>
@@ -23,6 +24,7 @@ const Partners = () => (
         <div className={css.right}>
           <img loading="lazy" src={logo2} alt="" className={css.logo} />
           <img loading="lazy" src={logo1} alt="" className={css.logo} />
+          <img loading="lazy" src={logo8} alt="" className={css.logo} />
           <img loading="lazy" src={logo3} alt="" className={css.logo} />
           <img loading="lazy" src={logo4} alt="" className={css.logo} />
           <img loading="lazy" src={logo5} alt="" className={css.logo} />
