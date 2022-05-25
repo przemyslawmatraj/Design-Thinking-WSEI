@@ -48,6 +48,20 @@
           margin-bottom: var(--space-xl-2xl);
           color: white;
         }
+        .prize {
+          .label {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 15px;
+            &:last-of-type {
+              margin-top: 30px;
+            }
+            &:last-of-type > * {
+              width: 100%;
+              margin-block: 10px;
+            }
+          }
+        }
         .description {
           background-color: var(--clr-darkgray);
           padding: 10px 30px;

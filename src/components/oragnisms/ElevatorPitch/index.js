@@ -115,11 +115,23 @@ const ElevatorPitch = () => {
           <div className={css.step}>
             <div className={css.left}>
               <h2 className={css.title}>4. Atrakcyjne nagrody</h2>
-              <div className={css.description}>
-                <h4>I miejsce, II miejsce, III miejsce</h4>
-                <p>Wartościowe nagrody rzeczowe!</p>
-                <h4>Upominki</h4>
-                <p>dla pozostałych uczestników – zakwalifikowanych do udziału w konkursie. </p>
+              <div className={clsx(css.description, css.prize)}>
+                <div className={css.label}>
+                  <h4>I miejsce</h4>
+                  <p>Nagroda o wartości 1000 zł</p>
+                </div>
+                <div className={css.label}>
+                  <h4>II miejsce</h4>
+                  <p>Nagroda o wartości 600 zł</p>
+                </div>
+                <div className={css.label}>
+                  <h4>III miejsce</h4>
+                  <p>Nagroda o wartości 500 zł</p>
+                </div>
+                <div className={css.label}>
+                  <h4>Upominki</h4>
+                  <p>Dla pozostałych uczestników – zakwalifikowanych do udziału w konkursie. </p>
+                </div>
               </div>
             </div>
             <div className={css.right}>
