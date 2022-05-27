@@ -118,15 +118,15 @@ const ElevatorPitch = () => {
               <div className={clsx(css.description, css.prize)}>
                 <div className={css.label}>
                   <h4>I miejsce</h4>
-                  <p>Nagroda o wartości 1000 zł</p>
+                  <p>Nagrody o wartości 1000 zł</p>
                 </div>
                 <div className={css.label}>
                   <h4>II miejsce</h4>
-                  <p>Nagroda o wartości 600 zł</p>
+                  <p>Nagrody o wartości 600 zł</p>
                 </div>
                 <div className={css.label}>
                   <h4>III miejsce</h4>
-                  <p>Nagroda o wartości 500 zł</p>
+                  <p>Nagrody o wartości 500 zł</p>
                 </div>
                 <div className={css.label}>
                   <h4>Upominki</h4>

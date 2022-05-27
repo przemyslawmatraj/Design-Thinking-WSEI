@@ -145,7 +145,7 @@ const MemberForm = ({ members, setMembers, validMembers, setValidMembers, succes
         <h2>Krok 2</h2>
         <h3>Wprowadź dane członków zespołu</h3>
         <div>
-          <p>Zespół musi posiadać od 3 do 5 członków</p>
+          <p>Zespół musi posiadać od 2 do 5 członków</p>
           <p>Aktualna ilość członków: {membersCount}</p>
         </div>
       </div>

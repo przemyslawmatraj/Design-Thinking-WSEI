@@ -132,8 +132,8 @@ const RegisterPage = () => {
       errRef.current.focus()
       return
     }
-    if (members.length < 3) {
-      setErrMsg('Musisz dodać przynajmniej 3 członków')
+    if (members.length < 2) {
+      setErrMsg('Musisz dodać przynajmniej 2 członków')
       goToTop()
       errRef.current.focus()
       return
