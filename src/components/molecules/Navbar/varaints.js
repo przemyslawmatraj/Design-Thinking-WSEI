@@ -90,8 +90,8 @@ export const landingPageNavbar = [
   // navigationElements.news,
   // navigationElements.team,
   navigationElements.contact,
-  navigationElements.login,
   navigationElements.register,
+  navigationElements.login,
 ]
 
 export const userDashboardNavbar = [

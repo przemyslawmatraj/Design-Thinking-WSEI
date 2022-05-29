@@ -55,8 +55,24 @@ const messages = {
           type: 'link',
         },
         {
-          name: 'Powrót',
-          path: '',
+          name: 'Powrót do strony głównej',
+          path: '/',
+          type: 'link',
+        },
+      ],
+    },
+    closed: {
+      title: 'Rejestracja zespołów została zamknięta',
+      description: 'Rejestracja zespołów została zamknięta. Skontaktuj się z administratorem.',
+      buttons: [
+        {
+          name: 'Powrót do strony głównej',
+          path: '/',
+          type: 'link',
+        },
+        {
+          name: 'Zaloguj się',
+          path: '/login',
           type: 'link',
         },
       ],
