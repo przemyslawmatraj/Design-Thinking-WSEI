@@ -24,7 +24,8 @@ const UserIdea = () => {
     <Container>
       <div className={css.center}>
         <Card flexDirection={'column'} className={css.card}>
-          <Paragraph tag="h1" title={returnStatus(data.idea?.status)} content={data.idea?.review} />
+          <Paragraph tag="h1" title={returnStatus(data.idea?.status)} />
+          <div className={css.break} dangerouslySetInnerHTML={{ __html: data.idea?.review }} />
         </Card>
       </div>
     </Container>
