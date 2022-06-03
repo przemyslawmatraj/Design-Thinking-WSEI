@@ -62,7 +62,7 @@ const navigationElements = {
     type: 'link',
   },
   idea: {
-    name: 'Wyślij pomysł',
+    name: 'Status zespołu',
     path: '/user/idea',
     type: 'link',
   },
