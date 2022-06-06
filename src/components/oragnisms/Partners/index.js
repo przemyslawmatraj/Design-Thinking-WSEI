@@ -9,6 +9,7 @@ import logo5 from '../../../assets/partnersLogo/sgh.webp'
 import logo6 from '../../../assets/partnersLogo/parktechnologiczny.png'
 import logo7 from '../../../assets/partnersLogo/knpi.png'
 import logo8 from '../../../assets/partnersLogo/pti.webp'
+import logo9 from '../../../assets/partnersLogo/archman.svg'
 
 const Partners = () => (
   <>
@@ -30,6 +31,7 @@ const Partners = () => (
           <img loading="lazy" src={logo5} alt="" className={css.logo} />
           <img loading="lazy" src={logo6} alt="" className={css.logo} />
           <img loading="lazy" src={logo7} alt="" className={css.logo} />
+          <img loading="lazy" src={logo9} alt="" className={css.logo} />
         </div>
       </div>
     </div>
