@@ -49,7 +49,7 @@ const UserDashboard = () => {
       <div className={css.title}>
         <h1>Panel Zespołu</h1>
         <h2>Zespół {data?.username}</h2>
-        {!data?.idea && (
+        {/* {!data?.idea && (
           <p>
             Co teraz? Wzorując się na{' '}
             <span onClick={toggleModal} className={css.link}>
@@ -58,7 +58,12 @@ const UserDashboard = () => {
             zadaj sobie 5 pytań. Wypełni <a href={doc1}>ten dokument</a> i wyślij go za pomocą formularza, który
             znajduje się w zakładce WYŚLI POMYSŁ.
           </p>
-        )}
+        )} */}
+        <p>
+          W dniu <strong>10.06 od godz. 13:00 do 17:00</strong> odbędzie się BootCamp zdalnie na paltformie
+          <strong>MS Teams</strong> według załączonego planu. Dostaną państwo dostęp do platformy mailowo w dniu
+          BootCampa.
+        </p>
         <img src={img1} alt="dashboard" />
       </div>
 

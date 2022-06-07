@@ -40,8 +40,8 @@ textarea {
 input[type='text'],
 input[type='textarea'],
 input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  appearance: none;
+  appearance: none;
   appearance: none;
   font-family: var(--font-primary);
   font-weight: 400;
@@ -61,4 +61,8 @@ button:focus {
 
 [contenteditable='true']:focus {
   outline: none;
+}
+
+strong {
+  font-weight: 700;
 }
