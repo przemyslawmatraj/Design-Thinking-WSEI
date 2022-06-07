@@ -9,7 +9,7 @@ import img2 from '../../../assets/graphics/yourIdeaNapkin.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import clsx from 'clsx'
-import doc1 from '../../../assets/docs/zalacznik_formularz_zloszeniowy_Ep.pdf'
+import doc1 from '../../../assets/docs/Konkurs_WSEI_Elevator_Pitch_2022_przebieg_BootCampa_10.06.pdf'
 
 const UserDashboard = () => {
   const {
@@ -60,9 +60,9 @@ const UserDashboard = () => {
           </p>
         )} */}
         <p>
-          W dniu <strong>10.06 od godz. 13:00 do 17:00</strong> odbędzie się BootCamp zdalnie na paltformie
-          <strong>MS Teams</strong> według załączonego planu. Dostaną państwo dostęp do platformy mailowo w dniu
-          BootCampa.
+          W dniu <strong>10.06 od godz. 13:00 do 17:00</strong> odbędzie się BootCamp zdalnie na paltformie{' '}
+          <strong>MS Teams</strong> według <a href={doc1}>załączonego planu</a>. Dostaną państwo dostęp do platformy
+          mailowo w dniu BootCampa.
         </p>
         <img src={img1} alt="dashboard" />
       </div>
