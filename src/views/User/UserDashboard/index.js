@@ -59,11 +59,7 @@ const UserDashboard = () => {
             znajduje się w zakładce WYŚLI POMYSŁ.
           </p>
         )} */}
-        <p>
-          W dniu <strong>10.06 od godz. 13:00 do 17:00</strong> odbędzie się BootCamp zdalnie na paltformie{' '}
-          <strong>MS Teams</strong> według <a href={doc1}>załączonego planu</a>. Dostaną państwo dostęp do platformy
-          mailowo w dniu BootCampa.
-        </p>
+        <p>Prosimy o zalgoowanie się na Platformę Teams przy pomocy udostępnionych danych logowania.</p>
         <img src={img1} alt="dashboard" />
       </div>
 
