@@ -9,7 +9,6 @@ import img2 from '../../../assets/graphics/yourIdeaNapkin.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import clsx from 'clsx'
-import doc1 from '../../../assets/docs/Konkurs_WSEI_Elevator_Pitch_2022_przebieg_BootCampa_10.06.pdf'
 
 const UserDashboard = () => {
   const {

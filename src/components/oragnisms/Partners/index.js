@@ -10,6 +10,8 @@ import logo6 from '../../../assets/partnersLogo/parktechnologiczny.png'
 import logo7 from '../../../assets/partnersLogo/knpi.png'
 import logo8 from '../../../assets/partnersLogo/pti.webp'
 import logo9 from '../../../assets/partnersLogo/archman.svg'
+import logo10 from '../../../assets/partnersLogo/stonex.png'
+import logo11 from '../../../assets/partnersLogo/dominos.png'
 
 const Partners = () => (
   <>
@@ -26,12 +28,14 @@ const Partners = () => (
           <img loading="lazy" src={logo2} alt="" className={css.logo} />
           <img loading="lazy" src={logo1} alt="" className={css.logo} />
           <img loading="lazy" src={logo8} alt="" className={css.logo} />
+          <img loading="lazy" src={logo9} alt="" className={css.logo} />
+          <img loading="lazy" src={logo10} alt="" className={css.logo} />
+          <img loading="lazy" src={logo11} alt="" className={css.logo} />
           <img loading="lazy" src={logo3} alt="" className={css.logo} />
           <img loading="lazy" src={logo4} alt="" className={css.logo} />
           <img loading="lazy" src={logo5} alt="" className={css.logo} />
-          <img loading="lazy" src={logo6} alt="" className={css.logo} />
           <img loading="lazy" src={logo7} alt="" className={css.logo} />
-          <img loading="lazy" src={logo9} alt="" className={css.logo} />
+          <img loading="lazy" src={logo6} alt="" className={css.logo} />
         </div>
       </div>
     </div>
