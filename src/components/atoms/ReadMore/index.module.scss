@@ -3,3 +3,10 @@
     display: none;
   }
 }
+
+.full {
+  p:not(:first-child) {
+    display: block;
+    margin-top: 1em;
+  }
+}

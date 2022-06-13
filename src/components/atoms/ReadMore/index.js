@@ -13,6 +13,7 @@ const ReadMore = ({ children, className, btnColor }) => {
         className={clsx({
           [className]: className,
           [css.notFull]: !isFull,
+          [css.full]: isFull,
         })}
       >
         {children}

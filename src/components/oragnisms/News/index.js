@@ -4,7 +4,7 @@ import css from './index.module.scss'
 
 import ReadMore from '../../atoms/ReadMore'
 import undraw from '../../../assets/graphics/undraw.webp'
-import img1 from '../../../assets/photos/thirdPhoto.webp'
+import img1 from '../../../assets/photos/news.png'
 
 const News = () => (
   <>
@@ -23,25 +23,27 @@ const News = () => (
       <div className={css.grid}>
         <img loading="lazy" src={img1} alt="zespół szukający rozwiązania" className={css.image} />
         <div className={css.content}>
-          <h3 className={css.articleTitle}>Nawiązanie współpracy z Kraków Miastem Startupów</h3>
+          <h3 className={css.articleTitle}>Małopolski Festiwal Innowacji </h3>
           <ReadMore btnColor="white" className={css.paragraphs}>
             <p>
-              Fundacja Kraków Miastem Startupów to jedna z najprężniej działających organizacji startupowych w
-              Małopolsce. Funkcjonuje ona non profit od 2015 roku, dbając o rozwój przedsiębiorczości i innowacji oraz
-              kondycję krakowskiego ekosystemu startupowego.
-            </p>{' '}
-            <p>
-              KMS inspiruje i doradza młodym przedsiębiorcom, jak stawiać pierwsze kroki w innowacjach, gdzie szukać
-              finansowania i jak budować swoje przewagi konkurencyjne poprzez organizację wyzwań biznesowych i
-              społecznych w ramach Akademickich Maratonów Innowacji, Jesiennego Uniwersytetu Przedsiębiorczości i
-              Innowacji oraz programu Krk InnoTech Starter.
+              Małopolski Festiwal Innowacji to wyjątkowe święto innowacji i nowoczesnych technologii. Podczas
+              tegorocznej edycji wydarzenia po raz pierwszy pojawi się również{' '}
+              <strong>Wyższa Szkoła Ekonomii i Informatyki</strong> z międzyuczelnianym{' '}
+              <strong>Konkursem WSEI Elevator pitch 2022</strong>!
+              <p>
+                Wydarzenie to na pewno będzie wyjątkową okazją do rozmowy o innowacjach, przedsiębiorczości, współpracy
+                pomiędzy nauką i biznesem, poznamy też studenckie startupy, dowiemy się jak wykorzystać Design Thinking
+                w praktyce, postaramy się zaszczepić ducha innowacyjności i kreatywności wśród studentów.
+              </p>
             </p>
             <p>
-              Mottem KMS jest „łączenie kropek”, czyli zapewnienie ciągłego przepływu informacji i kontaktów, docieranie
-              do właściwych osób, które mogą inwestować, wspierać oraz rozwijać przedsiębiorczość w Krakowie w
-              przyszłości. W ciągu kilku lat działalności Fundacja zorganizowała kilkaset wydarzeń sieciujących,
-              wykształciła kilka tysięcy osób, wypuściła wiele innowacyjnych przedsiębiorstw oraz wydała książkę -
-              Pierwszy krakowski przewodnik startupowy, która stanowi inspirację dla startupów w świecie biznesu.
+              <a
+                href="https://innowacyjna.malopolska.pl/malopolski-festiwal-innowacji/mfi-2022/program/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Program Małopolskiego Festiwalu Innowacji
+              </a>
             </p>
           </ReadMore>
         </div>
