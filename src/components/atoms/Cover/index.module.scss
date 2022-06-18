@@ -1,7 +1,6 @@
 .overlaySection {
   position: relative;
-  background-color: var(--clr-lightblack);
-  color: var(--clr-white);
+  background-color: var(--clr-white);
 }
 
 .overlay {
@@ -17,6 +16,7 @@
   max-width: 100vw;
   will-change: auto;
 }
+
 .overlay div {
   transform-origin: center;
 }
@@ -25,6 +25,7 @@
     width: 100vw;
   }
 }
+
 .overlay svg {
   contain: cover;
   min-height: 150%;
@@ -41,6 +42,7 @@
     min-width: 150%;
   }
 }
+
 .overlay svg path {
   transform-origin: center !important;
 }

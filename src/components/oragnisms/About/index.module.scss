@@ -2,22 +2,25 @@
   display: grid;
   grid-template-columns: 1fr;
   column-gap: 50px;
-  min-height: 0vh;
+  min-height: 0;
   position: relative;
   padding-bottom: 50px;
   margin-bottom: 60px;
   text-align: center;
+
   .circleGroup {
     width: fit-content;
     height: fit-content;
     margin-inline: auto;
-    margin-block: 15px;
+    margin-block-end: 15px;
   }
+
   .circlesBottom {
     position: absolute;
     bottom: 0;
     right: 0;
     width: 120px;
+
     &:last-of-type {
       bottom: 0;
       left: 0;
@@ -32,8 +35,13 @@
     grid-template-columns: 1fr 1fr;
     text-align: left;
     margin-bottom: 200px;
+
     .circlesBottom {
       width: 10%;
+    }
+
+    .circleGroup {
+      margin-block-start: 80px;
     }
   }
 }

@@ -6,7 +6,7 @@ import Container from '../../../components/Layout/Container'
 import axios from '../../../utils/axios'
 import clsx from 'clsx'
 import { default as StepTwo } from '../../../components/oragnisms/MemberForm'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Message from '../../Message'
 const USER_REGEX = /^[A-Z\s].{2,}$/
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -15,8 +15,6 @@ const UserSettings = () => {
   const {
     auth: { data },
   } = useAuth()
-
-  const navigate = useNavigate()
 
   const userRef = useRef()
   const errRef = useRef()

@@ -85,13 +85,13 @@ const navigationElements = {
 
 export const landingPageNavbar = [
   navigationElements.home,
-  navigationElements.elevatorPitch,
+  // navigationElements.elevatorPitch,
+  navigationElements.team,
   navigationElements.about,
-  // navigationElements.news,
-  // navigationElements.team,
+  navigationElements.news,
   navigationElements.contact,
-  navigationElements.register,
-  navigationElements.login,
+  // navigationElements.register,
+  // navigationElements.login,
 ]
 
 export const userDashboardNavbar = [

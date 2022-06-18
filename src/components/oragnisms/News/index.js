@@ -4,10 +4,45 @@ import css from './index.module.scss'
 
 import ReadMore from '../../atoms/ReadMore'
 import undraw from '../../../assets/graphics/undraw.webp'
-import img1 from '../../../assets/photos/news.png'
 
-const News = () => (
-  <>
+import { GraphQLClient, gql } from 'graphql-request'
+import { useState, useEffect } from 'react'
+
+const client = new GraphQLClient('https://api-eu-central-1.graphcms.com/v2/cl4j01drm4lzm01z6bj5xgavr/master')
+
+const GET_NEWS = gql`
+  {
+    posts {
+      id
+      title
+      slug
+      author {
+        imieINazwisko
+        avatar {
+          url
+        }
+      }
+      cover {
+        url
+      }
+      content {
+        html
+      }
+      publishedAt
+      updatedAt
+      date
+    }
+  }
+`
+
+const News = () => {
+  const [news, setNews] = useState([])
+
+  useEffect(() => {
+    client.request(GET_NEWS).then((data) => setNews(data.posts))
+  }, [])
+
+  return (
     <div className={css.container} id="news">
       <div className={css.top}>
         <img loading="lazy" src={undraw} alt="Osoba czytająca artykuły" className={css.undraw} />
@@ -20,36 +55,21 @@ const News = () => (
           </p>
         </div>
       </div>
-      <div className={css.grid}>
-        <img loading="lazy" src={img1} alt="zespół szukający rozwiązania" className={css.image} />
-        <div className={css.content}>
-          <h3 className={css.articleTitle}>Małopolski Festiwal Innowacji </h3>
-          <ReadMore btnColor="white" className={css.paragraphs}>
-            <p>
-              Małopolski Festiwal Innowacji to wyjątkowe święto innowacji i nowoczesnych technologii. Podczas
-              tegorocznej edycji wydarzenia po raz pierwszy pojawi się również{' '}
-              <strong>Wyższa Szkoła Ekonomii i Informatyki</strong> z międzyuczelnianym{' '}
-              <strong>Konkursem WSEI Elevator pitch 2022</strong>!
-              <p>
-                Wydarzenie to na pewno będzie wyjątkową okazją do rozmowy o innowacjach, przedsiębiorczości, współpracy
-                pomiędzy nauką i biznesem, poznamy też studenckie startupy, dowiemy się jak wykorzystać Design Thinking
-                w praktyce, postaramy się zaszczepić ducha innowacyjności i kreatywności wśród studentów.
-              </p>
-            </p>
-            <p>
-              <a
-                href="https://innowacyjna.malopolska.pl/malopolski-festiwal-innowacji/mfi-2022/program/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Program Małopolskiego Festiwalu Innowacji
-              </a>
-            </p>
-          </ReadMore>
-        </div>
-      </div>
+      {news.map((article) => (
+        <>
+          <div className={css.grid}>
+            <img loading="lazy" src={article.cover.url} alt="zespół szukający rozwiązania" className={css.image} />
+            <div className={css.content}>
+              <h3 className={css.articleTitle}>{article.title}</h3>
+              <ReadMore btnColor="white" className={css.paragraphs} type="html">
+                {article.content.html}
+              </ReadMore>
+            </div>
+          </div>
+        </>
+      ))}
     </div>
-  </>
-)
+  )
+}
 
 export default News

@@ -17,19 +17,19 @@ const LandingPage = () => {
       <Container>
         <Baner className={css.baner} />
       </Container>
-      <Cover delay={150}>
-        <Container overflow={false}>
+      <Cover delay={0}>
+        {/* <Container overflow={false}>
           <ElevatorPitch />
+        </Container> */}
+        <Container overflow={false}>
+          {/* <h1 className={css.textCenter}>Ważne daty:</h1> */}
+          {/* <Spinner /> */}
+          <About className={css.about} />
         </Container>
       </Cover>
-      <Container overflow={false}>
-        <h1 className={css.textCenter}>Ważne daty:</h1>
-        <Spinner />
-        <About className={css.about} />
-        <Team />
-        <News />
-        <Partners />
-      </Container>
+      <Team />
+      <News />
+      <Partners />
     </>
   )
 }
