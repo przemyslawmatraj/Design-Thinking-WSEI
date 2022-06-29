@@ -1,23 +1,11 @@
 .wrapper {
-  max-width: 1500px;
+  width: #{'min(1300px, 100% - 2rem)'};
   min-height: fit-content;
   margin-inline: auto;
-  padding-inline: 30px;
   position: relative;
-  overflow: unset;
+  overflow: visible;
 }
+
 .overflow {
   overflow: hidden;
-}
-
-@media screen and (min-width: 768px) {
-  .wrapper {
-    padding-inline: 50px;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .wrapper {
-    max-width: 1700px;
-  }
 }

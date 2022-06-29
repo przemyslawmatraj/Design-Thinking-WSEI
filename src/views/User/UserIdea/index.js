@@ -1,20 +1,37 @@
 import React from 'react'
 import Container from '../../../components/Layout/Container'
 import useAuth from '../../../hooks/useAuth'
-import Message from '../../Message'
-import Card from '../../../components/Layout/Card'
-import { returnStatus } from '../../../constants/dropdownOptions'
-import Paragraph from '../../../components/atoms/Paragraph'
 import css from './index.module.scss'
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5'
+import useImportFile from '../../../hooks/useImportFile'
+import Message from '../../Message'
 const UserIdea = () => {
   const {
     auth: { data },
   } = useAuth()
 
-  if (data.enabled && !data.idea && !data.roles.some(({ role }) => ['TEST'].includes(role))) {
-    window.location.href = `https://docs.google.com/forms/d/e/1FAIpQLSenhy3XR6Fn3E7JUY5aBBkxkijMjQzC3qvTU_2tdA_T36QLmQ/viewform?usp=pp_url&entry.1334767853=${data.email}`
-    return null
-  } else if (!data.enabled) {
+  const {
+    filesObject: { idea, application },
+    pageNumber,
+    onDocumentLoadSuccess,
+    handleSubmmit,
+    handleOnChange,
+    size,
+  } = useImportFile(
+    {
+      idea: {
+        url: '',
+        type: '',
+      },
+      application: {
+        url: '',
+        type: '',
+      },
+    },
+    '/insertIdea'
+  )
+
+  if (!data.enabled) {
     return null
   } else if (data.id === 2) {
     return <Message status={'error'} type={'testUser'} />
@@ -23,10 +40,45 @@ const UserIdea = () => {
   return (
     <Container>
       <div className={css.center}>
-        <Card flexDirection={'column'} className={css.card}>
-          <Paragraph tag="h1" title={returnStatus(data.idea?.status)} />
-          <div className={css.break} dangerouslySetInnerHTML={{ __html: data.idea?.review }} />
-        </Card>
+        <form
+          id="upload"
+          className={css.form}
+          onSubmit={(e) => {
+            handleSubmmit(e)
+          }}
+        >
+          <div id="preview1" ref={size}>
+            {idea.type === 'application/pdf' ? (
+              <>
+                <Document file={idea.url} onLoadSuccess={onDocumentLoadSuccess}>
+                  <Page pageNumber={pageNumber} width={size.current.offsetWidth} />
+                </Document>
+              </>
+            ) : (
+              <img src={idea.url} alt="idea" />
+            )}
+          </div>
+          <label htmlFor="idea" className={css.formInput}>
+            <span>Prezentacja:</span>
+            <input type="file" name="idea" id="idea" onChange={(e) => handleOnChange(e)} />
+          </label>
+          <div id="preview2">
+            {application.type === 'application/pdf' ? (
+              <>
+                <Document file={application.url} onLoadSuccess={onDocumentLoadSuccess}>
+                  <Page pageNumber={pageNumber} width={size.current.offsetWidth} />
+                </Document>
+              </>
+            ) : (
+              <img src={application.url} alt="idea" />
+            )}
+          </div>
+          <label htmlFor="application" className={css.formInput}>
+            <span>Zgłoszenie:</span>
+            <input type="file" name="application" id="application" onChange={(e) => handleOnChange(e)} />
+          </label>
+          <input type="submit" value="Wyślij" />
+        </form>
       </div>
     </Container>
   )
