@@ -28,7 +28,9 @@ const LandingPage = () => {
         </Container>
       </Cover>
       <Team />
-      <News />
+      <Container>
+        <News />
+      </Container>
       <Partners />
     </>
   )

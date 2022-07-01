@@ -1,10 +1,8 @@
 import React from 'react'
 // eslint-disable-next-line css-modules/no-unused-class
 import css from './index.module.scss'
-
 import ReadMore from '../../atoms/ReadMore'
 import undraw from '../../../assets/graphics/undraw.webp'
-
 import { GraphQLClient, gql } from 'graphql-request'
 import { useState, useEffect } from 'react'
 
@@ -39,7 +37,9 @@ const News = () => {
   const [news, setNews] = useState([])
 
   useEffect(() => {
-    client.request(GET_NEWS).then((data) => setNews(data.posts))
+    client.request(GET_NEWS).then(({ posts }) => {
+      setNews(posts)
+    })
   }, [])
 
   return (

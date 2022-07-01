@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Button from '../Button'
 import css from './index.module.scss'
 import clsx from 'clsx'
+import formatContent from '../../../helpers/formatContent'
 
 const ReadMore = ({ children, className, btnColor, type }) => {
   const [isFull, setFullText] = useState(false)
@@ -16,7 +17,7 @@ const ReadMore = ({ children, className, btnColor, type }) => {
             [css.notFull]: !isFull,
             [css.full]: isFull,
           })}
-          dangerouslySetInnerHTML={{ __html: children }}
+          dangerouslySetInnerHTML={{ __html: formatContent(children) }}
         ></div>
       ) : (
         <div
