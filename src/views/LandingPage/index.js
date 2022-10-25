@@ -5,11 +5,10 @@ import Baner from '../../components/oragnisms/Baner'
 import Team from '../../components/oragnisms/Team'
 import About from '../../components/oragnisms/About'
 import News from '../../components/oragnisms/News'
-import ElevatorPitch from '../../components/oragnisms/ElevatorPitch'
 import Partners from '../../components/oragnisms/Partners'
 import Cover from '../../components/atoms/Cover'
 import Container from '../../components/Layout/Container'
-import Spinner from '../../components/molecules/Spinner'
+import ElevatorPitch from '../../components/oragnisms/ElevatorPitch'
 
 const LandingPage = () => {
   return (
@@ -18,15 +17,13 @@ const LandingPage = () => {
         <Baner className={css.baner} />
       </Container>
       <Cover delay={0}>
-        {/* <Container overflow={false}>
-          <ElevatorPitch />
-        </Container> */}
         <Container overflow={false}>
-          {/* <h1 className={css.textCenter}>Ważne daty:</h1> */}
-          {/* <Spinner /> */}
-          <About className={css.about} />
+          <ElevatorPitch />
         </Container>
       </Cover>
+      <Container overflow={false}>
+        <About className={css.about} />
+      </Container>
       <Team />
       <Container>
         <News />

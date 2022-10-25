@@ -1,13 +1,13 @@
 .notFull {
   /* stylelint-disable-next-line scss/selector-no-redundant-nesting-selector */
-  & > *:not(:nth-child(-n + 2)) {
+  & > *:not(:nth-child(-n + 1)) {
     display: none;
   }
 }
 
 .full {
   /* stylelint-disable-next-line scss/selector-no-redundant-nesting-selector */
-  & > *:not(:nth-child(-n + 2)) {
+  & > *:not(:nth-child(-n + 1)) {
     display: block;
     margin-top: 1em;
   }

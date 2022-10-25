@@ -1,10 +1,10 @@
 /* eslint-disable css-modules/no-unused-class */
-import React from 'react';
-import PropTypes from 'prop-types';
-import css from './index.module.scss';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import css from './index.module.scss'
+import clsx from 'clsx'
 
-const Button = ({ children, path, color, className, tag, v, ...props }) =>
+const Button = ({ children, path, color, className, tag, variant, ...props }) =>
   tag === 'span' ? (
     <span
       {...props}
@@ -12,7 +12,7 @@ const Button = ({ children, path, color, className, tag, v, ...props }) =>
         css.button,
         {
           [css[color || 'black']]: true,
-          [css[v || 'variant1']]: true,
+          [css[variant || 'variant1']]: true,
         },
         className
       )}
@@ -27,14 +27,14 @@ const Button = ({ children, path, color, className, tag, v, ...props }) =>
         css.button,
         {
           [css[color || 'black']]: true,
-          [css[v || 'variant1']]: true,
+          [css[variant || 'variant1']]: true,
         },
         className
       )}
     >
       {children}
     </a>
-  );
+  )
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
@@ -42,7 +42,7 @@ Button.propTypes = {
   color: PropTypes.string,
   className: PropTypes.string,
   tag: PropTypes.string,
-  v: PropTypes.string,
-};
+  variant: PropTypes.string,
+}
 
-export default Button;
+export default Button
