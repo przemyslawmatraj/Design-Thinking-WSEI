@@ -48,16 +48,6 @@ const UserDashboard = () => {
       <div className={css.title}>
         <h1>Panel Zespołu</h1>
         <h2>Zespół {data?.username}</h2>
-        {/* {!data?.idea && (
-          <p>
-            Co teraz? Wzorując się na{' '}
-            <span onClick={toggleModal} className={css.link}>
-              Your Idea Napkin
-            </span>{' '}
-            zadaj sobie 5 pytań. Wypełni <a href={doc1}>ten dokument</a> i wyślij go za pomocą formularza, który
-            znajduje się w zakładce WYŚLI POMYSŁ.
-          </p>
-        )} */}
         <p>Prosimy o zalgoowanie się na Platformę Teams przy pomocy udostępnionych danych logowania.</p>
         <img src={img1} alt="dashboard" />
       </div>
