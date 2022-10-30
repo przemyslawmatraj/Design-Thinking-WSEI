@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Elevator Pitch Platform & DTH student research club
+## Table of contents
+* [General info](#general-info)
+* [Project status](#project-status)
+* [Live app](#live-app)
+* [Project screenshots](#project-screenshots)
+* [Installation and setup instruction](#installation-and-setup-instruction)
+* [Technologies](#technologies)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-## Available Scripts
+## General info
 
-In the project directory, you can run:
+The site was created for the needs of the DTH student club - to organize the Elevator pitch 2022 competition.
+The application is divided into a platform for registration and support of teams during the competition, and a landing page for our Design Thinking Hub WSEI circle.
 
-### `npm start`
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project status
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### In connection with the planned next edition of the Elevator Pitch competition…
 
-### `npm test`
+The application is still being developed. New functionality is being added and current functionality is being refactored.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### `npm run build`
+## Live app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application is implemented on the university's server and is available here -> [LINK](http://dth.wsei.edu.pl/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project screenshots
 
-### `npm run eject`
+![project screenshot](https://media3.giphy.com/media/Yms7LaSpOYz4VyFAqf/giphy.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation and setup instruction
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Clone down this repository. You will need node and npm installed globally on your machine.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then install and run it locally.
 
-## Learn More
+```
+git clone https://github.com/przemyslawmatraj/Design-Thinking-WSEI.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+cd Design-Thinking-WSEI
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm install
+```
 
-### Code Splitting
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+>*`Warning`* To make all the functionality work when the application is fired up locally, you need to get a backend application available at this [LINK](https://github.com/adwas3213/Projekt-do-rejestrowania-startup-SPRING)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### Making a Progressive Web App
+## Test account (of the competition team)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+You can test the use of elevator pitch platorm using the following login credentials:
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* Login : `test@test.pl`
+* Password : `test`
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+> A test user has fewer permissions than a normal team account
 
-### `npm run build` fails to minify
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Technologies
+
+- react v17.0.2
+- axios v0.26.1
+- sass
+- graph ql
+- css modules
+- Context API
