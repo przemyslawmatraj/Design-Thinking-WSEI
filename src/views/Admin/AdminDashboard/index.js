@@ -4,7 +4,7 @@ import Card from '../../../components/Layout/Card'
 import Paragraph from '../../../components/atoms/Paragraph'
 import Container from '../../../components/Layout/Container'
 import Stats from '../../../components/oragnisms/Stats'
-import Spinner from '../../../components/molecules/Spinner'
+import Calendar from '../../../components/molecules/Calendar'
 import Announcement from '../../../components/oragnisms/Announcement'
 import getTeamsIfEmpty from '../../../utils/getTeamsIfEmpty'
 
@@ -18,9 +18,9 @@ const AdminDashboard = () => {
       <div className={css.wrapper}>
         <h1 className={css.title}>Panel Administratora</h1>
         <Stats />
-        <Card className={css.spinner}>
+        <Card className={css.calendar}>
           <Paragraph tag="h3" title="NADCHODZĄCE TERMINY" />
-          <Spinner />
+          <Calendar />
         </Card>
         <Announcement />
       </div>

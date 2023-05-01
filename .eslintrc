@@ -17,7 +17,8 @@
       "presets": ["@babel/preset-react"]
     },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "requireConfigFile": false
   },
   "plugins": ["css-modules", "react"],
   "rules": {

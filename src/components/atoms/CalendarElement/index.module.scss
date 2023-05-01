@@ -17,7 +17,7 @@
 @for $var from 1 to 6 {
   $result: -0.2 * (power(($var - 3), 2)) + 1.8;
   $result2: -1 * power(($var - 3), 2) + 5;
-  .spinnerElement#{$var} {
+  .calendarElement#{$var} {
     color: #{rgba(241, 145, 6, ($result2/5))};
     font-size: #{$result}em;
     list-style: none;

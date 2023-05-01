@@ -1,4 +1,4 @@
-const date = [
+const dates = [
   {
     id: 1,
     date: '',
@@ -26,4 +26,4 @@ const date = [
   },
 ]
 
-export default date
+export default dates

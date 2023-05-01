@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import css from './index.module.scss'
 import useAuth from '../../../hooks/useAuth'
 import Container from '../../../components/Layout/Container'
-import date from '../../../components/molecules/Spinner/date.js'
+import dates from '../../../components/molecules/Calendar/date.js'
 import img1 from '../../../assets/graphics/dashboard.svg'
 import img2 from '../../../assets/graphics/yourIdeaNapkin.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -27,7 +27,6 @@ const UserDashboard = () => {
 
   const toggleModal = () => {
     setModal(!modal)
-    console.log(modal)
   }
 
   return (
@@ -66,7 +65,7 @@ const UserDashboard = () => {
         <div>
           <h3>Ważne daty</h3>
           <ul>
-            {date.map((item) => (
+            {dates.map((item) => (
               <li key={item.id}>
                 <p>
                   {item.date} - {item.title}

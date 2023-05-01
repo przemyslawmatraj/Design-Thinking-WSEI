@@ -5,9 +5,9 @@ import useParallax from '../../../hooks/useParallax'
 
 const Path = () => {
   const path = useRef()
-  let offsetY = useParallax()
-  let [pathLength, setPathLength] = useState()
-  let [pathOffset, setPathOffset] = useState()
+  const offsetY = useParallax()
+  const [pathLength, setPathLength] = useState()
+  const [pathOffset, setPathOffset] = useState()
 
   useEffect(() => {
     if (path.current) {

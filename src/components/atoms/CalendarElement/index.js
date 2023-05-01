@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import css from './index.module.scss'
 import clsx from 'clsx'
 
-const SpinnerElement = ({ count, content }) => {
+const CalendarElement = ({ count, content }) => {
   return (
     <li
       className={clsx({
-        [css.spinnerElement]: true,
-        [css[`spinnerElement${count}`]]: true,
+        [css.calendarElement]: true,
+        [css[`calendarElement${count}`]]: true,
       })}
     >
       {content}
@@ -17,9 +17,9 @@ const SpinnerElement = ({ count, content }) => {
   )
 }
 
-SpinnerElement.propTypes = {
+CalendarElement.propTypes = {
   count: PropTypes.number,
   content: PropTypes.string,
 }
 
-export default SpinnerElement
+export default CalendarElement
