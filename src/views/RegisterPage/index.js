@@ -1,208 +1,49 @@
-import React, { useRef, useEffect, useState } from 'react'
-// eslint-disable-next-line css-modules/no-unused-class
+import React from 'react'
 import css from './index.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle } from '@fortawesome/free-solid-svg-icons'
-import clsx from 'clsx'
-import axios from '../../utils/axios'
-
-import { default as StepTwo } from '../../components/oragnisms/MemberForm'
 import Message from '../Message'
 import Container from '../../components/Layout/Container'
-
 import doc1 from '../../assets/docs/regulamin_konkursu_WSEI_Ep.pdf'
 import registerTop from '../../assets/graphics/registerTop.webp'
-
-/* Regex */
-const PASSWORD_LOWERCASE = /^(?=.*[a-z]).{0,}$/
-const PASSWORD_UPPERCASE = /^(?=.*[A-Z]).{0,}$/
-const PASSWORD_NUMBER = /^(?=.*[0-9]).{0,}$/
-const PASSWORD_MIN_CHAR = /^.{8,}$/
-const PASSWORD_ALL = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/
-const USER_REGEX = /^[A-Z\s].{2,}$/
-const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+import { faCirclePlus, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { useForm, useFieldArray } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { RegisterSchema } from '../../utils/validationSchemas'
+import FirstStepInput from '../../components/atoms/FirstStepInput'
+import MemberInput from '../../components/atoms/MemberInput'
+import useRegisterNewTeam from '../../hooks/useRegisterNewTeam'
+import { initialMember, defaultRegisterValues } from '../../utils/initialData'
 
 const RegisterPage = () => {
-  const userRef = useRef()
-  const errRef = useRef()
+  const { register, handleSubmit, control, watch, formState: { errors, isValid}, getValues } = useForm({
+    resolver: yupResolver(RegisterSchema),
+    defaultValues: defaultRegisterValues,
+    mode: 'all',
+  })
 
-  /* User State */
-  const [user, setUser] = useState('')
-  const [validName, setValidName] = useState(false)
-  const [userFocus, setUserFocus] = useState(false)
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "members",
+  });
 
-  /* Password State */
-  const [pwd, setPwd] = useState('')
-  const [validPwd, setValidPwd] = useState(false)
-  const [pwdFocus, setPwdFocus] = useState(false)
+  const { registerNewTeam, errFromServer, isSuccess, response, isLoading } = useRegisterNewTeam()
 
-  /* Password Dots State */
-  const [pwdDot1, setPwdDot1] = useState(false)
-  const [pwdDot2, setPwdDot2] = useState(false)
-  const [pwdDot3, setPwdDot3] = useState(false)
-  const [pwdDot4, setPwdDot4] = useState(false)
-
-  /* Password Match State */
-  const [matchPwd, setMatchPwd] = useState('')
-  const [validMatch, setValidMatch] = useState(false)
-  const [matchFocus, setMatchFocus] = useState(false)
-
-  /* Email State */
-  const [email, setEmail] = useState('')
-  const [validEmail, setValidEmail] = useState(false)
-  const [emailFocus, setEmailFocus] = useState(false)
-
-  /* Members State */
-  const [members, setMembers] = useState([])
-  const [validMembers, setValidMembers] = useState(true)
-  const [membersCount, setMembersCount] = useState(0)
-  /* Checkboxes State */
-  const [checked, setChecked] = useState(false)
-  const [checked2, setChecked2] = useState(false)
-  /* Submit State */
-  const [errMsg, setErrMsg] = useState('')
-  const [success, setSuccess] = useState(false)
-
-  /*Loadings*/
-  const [loading, setLoading] = useState(false)
-
-  /* Response State */
-  const [response, setResponse] = useState(null)
-
-  useEffect(() => {
-    if (userRef.current) {
-      userRef.current.focus()
-    }
-  }, [])
-
-  useEffect(() => {
-    setMembersCount(members.length)
-  }, [members])
-
-  /* Form Validation */
-  useEffect(() => {
-    /* User Validation */
-    const result = USER_REGEX.test(user)
-    setValidName(result)
-  }, [user])
-
-  useEffect(() => {
-    /* Pwd Validation */
-    const result = PASSWORD_MIN_CHAR.test(pwd)
-    const result2 = PASSWORD_LOWERCASE.test(pwd)
-    const result3 = PASSWORD_NUMBER.test(pwd)
-    const result4 = PASSWORD_UPPERCASE.test(pwd)
-    setValidPwd(result && result2 && result3 && result4)
-
-    /* Pwd Dots */
-    setPwdDot1(result)
-    setPwdDot2(result2)
-    setPwdDot3(result3)
-    setPwdDot4(result4)
-
-    /* Pwd Match Valiadtion */
-    const result5 = pwd === matchPwd
-    setValidMatch(result5)
-  }, [pwd, matchPwd])
-
-  useEffect(() => {
-    /* Email Validation */
-    const result = EMAIL_REGEX.test(email)
-    setValidEmail(result)
-  }, [email])
-
-  useEffect(() => {
-    /* Error Message */
-    setErrMsg('')
-  }, [user, pwd, matchPwd])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    if (
-      !USER_REGEX.test(user) ||
-      !PASSWORD_ALL.test(pwd) ||
-      matchPwd !== pwd ||
-      !EMAIL_REGEX.test(email) ||
-      !checked ||
-      !checked2
-    ) {
-      setErrMsg('Wszystkie pola muszą być poprawnie wypełnione')
-      goToTop()
-      errRef.current.focus()
-      return
-    }
-    if (members.length < 2) {
-      setErrMsg('Musisz dodać przynajmniej 2 członków')
-      goToTop()
-      errRef.current.focus()
-      return
-    }
-    setLoading(true)
-    const membersFinal = members.map((member) => {
-      return {
-        name: member.name,
-        surname: member.surname,
-        email: member.email,
-        school: member.school,
-        phoneNumber: member.phoneNumber,
-        isLeader: member.isLeader,
-        address: {
-          street: member.address.street,
-          number: member.address.number,
-          postal: member.address.postal,
-          city: member.address.city,
-        },
-      }
-    })
-
-    const readyToSend = {
-      username: user,
-      password: pwd,
-      email,
-      members: membersFinal,
-    }
-    goToTop()
-    await axios
-      .post('/register', JSON.stringify(readyToSend), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true,
-      })
-      .then((res) => {
-        setResponse(res)
-        setSuccess(true)
-        setLoading(false)
-      })
-      .catch((err) => {
-        setValidEmail(false)
-        setLoading(false)
-        setErrMsg(
-          'Wystąpił błąd podczas rejestracji, prawdopodobnie podany email juz istnieje lub masz kłopot z połączeniem. Spróbuj ponownie lub skontaktuj się z administratorem.'
-        )
-        errRef.current.focus()
-      })
-  }
-
-  const goToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
-
-  return (
-    <Container>
-      {success ? (
-        <div className={css.success}>
-          {response?.status && success ? (
-            <Message type="signUp" status={response?.status === 200 ? 'success' : 'error'} email={email} />
+  if (isSuccess) {
+    <div className={css.success}>
+          {response?.status && isSuccess ? (
+            <Message type="signUp" status={response?.status === 200 ? 'success' : 'error'} email={
+              getValues('email')
+            } />
           ) : (
             <Message type="signUp" status={'error'} />
           )}
         </div>
-      ) : (
+  }
+
+
+  return (
+    <Container>
+      
         <>
           <div className={css.top}>
             <div className={css.title}>
@@ -211,204 +52,87 @@ const RegisterPage = () => {
             </div>
             <img className={css.imgTop} src={registerTop} alt="Grafika przedstawiająca forumlarz rejestracyjny" />
           </div>
-          {loading && 'Ładownie...'}
+          {isLoading && 'Ładownie...'}
           <div className={css.bottom}>
             <div className={css.asideColumn}></div>
-            <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
-              {errMsg && (
-                <p ref={errRef} className={css.formError} aria-live="assertive">
-                  {errMsg}
+            <form onSubmit={handleSubmit(registerNewTeam)} autoComplete="off" className={css.form}>
+              {errFromServer && (
+                <p className={css.formError} aria-live="assertive">
+                  {errFromServer}
                 </p>
               )}
               <div className={css.stepOne}>
                 <h2 className={css.stepTitle}>Krok 1</h2>
                 <h3 className={css.stepSubTitle}>Wprowadź podstawowe dane zespołu</h3>
-                <div className={css.stepOneGroup}>
-                  <label htmlFor="user" className={css.stepOneLabel}>
-                    <span className={css.stepOneLabelText}>
-                      Nazwa zespołu:
-                      <span className={css.star}>*</span>
-                    </span>
-
-                    <input
-                      type="text"
-                      id="user"
-                      placeholder='np. "Team Rocket"'
-                      className={clsx({
-                        [css.stepOneInput]: true,
-                        [css.stepOneInputError]: !userFocus && user && !validName,
-                        [css.stepOneInputFocus]: userFocus,
-                        [css.stepOneInputSuccess]: validName,
-                      })}
-                      value={user}
-                      onChange={(e) => setUser(e.target.value)}
-                      onFocus={() => setUserFocus(true)}
-                      onBlur={() => setUserFocus(false)}
-                      required
-                      aria-invalid={!validName}
-                      aria-describedby="user-err"
-                      ref={userRef}
-                      autoComplete="nope"
-                    />
-                  </label>
-                  {userFocus && user && !validName && (
-                    <span id="user-err" className={css.stepOneError}>
-                      Nazwa powinna rozpoczynać się od duzej litery oraz składać się z przynajmniej 4 znaków
-                    </span>
-                  )}
-                </div>
-                <div className={css.stepOneGroup}>
-                  <label htmlFor="email" className={css.stepOneLabel}>
-                    <span className={css.stepOneLabelText}>
-                      Email:
-                      <span className={css.star}>*</span>
-                    </span>
-                    <input
-                      type="text"
-                      id="email"
-                      placeholder="Wpisz email"
-                      className={clsx({
-                        [css.stepOneInput]: true,
-                        [css.stepOneInputError]: !emailFocus && email && !validEmail,
-                        [css.stepOneInputFocus]: emailFocus,
-                        [css.stepOneInputSuccess]: validEmail,
-                      })}
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onFocus={() => setEmailFocus(true)}
-                      onBlur={() => setEmailFocus(false)}
-                      required
-                      aria-invalid={!validEmail}
-                      aria-describedby="email-err"
-                      autoComplete="nope"
-                    />
-                  </label>
-                  {emailFocus && email && !validEmail && (
-                    <span id="email-err" className={css.stepOneError}>
-                      Email jest niepoprawny
-                    </span>
-                  )}
-                </div>
-                <div className={css.stepOneGroup}>
-                  <label htmlFor="pwd" className={css.stepOneLabel}>
-                    <span className={css.stepOneLabelText}>
-                      Hasło:<span className={css.star}>*</span>
-                    </span>
-                    <input
-                      type="password"
-                      id="pwd"
-                      placeholder="Wpisz hasło"
-                      className={clsx({
-                        [css.stepOneInput]: true,
-                        [css.stepOneInputError]: !pwdFocus && pwd && !validPwd,
-                        [css.stepOneInputFocus]: pwdFocus,
-                        [css.stepOneInputSuccess]: validPwd,
-                      })}
-                      value={pwd}
-                      onChange={(e) => setPwd(e.target.value.trim())}
-                      onFocus={() => setPwdFocus(true)}
-                      onBlur={() => setPwdFocus(false)}
-                      aria-invalid={!validPwd}
-                      aria-describedby="pwd-err"
-                      autoComplete="nope"
-                      required
-                    />
-                  </label>
-                  {pwdFocus && pwd && !validPwd && (
-                    <span id="pwd-err" className={css.stepOneError}>
-                      Wprowadź poprawne hasło
-                    </span>
-                  )}
-                  <div className={css.stepOnePwdDots}>
-                    <span
-                      className={clsx({
-                        [css.gray]: !pwdDot1,
-                        [css.green]: pwdDot1,
-                      })}
-                    >
-                      <FontAwesomeIcon icon={faCircle} />
-                      Przynajmniej 8 znaków
-                    </span>
-                    <span
-                      className={clsx({
-                        [css.gray]: !pwdDot2,
-                        [css.green]: pwdDot2,
-                      })}
-                    >
-                      <FontAwesomeIcon icon={faCircle} />
-                      Przynajmniej 1 mała litera
-                    </span>
-                    <span
-                      className={clsx({
-                        [css.gray]: !pwdDot4,
-                        [css.green]: pwdDot4,
-                      })}
-                    >
-                      <FontAwesomeIcon icon={faCircle} />
-                      Przynajmniej 1 duza litera
-                    </span>
-                    <span
-                      className={clsx({
-                        [css.gray]: !pwdDot3,
-                        [css.green]: pwdDot3,
-                      })}
-                    >
-                      <FontAwesomeIcon icon={faCircle} />
-                      Przynajmniej 1 liczba
-                    </span>
-                  </div>
-                </div>
-                <div className={css.stepOneGroup}>
-                  <label htmlFor="match" className={css.stepOneLabel}>
-                    <span className={css.stepOneLabelText}>
-                      Powtórz hasło:
-                      <span className={css.star}>*</span>
-                    </span>
-                    <input
-                      type="password"
-                      id="match"
-                      className={clsx({
-                        [css.stepOneInput]: true,
-                        [css.stepOneInputError]: !matchFocus && matchPwd && !validMatch,
-                        [css.stepOneInputFocus]: matchFocus,
-                        [css.stepOneInputSuccess]: matchPwd && validMatch,
-                      })}
-                      value={matchPwd}
-                      placeholder="Powtórz hasło"
-                      onChange={(e) => setMatchPwd(e.target.value.trim())}
-                      onFocus={() => setMatchFocus(true)}
-                      onBlur={() => setMatchFocus(false)}
-                      aria-invalid={!validMatch}
-                      aria-describedby="pwdmatch-err"
-                      autoComplete="nope"
-                      required
-                    />
-                  </label>
-                  {matchFocus && matchPwd && !validMatch && (
-                    <span id="pwdmatch-err" className={css.stepOneError}>
-                      Hasła nie są identyczne
-                    </span>
-                  )}
-                </div>
+                <FirstStepInput errorMessage={errors.username?.message} fieldName="username" register={register} label="Nazwa zespołu:" getValues={getValues}/>
+                <FirstStepInput errorMessage={errors.email?.message} fieldName="email" register={register} label="Email:" getValues={getValues}/>
+                <FirstStepInput errorMessage={errors.password?.message} fieldName="password" register={register} label="Hasło:" getValues={getValues} />
+        
+                 
+                <FirstStepInput errorMessage={errors.passwordMatch?.message} fieldName="passwordMatch" register={register} label="Powtórz hasło:" getValues={getValues}/>
               </div>
-              <StepTwo
-                members={members}
-                setMembers={setMembers}
-                setValidMembers={setValidMembers}
-                validMembers={validMembers}
-                success={success}
-                membersCount={membersCount}
-              />
+              <div className={css.title}>
+        <h2>Krok 2</h2>
+        <h3>Wprowadź dane członków zespołu</h3>
+        <div>
+          <p>Zespół musi posiadać od 2 do 5 członków</p>
+          <p>Aktualna ilość członków: {watch('members')?.length}</p>
+        </div>
+      </div>
+      <div className={css.memberForm}>
+        {fields.map((member, index) => (
+            <div className={css.member} key={member.id}>
+
+              <div className={css.memberTitle}>
+                <h3>
+                  Członek {index + 1}
+                  {index === 0 && ' - Lider zespołu '}
+                  <span>{' ' + member.name}</span>
+                </h3>
+                {index !== 0 && (
+                  <button type="button" onClick={() => remove(index)}>
+                    <FontAwesomeIcon icon={faTimes} /> Usuń członka
+                  </button>
+                )}
+              </div>
+              
+              <MemberInput index={index} errorMessage={errors.members?.[index]?.name?.message} fieldName="name" register={register} label="Imię:" getValues={getValues}/>
+              <MemberInput index={index} errorMessage={errors.members?.[index]?.surname?.message} fieldName="surname" register={register} label="Nazwisko:" getValues={getValues}/>
+              <MemberInput index={index} errorMessage={errors.members?.[index]?.email?.message} fieldName="email" register={register} label="Email:" getValues={getValues}/>
+              <MemberInput index={index} errorMessage={errors.members?.[index]?.phone?.message} fieldName="phone" register={register} label="Telefon:" getValues={getValues}/>
+              <MemberInput index={index} errorMessage={errors.members?.[index]?.school?.message} fieldName="school" register={register} label="Szkoła:" getValues={getValues}/>
+
+              <h4>Adres członka</h4>
+              
+              <MemberInput index={index} isAddress={true} errorMessage={errors.members?.[index]?.address?.street?.message} fieldName="street" register={register} label="Ulica:" getValues={getValues}/>
+              <MemberInput index={index} isAddress={true} errorMessage={errors.members?.[index]?.address?.number?.message} fieldName="number" register={register} label="Numer domu/mieszkania:" getValues={getValues}/>
+              <MemberInput index={index} isAddress={true} errorMessage={errors.members?.[index]?.address?.city?.message} fieldName="city" register={register} label="Miasto:" getValues={getValues}/>
+              <MemberInput index={index} isAddress={true} errorMessage={errors.members?.[index]?.address?.postal?.message} fieldName="postal" register={register} label="Kod pocztowy:" getValues={getValues}/>
+
+            </div>
+          ))}
+        <button
+          type="button"
+          onClick={() => {
+            append(initialMember)
+          }}
+          className={css.addMemberBtn}
+        >
+          <FontAwesomeIcon icon={faCirclePlus} />
+          Dodaj kolejnego członka
+        </button>
+      </div>
               <h2 className={css.stepTitle}>Krok 3</h2>
               <h3 className={css.stepSubTitle}>Przeczytaj i zaakceptuj regulamin konkursu</h3>
               <div className={css.stepOneSubmit}>
                 <label className={css.checkbox}>
-                  <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
+                  <input type="checkbox" {...register('rules')} />
                   Akceptuje postanowienia <a href={doc1}>Regulaminu</a>
                   <span className={css.star}>*</span>
                 </label>
+                {errors.rules && <p className={css.formError}>{errors.rules.message}</p>}
                 <label className={css.checkbox}>
-                  <input type="checkbox" checked={checked2} onChange={() => setChecked2(!checked2)} />
+                  <input type="checkbox" {...register('rules2')} />
                   Wyrazam zgodę na przetwarzanie danych osobowych zgodnie z ustawą o ochronie danych osobowych w związku
                   z rejestracją zespołu. Podanie danych jest dobrowolne, ale niezbędne do przetworzenia prośby o
                   rejestrację zespołu. Zostatem poinformowany, Przysługuje mi prawo dostepu do swoich danych, możliwości
@@ -416,13 +140,11 @@ const RegisterPage = () => {
                   Szkoła Ekonomii i Informatyki w Krakowie.
                   <span className={css.star}>*</span>
                 </label>
-
+                {errors.rules2 && <p className={css.formError}>{errors.rules2.message}</p>}
                 <button
                   type="submit"
                   className={css.stepOneButton}
-                  disabled={
-                    !validName || !validPwd || !validMatch || !validEmail || !validMembers || !checked || !checked2
-                  }
+                  disabled={!isValid}
                 >
                   Zarejestruj zespół
                 </button>
@@ -430,8 +152,8 @@ const RegisterPage = () => {
             </form>
             <div className={css.asideColumn}></div>
           </div>
+          
         </>
-      )}
     </Container>
   )
 }

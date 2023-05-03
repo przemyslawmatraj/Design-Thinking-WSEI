@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// eslint-disable-next-line css-modules/no-unused-class
+
 import css from './index.module.scss'
 import logo from '../../../assets/graphics/elevatorPitch.svg'
 import img1 from '../../../assets/photos/mainGoals.webp'

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
-// eslint-disable-next-line css-modules/no-unused-class
+
 import css from './index.module.scss'
 import axios from '../../utils/axios'
 import useAuth from '../../hooks/useAuth'

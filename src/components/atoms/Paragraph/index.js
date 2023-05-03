@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// eslint-disable-next-line css-modules/no-unused-class
+
 import css from './index.module.scss'
 
 const Paragraph = ({ tag, title, color, content }) => {

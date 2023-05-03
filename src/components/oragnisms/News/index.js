@@ -1,5 +1,5 @@
 import React from 'react'
-// eslint-disable-next-line css-modules/no-unused-class
+
 import css from './index.module.scss'
 import ReadMore from '../../atoms/ReadMore'
 import undraw from '../../../assets/graphics/undraw.webp'

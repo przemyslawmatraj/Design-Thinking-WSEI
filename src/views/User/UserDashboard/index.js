@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// eslint-disable-next-line css-modules/no-unused-class
+
 import css from './index.module.scss'
 import useAuth from '../../../hooks/useAuth'
 import Container from '../../../components/Layout/Container'

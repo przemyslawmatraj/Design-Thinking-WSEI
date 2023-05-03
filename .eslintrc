@@ -25,6 +25,7 @@
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/anchor-has-content": "off",
     "css-modules/no-undef-class": "off",
+    "css-modules/no-unused-class": "off",
     "jest/valid-describe": "off"
   }
 }

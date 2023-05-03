@@ -5,6 +5,5 @@ const RegisterPage = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
   return <Message type={'signUp'} status={'closed'} />
 }
-RegisterPage.propTypes = {}
 
 export default RegisterPage
