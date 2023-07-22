@@ -15,7 +15,7 @@ const ElevatorPitch = () => {
   return (
     <>
       <div className={css.container} id="ep">
-        <h4 className={css.sectionTitle}>Międzyuczelniany konkurs Elevator pitch | 2022</h4>
+        <h4 className={css.sectionTitle}>Międzyuczelniany konkurs Elevator Pitch | Zakończony</h4>
         <img loading="lazy" src={logo} alt="Elevator Pitch logo" className={css.logo} />
         <Path />
         <div className={css.steps}>
@@ -41,27 +41,27 @@ const ElevatorPitch = () => {
           </div>
           <div className={css.step}>
             <div className={css.left}>
-              <h2 className={css.title}>2. Cele uczestników:</h2>
+              <h2 className={css.title}>Jakie były cele uczestników?</h2>
               <div className={css.description}>
                 <p>
-                  Studenci potrzebują (międzyuczelnianego) wydarzenia, które pozwoli im zaprezentować (przetestować)
+                  Studenci potrzebowali (międzyuczelnianego) wydarzenia, które pozwoliło im zaprezentować (przetestować)
                   swoje pomysły (nowe produkty lub usługi) na forum publicznym w kontakcie z biznesem. Dlatego
                   uczestnicząc w konkursie Ep w WSEI:
                 </p>
                 <p>
-                  − <strong>poprawisz</strong> swoje umiejętności prezentacji;
+                  − <strong>poprawili</strong> swoje umiejętności prezentacji;
                 </p>
                 <p>
-                  − zwiększysz swoją <strong>pewność siebie</strong> – twórczą odwagę;
+                  − zwiększyli swoją <strong>pewność siebie</strong> – twórczą odwagę;
                 </p>
                 <p>
-                  − weźmiesz udział w praktycznych warsztatach i spotkaniach oraz <strong>poczujesz wsparcie</strong>{' '}
+                  − wzięli udział w praktycznych warsztatach i spotkaniach. <strong>Towarzyszyło mi wsparcie</strong>{' '}
                   grupy w czasie pracy zespołowej;{' '}
                 </p>
                 <p>
-                  − poznasz nowe narzędzia wspierające <strong>komunikację</strong>;
+                  − poznali nowe narzędzia wspierające <strong>komunikację</strong>;
                 </p>
-                <p>− nauczysz się zasad zdrowej rywalizacji w życzliwym otoczeniu.</p>
+                <p>− nauczyli się zasad zdrowej rywalizacji w życzliwym otoczeniu.</p>
               </div>
             </div>
             <div className={css.right}>
@@ -74,15 +74,15 @@ const ElevatorPitch = () => {
               <div className={css.description}>
                 <h4>Bootcamp</h4>
                 <p>
-                  Na warsztatach projektowania trenerzy DT będą uczyć uczestników, jak w kilkadziesiąt sekund, w sposób
+                  Na warsztatach projektowania trenerzy DT uczyli uczestników, jak w kilkadziesiąt sekund, w sposób
                   zwięzły i rzeczowy przekonać inwestora do swojego pomysłu.
                 </p>
                 <p>
-                  Studenci dowiedzą się, o czym należy mówić, a jakie treści lepiej pominąć, a przede wszystkim poznają
-                  tajniki skutecznej, wiarygodnej i przykuwającej uwagę narracji biznesowej.
+                  Studenci dowiedzieli się, o czym należy mówić, a jakie treści lepiej pominąć, a przede wszystkim
+                  poznali tajniki skutecznej, wiarygodnej i przykuwającej uwagę narracji biznesowej.
                 </p>
                 <p>
-                  W czasie warsztatów wyłonione zespoły przygotują też koncepcję Business Model Canvas, która będzie
+                  W czasie warsztatów wyłonione zespoły przygotowali też koncepcję Business Model Canvas, która
                   stanowiła podstawę do opracowania autorskiego Ep.
                 </p>
               </div>
@@ -97,13 +97,13 @@ const ElevatorPitch = () => {
                 <h4>Konkurs Elevator pitch. </h4>
 
                 <p>
-                  W czasie trwania konkursu zespoły przygotują i przedstawią Elevator pitch, stanowiący model
+                  W czasie trwania konkursu zespoły przygotowali i przedstawili Elevator pitch, stanowiący model
                   komunikacji w postaci samodzielnej krótkiej wypowiedzi, bądź głosu wspartego prezentacją
                   multimedialną.
                 </p>
 
                 <p>
-                  Celem jest skuteczne przedstawienie posiadanej oferty (pomysłu na start-up) potencjalnym inwestorom
+                  Celem było skuteczne przedstawienie posiadanej oferty (pomysłu na start-up) potencjalnym inwestorom
                   bądź partnerom przedsięwzięcia – jury konkursowemu - przedsiębiorcom.
                 </p>
               </div>
@@ -137,11 +137,9 @@ const ElevatorPitch = () => {
             <div className={css.right}>
               <img loading="lazy" src={img3} alt="Cele studenta" className={css.image_1} />
             </div>
-            <Link className={css.button} to="/register">
-              Zapisz się teraz!
-            </Link>
+            <span className={css.button}>Kolejna edycja już wkrótce!</span>
             <div className={css.learnMore}>
-              lub <a href={regulations}>Dowiedz się więcej...</a>
+              <a href={regulations}>Regulamin konkursu</a>
             </div>
           </div>
         </div>
